@@ -1,0 +1,166 @@
+ return (
+    <View style={styles.container}>
+      <StatusBar hidden/>
+      <View style={styles.slider}>
+        <View style={[styles.sliderBall, styles.ball1]}><View style={styles.markball}></View></View>
+        <View style={[styles.sliderBall, styles.ball2]}></View>
+        <View style={[styles.sliderBall, styles.ball3]}></View>        
+        <View style={[styles.sliderBall, styles.ball4]}></View>        
+        <View style={[styles.sliderBall, styles.ball5]}></View>        
+      </View>
+
+      <View style={styles.requiresContainer}>
+        <View style={styles.requiresTextContainer}>
+          <Text style={styles.requiresText}>Para cadastrar-se</Text>
+          <Text style={styles.requiresText}><Text style={styles.textUnderline}>você</Text> irá precisar:</Text>
+        </View>
+        
+
+        <View name="requires1" style={styles.requires}>
+          <Icon name="user" style={styles.userIcon}/>
+          <Text name="requiresDesc" style={styles.requiresDesc}>Ter mais de 21 anos</Text>
+        </View>
+
+        <View name="requires2" style={styles.requires}>
+          <Icon name="id-card" style={styles.idIcon}/>
+          <Text style={styles.requiresDesc}>CNH original em mãos</Text>
+        </View>
+
+        <View name="requires3" style={styles.requires}>
+          <Icon name="camera" style={styles.cameraIcon}/>
+          <Text style={styles.requiresDesc}>Tirar uma foto sua</Text>
+        </View>
+        
+        <View name="requires4" style={styles.requires}>
+          <Icon name="credit-card" style={styles.cardIcon}/>
+          <Text style={styles.requiresDesc}>Cartão próprio</Text>
+        </View>
+
+        <View name="requires4" style={styles.requires}>
+          <Icon name="info-circle" style={styles.infoIcon}/>
+          <View style={styles}>
+            <Text style={styles.requiresDesc}>Seu cadastro está</Text>
+            <Text style={styles.requiresDesc}>sujeito a aprovação</Text>
+          </View>
+        </View>
+
+      </View>
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonNextText}>Próximo</Text>
+      </TouchableOpacity>
+    </View>
+  );
+
+  const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#34598A',
+    position: 'relative',
+    padding: 20,
+    paddingTop: 30,
+  },
+  button: {
+    width: '100%',
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 15,
+    left: 18,
+  },
+  buttonNextText: {
+    alignSelf: 'center',
+    color: '#34598A',
+    fontWeight: 'bold'
+  },
+  slider: {
+    width: '100%',
+    backgroundColor: '#fff',
+    height: 5,
+    borderRadius: 10,
+    position: 'relative'
+  },
+  sliderBall: {
+    height: 10,
+    width: 10,
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    position: 'absolute',
+    top: -3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ball1: {
+    left: 0,
+  },
+  ball2: {
+    left: '25%',
+  },
+  ball3: {
+    left: '50%',
+  },
+  ball4: {
+    left: '75%',
+  },
+  ball5: {
+    left: '96.8%'
+  },
+  markball: {
+    height: 15,
+    width: 15,
+    backgroundColor: '#000',
+    borderRadius: 50,
+  },
+  requiresContainer: {
+    paddingTop: 50
+  },
+  requiresText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  requires: {
+    display: 'flex',
+    width: '100%',
+    flexDirection: 'row',
+    marginTop: 27,
+    alignItems: 'center'
+  },
+  userIcon: {
+    fontSize: 35,
+    color: '#fff',
+    marginLeft: 8,
+    marginRight: 21,
+  },
+  idIcon: {
+    fontSize: 35,
+    color: '#fff',
+    marginLeft: 5,
+    marginRight: 15
+  },
+  cameraIcon: {
+    fontSize: 35,
+    color: '#fff',
+    marginLeft: 7,
+    marginRight: 18
+  },
+  cardIcon: {
+    fontSize: 35,
+    color: '#fff',
+    marginLeft: 5,
+    marginRight: 17
+  },
+  infoIcon: {
+    fontSize: 35,
+    color: '#fff',
+    marginLeft: 7,
+    marginRight: 18
+  },
+  requiresDesc: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+});
