@@ -36,7 +36,7 @@ import {
 } from '../Financeiro/FinanceiroComponents/Excluir/style';
 
 
-import HeaderOb from '../../components/Header';
+import HeaderOb from '../../../components/Header';
 
 import Modal from "react-native-modal";
 import Quitar from "./FinanceiroComponents/Quitar";

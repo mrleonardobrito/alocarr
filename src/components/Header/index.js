@@ -7,17 +7,17 @@ import { useNavigation } from "@react-navigation/core";
 
 
 import { 
-    Header, IconSection, BarsIcon, ZapIcon, H1Section, H1, Main, MainItem, MainSection, CarIcon, 
+    StyledHeader, IconSection, BarsIcon, ZapIcon, H1Section, H1, Main, MainItem, MainSection, CarIcon, 
     Descrip, DescripNum, DescripText, ButtonVer, ButtonText, MajorIcon, MinorIcon, MajorIconText
  } from './style';
 
-export default function CustomDrawer(props){
+export default function Header(props){
 
     const navigation = useNavigation();
     const contact = '82993225338';
     const message = 'Olá. Deseja alugar carros em um espaço totalmente confiável e com ótimo antendimento? Veio ao Local certo'
     return(  
-    <Header>
+    <StyledHeader>
         <H1Section>
             <H1>{props.pageName}</H1>
         </H1Section>
@@ -25,7 +25,7 @@ export default function CustomDrawer(props){
             <TouchableOpacity onPress= {()=> {Linking.openURL(`whatsapp://send?phone${82993225338}&text=${message}`)}}><ZapIcon><Icon name="whatsapp" color="#34598A" style={styles.icone}/></ZapIcon></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.openDrawer()}><BarsIcon><Icon name="bars" color="#34598A" style={styles.icone}/></BarsIcon></TouchableOpacity>
         </IconSection>
-    </Header>
+    </StyledHeader>
     );
 }
 

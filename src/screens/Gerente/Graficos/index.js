@@ -15,7 +15,7 @@ import { Main, GraficoContainer, Grafico } from './style';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { PieChart } from "react-native-svg-charts";
 
-import HeaderOb from '../../components/Header';
+import HeaderOb from '../../../components/Header';
 
 const corGraficoLinha = '#03295B';
 

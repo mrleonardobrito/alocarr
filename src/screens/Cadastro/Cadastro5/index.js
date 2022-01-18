@@ -24,7 +24,7 @@ import {useNavigation} from '@react-navigation/native';
 
 /* Screens */
 
-import Gerente from '../../GerenteScreens/Gerente'
+import Gerente from '../../Gerente/Gerente'
 
 export default function({navigation}){
     return(
@@ -130,7 +130,7 @@ export default function({navigation}){
                     <TextoBotao>Voltar</TextoBotao>
                 </BotaoProximo>
 
-                <BotaoFinalizar onPress={()=> navigation.navigate('Gerente')}>
+                <BotaoFinalizar onPress={()=> navigation.navigate('Home')}>
                     <TextoBotao>Finalizar</TextoBotao>
                 </BotaoFinalizar>
 

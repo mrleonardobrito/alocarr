@@ -22,7 +22,7 @@ const APP_NAME = 'Alocarr';
 
 import logoALocarr from '../../../img/logo.png'
 
-export default function CustomDrawer({navigation}){
+export default function AdmDrawerContent({navigation}){
 
     function logo(){
         return <Image source={logoALocarr} style={{height: 40, width: 40}}/>

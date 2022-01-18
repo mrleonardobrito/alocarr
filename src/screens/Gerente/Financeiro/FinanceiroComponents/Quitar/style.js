@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 export const QuitarHeader = styled.View`
     height: 45px;
     background-color: #ECECEC;
     width: 100%;
-    padding: 0 10px 0 10px
+    padding: 0 10px 0 10px;
     display: flex;
     justify-content: center;
     position: relative;
@@ -38,7 +38,7 @@ export const MainSection = styled.View`
 export const SectionTextButton = styled.Text`
     color: ${props => props.theme.corTitulo};
     font-weight: bold;
-    font-size: 15px
+    font-size: 15px;
 `;
 
 export const SectionButton = styled.TextInput`
@@ -55,7 +55,7 @@ export const QuitarFooter = styled.View`
     height: 45px;
     background-color: #ECECEC;
     width: 100%;
-    padding: 0 10px 0 10px
+    padding: 0 10px 0 10px;
     display: flex;
     position: relative;
     align-items: center;

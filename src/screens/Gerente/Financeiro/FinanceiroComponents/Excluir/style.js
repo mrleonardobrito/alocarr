@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 export const ExcluirHeader = styled.View`
     background-color: #ECECEC;
@@ -21,7 +21,7 @@ export const ExcluirMain = styled.View`
 `;
 
 export const ExcluirMainInput = styled.TextInput`
-    border: 2px
+    border: 2px;
     border-radius: 5px;
     width: 120px;
     height: 40px;
@@ -33,7 +33,7 @@ export const ExcluirFooter = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 10px
+    padding-left: 10px;
 `;
 
 export const ExcluirFooterButtonConfirm = styled.TouchableOpacity`

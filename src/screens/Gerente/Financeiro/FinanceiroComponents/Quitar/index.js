@@ -3,9 +3,11 @@ import { StyleSheet, Text, View } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { 
     CancelarButton,
-    HeaderButton, HeaderText, MainSection, QuitarButton, QuitarFooter, QuitarHeader, 
+    HeaderButton, HeaderText, MainSection, QuitarFooter, QuitarHeader, 
     QuitarMain, SectionButton, SectionTextButton 
 } from "./style";
+
+import { QuitarButton } from "../../style";
 
 import { useNavigation } from "@react-navigation/core";
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Header = styled.View`
+export const StyledHeader = styled.View`
     width: 100%;
     height: ${props => props.theme.headerHeight};
     background-color: ${props => props.theme.headerColor};

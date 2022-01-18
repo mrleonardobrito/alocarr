@@ -10,7 +10,6 @@ import { useNavigation } from "@react-navigation/core";
 
 /* VectorIcons, StyledComponents */
 
-import { Header, H1Section, H1, IconSection, ZapIcon, BarsIcon } from '../../Gerente/style';
 import { 
     Content, Main, DadosContainer, InputsContainer, InputEntrada,
     InputDiv, TitleInput, Dados, DadosTextInput, InputEntradaText,
@@ -20,7 +19,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
-import HeaderOb from '../../../components/Header';
+import Header from '../../../../components/Header';
 
 import dados from "./dados";
 import { Value } from "react-native-reanimated";
@@ -96,7 +95,7 @@ export default function({route}){
 
     return(
         <Content>
-            <HeaderOb pageName={pageName}/>
+            <Header pageName={pageName}/>
             <Main>
                 <DadosContainer>
                     <InputsContainer>

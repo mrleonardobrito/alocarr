@@ -16,7 +16,7 @@ import { SwipeableDiv, SwipeableLeftDiv, SwipeableButton, SwipText, SwipIcon } f
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-import HeaderOb from '../../components/Header';
+import HeaderOb from '../../../components/Header';
 
 const HEIGHT = '100%' + '150%';
 
