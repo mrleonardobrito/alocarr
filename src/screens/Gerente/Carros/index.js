@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
 
-import Header from '../../components/Header';
+import Header from '../../../components/Header/index';
 
 import { CarroContainer, Bolinha } from './style';
 import { ButtonVer, ButtonText } from '../Gerente/style';

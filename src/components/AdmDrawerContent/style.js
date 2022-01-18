@@ -1,23 +1,29 @@
 import styled from 'styled-components/native';
 
 export const DrawerContainer = styled.View`
+    height: 100%;
+    background-color: red;
 `;
 
 export const DrawerHeader = styled.View`
     padding: 0 20px 0 15px;
-    height: 60px;
+    height: 10%;
     background-color: #f1f1f1;
     justify-content: center;
 `;
 
 export const DrawerMain = styled.View`
     padding: 15px 10px 0px 20px;
+    height: 77%;
 `;
 
 export const DrawerFooter = styled.View`
-    height: 80px;
     background-color: ${props => props.theme.corTitulo};
-    
+    height: 13%;
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;  
 
 export const DrawerHeaderTitle = styled.View`
@@ -26,14 +32,12 @@ export const DrawerHeaderTitle = styled.View`
 `;
 
 export const CloseIcon = styled.TouchableOpacity`
-    position: absolute;
-    right: 0;
-    top: 0;
     height: 60px;
     align-items: center;
     justify-content: center;
-    width: 60px;
+    width: 89%;
     color: ${props => props.theme.corTitulo};
+
 `;
 
 export const SearchContainer = styled.View`
@@ -49,7 +53,7 @@ export const SearchInput = styled.TextInput`
     border-bottom-right-radius: 13px;
     border-top-right-radius: 13px;
     font-weight: bold;
-    padding: 0px 10px 0 10px
+    padding: 0px 10px 0 10px;
 `;
 export const SearchButton = styled.TouchableOpacity`
     width: 20%;
@@ -82,13 +86,11 @@ export const ItemText = styled.Text`
 `;
 export const ItemIcon = styled.View`
     margin-left: 6%;
-    width: 15%
+    width: 15%;
 `;
 
 export const FooterIcon = styled.View`
-    position: absolute;
-    right: 20px;
-    top: 23px;
+
 `;
 
 export const FooterImage = styled.View`
@@ -97,7 +99,7 @@ export const FooterImage = styled.View`
     border-radius: 50px;
     background-color: #fff;
     position: absolute;
-    top: 10px;
+    top: 50px;
     left: 15px;
 `;
 
@@ -105,20 +107,12 @@ export const FooterUserName = styled.Text`
     color: #fff;
     font-weight: bold;
     font-size: 15px;
-    position: absolute;
-    left: 85px;
-    line-height: 80px;
 `;
 
 export const ItemHelpMain = styled.TouchableOpacity`
     display: flex;
     flex-direction: row;
-    height: 40px;
-    padding: 0 0 0 11%;
-`;
-export const DrawerFooterContainer = styled.View`
-    position: relative;
-    bottom: -15.5%;
+    margin-bottom: 10px; 
 `;
 export const ItemIconFooter = styled.View`
     
@@ -128,6 +122,7 @@ export const Luffy = styled.Image`
     height: 60px;
     width: 60px;
     border-radius: 50px;
+    margin-right: 10px;
 `;
 
 
