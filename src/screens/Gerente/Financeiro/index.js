@@ -199,12 +199,10 @@ export default function({route}){
     return(
         <ScrollView>
             <HeaderOb pageName={pageName}/>
-            <Main>
-                <FinanceiroButtonContainer>
-                   
+            <Main style={{}}>
+                <FinanceiroButtonContainer>   
                 
-                <AnimatePresence>{contasVisible && <Shape />}</AnimatePresence>
-                    
+                <AnimatePresence>{contasVisible && <Shape />}</AnimatePresence>  
 
                     <ResumoButton onPress={toggle}>
                         <ResumoText>Resumos</ResumoText>

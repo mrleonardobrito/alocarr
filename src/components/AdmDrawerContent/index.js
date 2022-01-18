@@ -37,7 +37,7 @@ export default function AdmDrawerContent({navigation}){
                 <TouchableOpacity onPress={() => navigation.navigate('Gerente')} style={{marginTop: 5}}><DrawerHeaderTitle>{logo()}<Text style={{fontSize: 25, color: '#1B4274', fontWeight: 'bold'}}>{APP_NAME}</Text></DrawerHeaderTitle></TouchableOpacity>
                 <CloseIcon onPress={()=> navigation.closeDrawer()} st><Icon name="times" style={styles.fonte}/></CloseIcon>
             </DrawerHeader>
-            <DrawerMain style={{backgroundColor: 'green', justifyContent: 'space-between'}}>
+            <DrawerMain style={{backgroundColor: 'white', justifyContent: 'space-between'}}>
                 <View>
                     <SearchContainer>
                         <SearchButton><Icon name="search" style={styles.fonteSearch}/></SearchButton>
