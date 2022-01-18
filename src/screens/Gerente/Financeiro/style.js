@@ -17,7 +17,7 @@ export const ResumoButton = styled.Pressable`
 export const ResumoText = styled.Text`
     font-weight: bold;
     font-size: 20px;
-    color: ${props => props.theme.corTitulo}
+    color: ${props => props.theme.corTitulo};
 `;
 export const ResumoIcon = styled.View`
     position: absolute;
@@ -123,7 +123,7 @@ export const SituacoesItem = styled.View`
     padding: 4px;
     margin-bottom: 15px;
     border-radius: 8px;
-    background-color: ${props => props.theme.corTitulo}
+    background-color: ${props => props.theme.corTitulo};
 `;
 
 export const SitItemLeft = styled.View`

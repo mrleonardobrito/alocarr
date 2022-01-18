@@ -99,8 +99,8 @@ export default function({route}){
             <Main>
                 <DadosContainer>
                     <InputsContainer>
+                        <View style={{height: '70%'}}>
                         <Dados>
-                            
                             <InputDiv>
                                 <TitleInput>Situação*</TitleInput>
                                 <InputEntradaPicker placeholder="Digite aqui..." 
@@ -154,6 +154,7 @@ export default function({route}){
                                 <InputEntrada placeholder="000,00" onChangeText={text => setFormaPago(text)}/>
                             </InputDiv>
                         </Dados>
+                        </View>
                         <ButtonContainer>
                             <ButtonCancelar style={styles.paddingButtonContainer} onPress={()=> navigation.navigate('Financeiro')}><ButtonTextCanCon>Cancelar</ButtonTextCanCon></ButtonCancelar>
                             <ButtonConcluir style={styles.paddingButtonContainer} onPress={()=> prosseguir()}><ButtonTextCanCon>Concluir</ButtonTextCanCon></ButtonConcluir>

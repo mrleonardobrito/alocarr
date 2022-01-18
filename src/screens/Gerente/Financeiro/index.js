@@ -198,9 +198,9 @@ export default function({route}){
     }
 
     return(
-        <ScrollView>
+        <ScrollView style={{backgroundColor: '#34598A'}}>
             <HeaderOb pageName={pageName}/>
-            <Main style={{}}>
+            <Main>
                 <FinanceiroButtonContainer>   
                 
                 <AnimatePresence>{contasVisible && <Shape />}</AnimatePresence>  
@@ -359,7 +359,6 @@ export default function({route}){
                     
                 </FinancasContainer>
             </Main>
-            <Stars />
         </ScrollView>
     );
 }

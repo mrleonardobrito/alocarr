@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Content = styled.View`
-    background-color: ${props => props.theme.mainColor}
+    background-color: ${props => props.theme.mainColor};
     height: 100%;
 `;
 
@@ -19,6 +19,7 @@ export const DadosContainer = styled.View`
 `;
 export const InputsContainer = styled.View`
     padding: 25px 20px 25px 20px;
+    height: 100%;
 `;
 export const InputDiv = styled.View`
     height: 60px;
@@ -59,13 +60,12 @@ export const InputEntradaText = styled.TextInput`
 `;
 
 export const ButtonContainer = styled.View`
-    height: 30px;
+    height: 30%;
     width: 100%;
     display: flex;
     flex-direction: row;
-    position: absolute;
-    bottom: -10px;
-    left: 20px;
+    align-items: flex-end;
+    justify-content: space-between;
 `;
 
 export const ButtonConcluir = styled.TouchableOpacity`
