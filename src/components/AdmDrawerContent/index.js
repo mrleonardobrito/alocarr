@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 /* StyledComponents */
 
-import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableOpacityBase, Linking } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Linking } from 'react-native';
 import { 
     DrawerContainer, DrawerHeader, DrawerMain, DrawerFooter, DrawerHeaderTitle,
     CloseIcon, SearchInput, SearchContainer, SearchButton, ItemsContainer, ItemMain,
@@ -78,7 +78,7 @@ export default function AdmDrawerContent({navigation}){
                     />
                     </FooterImage>
                     <FooterUserName>Linaldo Brito</FooterUserName>
-                    <FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon>
+                    <TouchableOpacity style={{height: 100, width: 100}} onPress={()=> navigation.navigate('LoginRouter')}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
                 </DrawerFooter>
             </DrawerFooterContainer>
         </DrawerContainer>
