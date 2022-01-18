@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 export const Carro = styled.Image`
     height: 55%;
@@ -17,7 +17,7 @@ export const CarroView = styled.View`
 export const Detalhes = styled.View`
     width: 100%;
     background-color: #5379AB;
-    margin-top: 45%
+    margin-top: 45%;
 `;
 
 export const DetalhesHeader = styled.View`
@@ -27,3 +27,4 @@ export const DetalhesHeader = styled.View`
 `;
 
 export const BotaoEditar = styled.TouchableOpacity``;
+

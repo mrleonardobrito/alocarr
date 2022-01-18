@@ -35,6 +35,7 @@ import {
 
 } from '../Financeiro/FinanceiroComponents/Excluir/style';
 
+import Stars from 'react-native-stars'
 
 import HeaderOb from '../../../components/Header';
 
@@ -358,6 +359,7 @@ export default function({route}){
                     
                 </FinancasContainer>
             </Main>
+            <Stars />
         </ScrollView>
     );
 }

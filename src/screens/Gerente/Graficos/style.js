@@ -17,11 +17,24 @@ export const Grafico = styled.View`
     display: flex;
     flex-direction: row;
     margin-bottom: 15px;
-    padding: 15px
+    padding: 15px;
 `;
 
 export const GraficoTitulo = styled.Text`
 `;
 
 export const GraficoDesc = styled.Text`
+`;
+
+export const ViewCirculo = styled.View`
+    height: 60px;
+    width: 60px;
+    border: 60px solid black;
+    border-right-color: black;
+    border-top-color: green;
+    border-bottom-color: blue;
+    border-left-width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;

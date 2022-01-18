@@ -3,11 +3,10 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, FlatList, ScrollView, Dimensions, ImageEditor} from 'react-native';
 import {CarroView, Carro, Detalhes, DetalhesHeader, BotaoEditar} from './style'
 
-import Header from '../../../components/Header'
+import Header from '../../../../components/Header'
 
 import duster from '../img/carro_duster.png';
 
-import Swiper from 'react-native-swiper';
 import Stars from 'react-native-stars'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -15,9 +14,9 @@ import IconF from 'react-native-vector-icons/FontAwesome';
 import Dots from 'react-native-vector-icons/Entypo';
 
 
-import dusterFront from '../../../../car_photos/renault_duster/duster_front.jpg'
-import dusterBack from '../../../../car_photos/renault_duster/duster_back.jpg'
-import dusterDrift from '../../../../car_photos/renault_duster/duster_drift.jpg'
+import dusterFront from '../../../../../car_photos/renault_duster/duster_front.jpg'
+import dusterBack from '../../../../../car_photos/renault_duster/duster_back.jpg'
+import dusterDrift from '../../../../../car_photos/renault_duster/duster_drift.jpg'
 
 const {width} = Dimensions.get("window");
 const height = width * 100/99;
@@ -49,174 +48,6 @@ export default function({route}){
         }
     }
 
-    function SwiperComponent(){
-        return (
-            <Swiper
-            dotStyle={{
-                backgroundColor: '#5379AB',
-            }}
-            activeDotColor='#5379AB'
-            style={styles.swiper}
-            loop={false}
-            >
-                <View>
-                    <View style={styles.viewRow, {flexDirection: 'column', marginTop: 20}}>
-                        <View style={{width: '100%', flexDirection: 'row'}}> 
-                            <View style={styles.especiView}><Icon name='user-friends' style={[styles.especiText, {fontSize: 22}]}/><Text style={styles.especiText}>5 Passageiros</Text></View>
-                            <View style={styles.especiView}><Icon name='cog' style={[styles.especiText, {fontSize: 22}]}/><Text style={styles.especiText}>Manual</Text></View>
-                            <View style={styles.especiView}><Icon name='suitcase-rolling' style={[styles.especiText, {fontSize: 22}]}/><Text style={styles.especiText}>3 Malas</Text></View>
-                        </View>
-                        <View style={{width: '100%', flexDirection: 'row', marginTop: 20}}> 
-                            <View style={styles.especiView}><Icon name='door-open' style={[styles.especiText, {fontSize: 22}]}/><Text style={styles.especiText}>4 Portas</Text></View>
-                            <View style={styles.especiView}><Icon name='snowflake' style={[styles.especiText, {fontSize: 22}]}/><Text style={styles.especiText}>Ar-condicionado</Text></View>
-                            <View style={styles.especiView}><Icon name='cog' style={[styles.especiText, {fontSize: 22}]}/><Text style={styles.especiText}>Motor 1.6</Text></View>
-                        </View>
-                    </View>
-                </View>
-    
-                <View>
-                    <View style={styles.viewRow}>
-                        <View style={{width: 100/2 + '%'}}>
-                            <Text style={styles.detalhesSubText}>Cor: Marrom</Text>
-                            <Text style={[styles.detalhesSubText, { marginTop: 10 }]}>Ano: 2018</Text>
-                        </View>
-                        <View style={{width: 100/2 + '%'}}>
-                            <Text style={styles.detalhesSubText}>Modelo: Renault Duster</Text>
-                            <Text style={[styles.detalhesSubText, { marginTop: 10 }]}>Combustível: Diesel/Etanol</Text>
-                        </View>
-                    </View>
-                    <View style={styles.linhas}></View>
-                    <View style={[styles.viewRow, {flexDirection: 'column'}]}>
-                        <Text style={[styles.detalhesSubText, { marginTop: 5 }]}>• Manual, com 5 machas</Text>
-                        <Text style={[styles.detalhesSubText, { marginTop: 5 }]}>• Ar-condicionado</Text>
-                        <Text style={[styles.detalhesSubText, { marginTop: 5 }]}>• Trava Elétrica</Text>
-                    </View>
-                    <View style={styles.linhas}></View>
-                    <View style={styles.viewRow}>
-                        <View style={{width: 100/2 + '%'}}>
-                            <Text style={[styles.detalhesSubText, { marginTop: 5 }]}>Chassi: 9BHBG41DBJP794125</Text>
-                            <Text style={[styles.detalhesSubText, { marginTop: 5 }]}>Ultima revisão: 10/08/2021</Text>
-                            <Text style={[styles.detalhesSubText, { marginTop: 5 }]}>Proxima revisão: 10/09/2021</Text>
-                        </View>
-                        <View style={{width: 100/2 + '%'}}>
-                            <Text style={[styles.detalhesSubText, { marginTop: 5 }]}>Proxima troca de óleo: em 85km</Text>
-                            <Text style={[styles.detalhesSubText, { marginTop: 5 }]}>Codigo GPS: 6463623</Text>
-                        </View>
-                    </View>            
-                    </View>
-                <View style={{padding: 10}}>
-                    <View style={{flexDirection: 'row'}}>
-                        <View style={{alignItems: 'center', width: '40%'}}>
-                            <Text style={{fontSize: 30, color: 'white', fontWeight: 'bold'}}>{starValue}</Text>
-                            <Stars 
-                            default={starValue}
-                            count={5}
-                            half={true}
-                            starSize={starSize}
-                            fullStar={<IconF name='star' style={styles.star}/>}
-                            emptyStar={<IconF name='star-o' style={styles.star}/>}
-                            halfStar={<IconF name='star-half-empty' style={styles.star}/>}
-                            update={(val) => setStarValue(val) }
-                            />
-                        </View>
-                        <View style={{width: '60%'}}>
-                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                <Text style={styles.graficoTexto}>5</Text>
-                                <View style={styles.graficoLinha}>{graficoLinha(0)}</View>
-                            </View>
-                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                <Text style={styles.graficoTexto}>4</Text>
-                                <View style={styles.graficoLinha}>{graficoLinha(1)}</View>
-                            </View>
-                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                <Text style={styles.graficoTexto}>3</Text>
-                                <View style={styles.graficoLinha}>{graficoLinha(2)}</View>
-                            </View>
-                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                <Text style={styles.graficoTexto}>2</Text>
-                                <View style={styles.graficoLinha}>{graficoLinha(3)}</View>
-                            </View>
-                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                <Text style={styles.graficoTexto}>1</Text>
-                                <View style={styles.graficoLinha}>{graficoLinha(4)}</View>
-                            </View>
-                        </View>
-                    </View>
-                    
-                    <View style={{marginTop: 20}}>
-                        <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>Avaliações</Text>
-                        <View style={{flexDirection: 'row', marginTop: 20}}>
-                            <View style={[styles.fotoPerfil, {marginRight: 10}]}>
-                                <Image source={require('../../../components/Drawer/luffy.jpg')} style={{height: 45, width: 45, borderRadius: 60, resizeMode: 'cover'}}/>
-                            </View>
-                            <View style={{alignItems: 'flex-start'}}>
-                                <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>Gabriel Santos</Text>
-                                <View style={{flexDirection: 'row', alignItems: 'center', width: '100%'}}>
-                                    <View style={{marginTop: 1, flexDirection: 'row', alignItems: 'center'}}>
-                                        <View>
-                                            <Stars
-                                            default={0}
-                                            count={5}
-                                            half={true}
-                                            starSize={starMinorSize}
-                                            fullStar={<IconF name='star' style={styles.starMinor}/>}
-                                            emptyStar={<IconF name='star-o' style={styles.starMinor}/>}
-                                            halfStar={<IconF name='star-half-empty' style={styles.starMinor}/>}
-                                            />
-                                        </View>
-                                    <Text style={{marginLeft: 5, fontSize: 11, color: 'white'}}>02 de janeiro de 2022</Text>
-                                    </View>
-                                    <View style={{flexDirection: 'row', position: 'absolute', left: 230}}>
-                                        <View>{decidirLike()}</View>
-                                        <Dots name='dots-three-vertical' style={{fontSize: 18, color: 'white', marginLeft: 15}}/>
-                                    </View>
-                                </View>
-                                <View style={{marginTop: 10, width: '90%'}}>
-                                    <Text style={{fontSize: 13, color: 'white'}}>
-                                        AhhhAhhhhAhhhhhAhhhhhhAi!No alto daquele cumePlantei uma roseiraO vento no cume bateA rosa no cume cheiraQuando vem a chuva finaSalpicos no cume caemFormigas no cume entramAbelhas do cume me saemQuando cai a chuva grossaA água do cume desceO barro do cume escorreO mato no cume cresce.
-                                    </Text>
-                                </View>        
-                            </View>
-                        </View>
-                        <View style={{flexDirection: 'row', marginTop: 20}}>
-                            <View style={[styles.fotoPerfil, {marginRight: 10}]}>
-                                <Image source={require('../../../components/Drawer/luffy.jpg')} style={{height: 45, width: 45, borderRadius: 60, resizeMode: 'cover'}}/>
-                            </View>
-                            <View style={{alignItems: 'flex-start'}}>
-                                <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>Gabriel Santos</Text>
-                                <View style={{flexDirection: 'row', alignItems: 'center', width: '100%'}}>
-                                    <View style={{marginTop: 1, flexDirection: 'row', alignItems: 'center'}}>
-                                        <View>
-                                            <Stars
-                                            default={0}
-                                            count={5}
-                                            half={true}
-                                            starSize={starMinorSize}
-                                            fullStar={<IconF name='star' style={styles.starMinor}/>}
-                                            emptyStar={<IconF name='star-o' style={styles.starMinor}/>}
-                                            halfStar={<IconF name='star-half-empty' style={styles.starMinor}/>}
-                                            />
-                                        </View>
-                                    <Text style={{marginLeft: 5, fontSize: 11, color: 'white'}}>02 de janeiro de 2022</Text>
-                                    </View>
-                                    <View style={{flexDirection: 'row', position: 'absolute', left: 230}}>
-                                        <View>{decidirLike()}</View>
-                                        <Dots name='dots-three-vertical' style={{fontSize: 18, color: 'white', marginLeft: 15}}/>
-                                    </View>
-                                </View>
-                                <View style={{marginTop: 10, width: '90%'}}>
-                                    <Text style={{fontSize: 13, color: 'white'}}>
-                                        AhhhAhhhhAhhhhhAhhhhhhAi!No alto daquele cumePlantei uma roseiraO vento no cume bateA rosa no cume cheiraQuando vem a chuva finaSalpicos no cume caemFormigas no cume entramAbelhas do cume me saemQuando cai a chuva grossaA água do cume desceO barro do cume escorreO mato no cume cresce.
-                                    </Text>
-                                </View>        
-                            </View>
-                        </View>
-                    </View>
-                    
-                </View>
-            </Swiper>
-        );
-    }
 
 
     return(
@@ -259,7 +90,6 @@ export default function({route}){
                         <View style={styles.detalhesHeader}><Text style={styles.detalhesHeaderText}>Detalhes</Text></View>
                         <View style={styles.detalhesHeader}><Text style={styles.detalhesHeaderText}>Avaliações</Text></View>
                     </DetalhesHeader>
-                        {SwiperComponent()}
                 </Detalhes>
             </View>
         </ScrollView>
