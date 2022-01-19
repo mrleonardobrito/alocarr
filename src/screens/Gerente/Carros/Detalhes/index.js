@@ -16,6 +16,7 @@ import IconF from 'react-native-vector-icons/FontAwesome';
 import dusterFront from '../../../../../car_photos/renault_duster/duster_front.jpg'
 import dusterBack from '../../../../../car_photos/renault_duster/duster_back.jpg'
 import dusterDrift from '../../../../../car_photos/renault_duster/duster_drift.jpg'
+import { MotiView } from 'moti';
 
 const {width} = Dimensions.get("window");
 const height = width * 100/99;
@@ -32,6 +33,43 @@ export default function({route}){
 
     const starValues = [90, 70, 100, 40, 20];
 
+    const abas = [
+        {
+            valor: 1,
+        },
+        {
+            valor: 2,
+        },
+        {
+            valor: 3,
+        },
+        {
+            valor: 4,
+        },
+    ];
+
+    function detalhesShow(){
+        return(
+            <View style={{width: '100%'}}>
+                <Text>1</Text>
+            </View>
+        )
+    }
+    function especificacoesShow(){
+        return(
+            <View style={{width: '100%'}}>
+                <Text>1</Text>
+            </View>
+        )
+    }
+    function avalicacoesShow(){
+        return(
+            <View style={{width: '100%'}}>
+                <Text>1</Text>
+            </View>
+        )
+    }
+
     function graficoLinha(starPosition){
         return <View style={{height: 5, width: starValues[starPosition] + '%', backgroundColor: starColor, borderRadius: 5}}></View>
     }
@@ -46,7 +84,7 @@ export default function({route}){
                     <CarroView><Carro source={duster} style={{resizeMode: 'cover'}}/></CarroView>
                 </View>
             </View>
-            <View style={{height: '100%', padding: 10, marginBottom: 15}}>
+            <View style={{height: '25%', padding: 10, marginBottom: 15}}>
                 <BotaoEditar style={{alignSelf: 'flex-end'}}><Text style={{fontWeight: 'bold', color: 'white'}}>Editar veículo</Text></BotaoEditar>
                 <View style={{paddingLeft: 5}}>
                     <Text style={{fontSize: 23, fontWeight: 'bold'}}>Renault Duster</Text>
@@ -54,18 +92,20 @@ export default function({route}){
                     <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='tachometer-alt' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Quilometragem: 7.465km</Text></View>
                     <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='calendar' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Proxima revisão: 10/09/2022</Text></View>
                 </View>
-                {/* <ScrollView horizontal style={{marginTop: 5}}>
-                {
-                    images.map((value, index) => (
-                        <Image key={index} source={value} style={{marginHorizontal: 2, height: '40%'}}/>
-                    ))
-                }
-                </ScrollView> */}
-                <View>
-                    <View><Text>Detalhes</Text></View>
-                    <View><Text>Especificações</Text></View>
-                    <View><Text>Avaliações</Text></View>
-                </View>
+            </View>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%', backgroundColor: '#34598A', height: '5%'}}>
+                <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Detalhes</Text></View>
+                <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Especificações</Text></View>
+                <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Avaliações</Text></View>
+            </View>
+            <View horizontal style={{height: '43.3%', backgroundColor: '#5379AB', flexDirection: 'row', width: '100%'}}>
+            {
+                abas.map((value, index) => (
+                    <View name="tentando fazer a rolagem" key={index} style={{width: '100%'}}>
+                        <Text>{value.valor}</Text>
+                    </View>
+                ))
+            }
             </View>
 
         </View>
@@ -74,7 +114,7 @@ export default function({route}){
 
 const styles = StyleSheet.create({
     profileHeader: { 
-        height: 100,
+        height: '15%',
         backgroundColor: '#002B64',
     },
     photoView: {
@@ -82,7 +122,7 @@ const styles = StyleSheet.create({
         width: 100,
         position: 'absolute',
         left: 15,
-        top: 50,
+        top: 45,
     },
     icon: {
         color: 'gray', 
