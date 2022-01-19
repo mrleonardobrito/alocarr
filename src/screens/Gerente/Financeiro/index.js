@@ -212,25 +212,28 @@ export default function({route}){
 
                         </ResumoIcon>
                     </ResumoButton>
+                
                     <FuncaoContainer>
-                        <ExcluirButton style={styles.buttonStyle} onPress={()=> {setVisibleTwo(true)}}>
-                            <FuncContainer>
-                                <FuncaoIcon><Icon name="times" style={styles.iconePlusMinor}></Icon></FuncaoIcon>
-                                <TextButton>Excluir</TextButton>
-                            </FuncContainer>
-                        </ExcluirButton>
-                        <AdicionarButton style={styles.buttonStyle} onPress={()=> navigation.navigate('Adicionar')}>
-                            <FuncContainer>
-                                <FuncaoIcon><Icon name="plus" style={styles.iconePlusMinor}></Icon></FuncaoIcon>
-                                <TextButton>Adicionar</TextButton>
-                            </FuncContainer>
-                        </AdicionarButton>
-                        <QuitarButton style={styles.buttonStyle} onPress={()=> {setVisible(true)}}>
-                            <FuncContainer>
-                                <FuncaoIcon><Icon name="dollar-sign" style={styles.iconePlusMinor}/></FuncaoIcon>
-                                <TextButton>Quitar</TextButton>
-                            </FuncContainer>
-                        </QuitarButton>
+                        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
+                            <ExcluirButton style={styles.buttonStyle} onPress={()=> {setVisibleTwo(true)}}>
+                                <FuncContainer>
+                                    <FuncaoIcon><Icon name="times" style={styles.iconePlusMinor}></Icon></FuncaoIcon>
+                                    <TextButton>Excluir</TextButton>
+                                </FuncContainer>
+                            </ExcluirButton>
+                            <AdicionarButton style={styles.buttonStyle} onPress={()=> navigation.navigate('Adicionar')}>
+                                <FuncContainer>
+                                    <FuncaoIcon><Icon name="plus" style={styles.iconePlusMinor}></Icon></FuncaoIcon>
+                                    <TextButton>Adicionar</TextButton>
+                                </FuncContainer>
+                            </AdicionarButton>
+                            <QuitarButton style={styles.buttonStyle} onPress={()=> {setVisible(true)}}>
+                                <FuncContainer>
+                                    <FuncaoIcon><Icon name="dollar-sign" style={styles.iconePlusMinor}/></FuncaoIcon>
+                                    <TextButton>Quitar</TextButton>
+                                </FuncContainer>
+                            </QuitarButton>
+                        </View>
 
                         <Modal 
                             isVisible={visible} 
@@ -330,6 +333,7 @@ export default function({route}){
                     </SearchDiv>
                     
                         <FlatList 
+                        extraData
                         nestedScrollEnabled
                         data={list}
                         keyExtractor={((_, index) => index.toString())}
@@ -386,7 +390,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4,
-        marginHorizontal: 4
     },
     searchIcon: {
         color: '#fff',

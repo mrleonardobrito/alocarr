@@ -2,13 +2,14 @@ import styled from 'styled-components/native';
 
 export const Content = styled.View`
     background-color: ${props => props.theme.mainColor};
-    height: 100%;
+    height: 90%;
 `;
 
 export const Main = styled.View`
     padding: 20px 10px 15px 10px;
     height: 100%;
     width: 100%;
+    background-color: ${props => props.theme.corTitulo};
 `;
 
 export const DadosContainer = styled.View`

@@ -34,17 +34,17 @@ export const FuncaoContainer = styled.View`
 `;
 
 export const ExcluirButton = styled.TouchableOpacity`
-    width: 30%;
+    width: 32%;
     height: 100%;
     background-color: #c3453f;
 `;
 export const AdicionarButton = styled.TouchableOpacity`
-    width: 34%;
+    width: 32%;
     height: 100%;
     background-color: #00d1d1;
 `;
 export const QuitarButton = styled.TouchableOpacity`
-    width: 30%;
+    width: 32%;
     height: 100%;
     background-color: #32cd32;
 `;

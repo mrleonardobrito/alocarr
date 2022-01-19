@@ -94,9 +94,9 @@ export default function({route}){
     }
 
     return(
-        <Content>
-            <Header pageName={pageName}/>
-            <Main>
+        <Content style={{flex: 1}}>
+            <Header pageName={pageName} style={{height: '10%'}}/>
+            <Main style={{height: '95%'}}>
                 <DadosContainer>
                     <InputsContainer>
                         <View style={{height: '70%'}}>
@@ -162,7 +162,6 @@ export default function({route}){
                     </InputsContainer>
                 
                 </DadosContainer>
-                
             </Main>
         </Content>
     );
