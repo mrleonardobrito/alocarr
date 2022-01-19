@@ -46,7 +46,7 @@ const AdmNavigation = () => {
 
   return (
     <AdmDrawer.Navigator 
-      initialRouteName="Financeiro" 
+      initialRouteName="Detalhes" 
       screenOptions={{ headerShown: false }}
       drawerContent={(props) => <AdmDrawerContent {...props}/>}
     >

@@ -12,19 +12,24 @@ export const CarroView = styled.View`
     border-radius: 160px;
     display: flex;
     align-items: center;
-    justify-content: center;   
+    justify-content: center;  
+    border: 2px solid white;
 `;
 export const Detalhes = styled.View`
     width: 100%;
     background-color: #5379AB;
-    margin-top: 45%;
+    margin-top: 10px;
 `;
 
-export const DetalhesHeader = styled.View`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-`;
 
-export const BotaoEditar = styled.TouchableOpacity``;
+
+export const BotaoEditar = styled.TouchableOpacity`
+    height: 35px;
+    border: 1px solid #002B64;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    background-color: #1B4274;
+    padding: 10px;
+`;
 

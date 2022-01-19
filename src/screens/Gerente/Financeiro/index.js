@@ -45,7 +45,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import dados from "./Adicionar/dados";
 
-import {  MotiView, AnimatePresence} from 'moti';
+import {MotiView, AnimatePresence} from 'moti';
 
 
 export default function({route}){
@@ -140,8 +140,7 @@ export default function({route}){
     }
 
     function Shape(){
-        return(
-            <MotiView
+        return <MotiView
             from={{
                 opacity: 0,
                 height: 0,
@@ -165,7 +164,6 @@ export default function({route}){
             }
             style={styles.shape}
           >
-
             <Entradas>
                 <View style={{backgroundColor: '#A9F9B6', height: '35%', borderTopLeftRadius: 3, borderTopRightRadius: 3}}>
                     <MotiView style={styles.quadradoEntradas}><Icon name="plus" style={{fontSize: 20, color: 'white'}}/></MotiView>
@@ -194,7 +192,7 @@ export default function({route}){
                 </View>
             </Entradas>
           </MotiView>
-        )
+        
     }
 
     return(
@@ -332,6 +330,8 @@ export default function({route}){
                         <View style={styles.linha}></View>
                     </SearchDiv>
                     
+                                        
+
                         <FlatList 
                         extraData
                         nestedScrollEnabled
