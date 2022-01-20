@@ -58,8 +58,6 @@ export default function({route}){
     const [visible, setVisible] = useState(false);
     const [visibleTwo, setVisibleTwo] = useState(false);
 
-    const [altura, setAltura] = useState(90);
-    const [largura, setLargura] = useState(new Animated.Value(0));
 
     const [searchText, setSearchText] = useState();
     const [excluirText, setExcluirText] = useState('');

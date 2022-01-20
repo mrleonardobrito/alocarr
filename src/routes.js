@@ -11,6 +11,7 @@ import Excluir from './screens/Gerente/Financeiro/FinanceiroComponents/Excluir'
 import Quitar from './screens/Gerente/Financeiro/FinanceiroComponents/Quitar'
 import Carros from './screens/Gerente/Carros'
 import Detalhes from './screens/Gerente/Carros/Detalhes'
+import EditarDetalhes from './screens/Gerente/Carros/Detalhes/EditarDetalhes';
 import Cadastro1 from './screens/Cadastro/Cadastro1'
 import Cadastro2 from './screens/Cadastro/Cadastro2'
 import Cadastro3 from './screens/Cadastro/Cadastro3'
@@ -59,6 +60,7 @@ const AdmNavigation = () => {
       <AdmDrawer.Screen name="Quitar" component={Quitar}/>
       <AdmDrawer.Screen name="Carros" component={Carros}/>
       <AdmDrawer.Screen name="Detalhes" component={Detalhes}/>
+      <AdmDrawer.Screen name="EditarDetalhes" component={EditarDetalhes}/>
       <AdmDrawer.Screen name="LoginRouter" component={LoginRouter}/>
 
     </AdmDrawer.Navigator>

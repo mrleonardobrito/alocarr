@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 
-import { View, Text, StyleSheet, Image, FlatList, ScrollView, Dimensions, ImageEditor, TouchableOpacity, Touchable} from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Dimensions, TouchableOpacity} from 'react-native';
 import {CarroView, Carro, BotaoEditar} from './style'
 
 import Header from '../../../../components/Header'
@@ -19,6 +19,9 @@ import dusterBack from '../../../../../car_photos/renault_duster/duster_back.jpg
 import dusterDrift from '../../../../../car_photos/renault_duster/duster_drift.jpg'
 import { MotiView } from 'moti';
 
+
+import dataCarros from '../carros'
+
 const {width} = Dimensions.get("screen");
 const height = width * 100/99;
 
@@ -36,6 +39,104 @@ export default function({route}){
     const navigation = useNavigation();
 
     const starValues = [90, 70, 100, 40, 20];
+
+    const [colorTrueEspeci, setColorTrueEspeci] = useState(true);
+    const [colorTrueDeta, setColorTrueDeta] = useState(false);
+    const [colorTrueAva, setColorTrueAva] = useState(false);
+
+    function colorConferirEspeci(){
+        if(colorTrueEspeci == false){
+            return <TouchableOpacity onPress={() => conferirAbaUm()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1}}>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Especificações</Text></View>
+                    </TouchableOpacity>
+        }else{
+            return <TouchableOpacity onPress={() => conferirAbaUm()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1, backgroundColor: '#5379AB'}}>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Especificações</Text></View>
+                    </TouchableOpacity>
+
+        }
+    }
+    
+    function colorConferirDeta(){
+        if(colorTrueDeta == false){
+            return <TouchableOpacity onPress={() => conferirAbaDois()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1}}>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Detalhes</Text></View>
+                    </TouchableOpacity>
+        }else{
+            return <TouchableOpacity onPress={() => conferirAbaDois()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1, backgroundColor: '#5379AB'}}>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Detalhes</Text></View>
+                    </TouchableOpacity>
+
+        }
+    }
+    function colorConferirAva(){
+        if(colorTrueAva == false){
+            return <TouchableOpacity onPress={() => conferirAbaTres()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1}}>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Avaliações</Text></View>
+                    </TouchableOpacity>
+        }else{
+            return <TouchableOpacity onPress={() => conferirAbaTres()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1, backgroundColor: '#5379AB'}}>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Avaliações</Text></View>
+                    </TouchableOpacity>
+
+        }
+    }
+    function conferirAbaUm(){
+        setDecidir(1);
+        setColorTrueEspeci(true)
+
+        if(colorTrueDeta == false){
+            setColorTrueDeta(false)
+        }
+        if(colorTrueDeta){
+            setColorTrueDeta(false)
+        }
+
+        if(colorTrueAva == false){
+            setColorTrueAva(false)
+        }
+        if(colorTrueAva){
+            setColorTrueAva(false)
+        }
+    }
+
+    function conferirAbaDois(){
+        setDecidir(2);
+        setColorTrueDeta(true)
+
+        if(colorTrueEspeci == false){
+            setColorTrueEspeci(false)
+        }
+        if(colorTrueEspeci){
+            setColorTrueEspeci(false)
+        }
+
+        if(colorTrueAva == false){
+            setColorTrueAva(false)
+        }
+        if(colorTrueAva){
+            setColorTrueAva(false)
+        }
+    }
+
+    function conferirAbaTres(){
+        setDecidir(3);
+        setColorTrueAva(true)
+
+        if(colorTrueEspeci == false){
+            setColorTrueEspeci(false)
+        }
+        if(colorTrueEspeci){
+            setColorTrueEspeci(false)
+        }
+
+        if(colorTrueDeta == false){
+            setColorTrueDeta(false)
+        }
+        if(colorTrueDeta){
+            setColorTrueDeta(false)
+        }
+    }
 
     function decidirAba(decidir){
         if(decidir == 1){
@@ -72,9 +173,9 @@ export default function({route}){
                 </View>
                 <View style={{flex: 1, backgroundColor: 'transparent', padding: 10}}>
                     <ScrollView horizontal pagingEnabled style={{flex: 1, flexDirection: 'row'}}> 
-                        <Image source={dusterFront} style={{height: '100%', width: width / 2, resizeMode: 'contain'}}/> 
-                        <Image source={dusterBack} style={{height: '100%', width: width / 2, resizeMode: 'contain'}}/>                
-                        <Image source={dusterDrift} style={{height: '100%', width: width / 2, resizeMode: 'contain'}}/>                
+                        <Image source={dusterFront} style={{height: '100%', width: width / 2., resizeMode: 'contain'}}/> 
+                        <Image source={dusterBack} style={{height: '100%', width: width / 2., resizeMode: 'contain'}}/>                
+                        <Image source={dusterDrift} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/>                
                     </ScrollView>
                 </View>
                 
@@ -144,28 +245,24 @@ export default function({route}){
                 </View>
             </View>
             <View style={{height: '25%', padding: 10, marginBottom: 15}}>
-                <BotaoEditar style={{alignSelf: 'flex-end'}}><Text style={{fontWeight: 'bold', color: 'white'}}>Editar veículo</Text></BotaoEditar>
+                <BotaoEditar style={{alignSelf: 'flex-end'}} onPress={()=> navigation.navigate('EditarDetalhes')}><Text style={{fontWeight: 'bold', color: 'white'}}>Editar veículo</Text></BotaoEditar>
                 <View style={{paddingLeft: 5}}>
                     <Text style={{fontSize: 23, fontWeight: 'bold'}}>Renault Duster</Text>
-                    <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5, alignItems: 'flex-end'}}><View style={styles.textView}><Icon name='car' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Placa: QTA 1347</Text></View>
+                    <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5, alignItems: 'flex-end'}}><View style={styles.textView}><Icon name='car' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Placa: JML 9605</Text></View>
                     <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='tachometer-alt' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Quilometragem: 7.465km</Text></View>
                     <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='calendar' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Proxima revisão: 10/09/2022</Text></View>
                 </View>
             </View>
             <View style={{flex: 1}}>
 
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%', backgroundColor: '#34598A', height: '10%'}}>
-                    <TouchableOpacity onPress={() => setDecidir(1)} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Especificações</Text></View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setDecidir(2)} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Detalhes</Text></View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setDecidir(3)} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Avaliações</Text></View>
-                    </TouchableOpacity>
+                <View style={{flexDirection: 'row', width: '100%', backgroundColor: '#34598A', height: '10%'}}>
+                    {colorConferirEspeci()}
+                    {colorConferirDeta()}
+                    {colorConferirAva()}
                 </View>
                 {decidirAba(decidir)}
+
+                
                 <View style={{justifyContent: 'center', backgroundColor: '#5379AB', padding: 7, height: '15%'}}>
                     <TouchableOpacity 
                     onPress={() => navigation.navigate('Carros')}
