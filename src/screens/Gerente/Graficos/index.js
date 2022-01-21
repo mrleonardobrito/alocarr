@@ -1,7 +1,7 @@
 /* Expo, React */
 
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, TextInput } from 'react-native'
+import React, { useReducer} from "react";
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native'
 
 /* ReactNavigation */
 
@@ -15,6 +15,11 @@ import { Main, GraficoContainer, Grafico, ViewCirculo } from './style';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import HeaderOb from '../../../components/Header';
+import { MotiView, AnimatePresence } from "moti";
+
+import Svg, { Circle } from 'react-native-svg'
+
+import { PieChart } from 'react-native-svg-charts'
 
 const corGraficoLinha = '#03295B';
 
@@ -44,31 +49,38 @@ const graficLinhaValues = [
 const graficLinhaDoisValue = [
     {
         cor: corGraficoLinha,
-        valor: 190,
+        valor: 170,
+        valorPassado: 180,
     },
     {
         cor: corGraficoLinha,
         valor: 100,
+        valorPassado: 100 / 2,
     },
     {
         cor: corGraficoLinha,
         valor: 130,
+        valorPassado: 130 / 2,
     },
     {
         cor: corGraficoLinha,
         valor: 200,
+        valorPassado: 200 / 2,
     },
     {
         cor: corGraficoLinha,
         valor: 110,
+        valorPassado: 110 / 2,
     },
     {
         cor: corGraficoLinha,
         valor: 40,
+        valorPassado: 40 / 2,
     },
     {
         cor: corGraficoLinha,
-        valor: 2,
+        valor: 85,
+        valorPassado: 85 / 2,
     }
 ]
 
@@ -77,19 +89,106 @@ export default function({route}){
 
     const pageName = 'Gráficos';
 
-
     const navigation = useNavigation();
 
-    const coresGrafico = ['#31356E', '#2F5F98', '#2D8BBA','#41B8D5']
+    const coresGrafico = ['#31356E', '#2F5F98', '#2D8BBA','#41B8D5'];
 
+    const [visible, setVisible] = useReducer((s)=> !s, false)
+
+    function verIcon(){
+         if(visible){
+            return <Icon name="minus" style={{color: 'white', fontSize: 23}} /> 
+        }if(visible == false){
+            return <Icon name="plus" style={{color: 'white', fontSize: 23}} /> 
+
+        }
+    }
+
+    const dataCirculo = [
+        {
+            key: 1,
+            amount: 50,
+            svg: { fill: '#41B8D5' },
+        },
+        {
+            key: 2,
+            amount: 50,
+            svg: { fill: '#2F5F98' }
+        },
+        {
+            key: 3,
+            amount: 40,
+            svg: { fill: '#2D8BBA' }
+        },
+        {
+            key: 4,
+            amount: 95,
+            svg: { fill: '#31356E' }
+        },
+    ];
+    const dataCirculoDois = [
+        {
+            key: 1,
+            amount: 30,
+            svg: { fill: '#41B8D5' },
+        },
+        {
+            key: 2,
+            amount: 40,
+            svg: { fill: '#2F5F98' }
+        },
+        {
+            key: 3,
+            amount: 70,
+            svg: { fill: '#2D8BBA' }
+        },
+        {
+            key: 4,
+            amount: 25,
+            svg: { fill: '#31356E' }
+        },
+    ];
+
+    const Labels = ({ slices, height, width }) => {
+        return slices.map((slice, index) => {
+            const { labelCentroid, pieCentroid, data } = slice;
+            return (
+                <Text
+                    key={index}
+                    x={pieCentroid[ 0 ]}
+                    y={pieCentroid[ 1 ]}
+                    fill={'red'}
+                    textAnchor={'middle'}
+                    alignmentBaseline={'middle'}
+                    fontSize={24}
+                    stroke={'black'}
+                    strokeWidth={0.2}
+                >
+                    {data.amount}
+                </Text>
+            )
+        })
+    }
 
     return(
         <ScrollView>
             <HeaderOb pageName={pageName}/>
             <Main>
                 <GraficoContainer>
-                    <Grafico>
-                        <ViewCirculo><View style={{height: 60, width: 60, borderRadius: 60, backgroundColor: 'white'}}></View></ViewCirculo>
+                    <Grafico style={{flexDirection: 'column'}}>
+                        <Text style={styles.graficoLinhaTitulo}>Status locação - ultimos 30 dias</Text>
+                        <View style={{width: '100%', alignItems: 'flex-start', height: '100%'}}>
+                            <PieChart 
+                            style={{height: '65%', width: '65%', marginTop: 15}}
+                            data={dataCirculo}
+                            spacing={40}
+                            innerRadius={'50%'}
+                            valueAccessor={({ item }) => item.amount}
+                            >
+                                <Labels />
+                            </PieChart>
+                        </View>
+                        
                         <View style={{position: 'absolute', right: 15, top: 100}}>
                             <View style={{flexDirection: 'row', marginBottom: 5, alignItems: 'center'}}>
                                 <View style={[styles.quadrado, {backgroundColor: coresGrafico[0]}]}></View>
@@ -108,10 +207,22 @@ export default function({route}){
                                 <Text style={styles.quadradoText}>Devolvidos</Text>
                             </View>
                         </View>
-                    </Grafico>
-                    <Grafico>
                         
+                    </Grafico>
+                    <Grafico style={{flexDirection: 'column'}}>
+                        <Text style={styles.graficoLinhaTitulo}>Status locação - ultimos 30 dias</Text>
 
+                        <View style={{width: '100%', alignItems: 'flex-start', height: '100%'}}>
+                            <PieChart 
+                            style={{height: '65%', width: '65%', marginTop: 15}}
+                            data={dataCirculoDois}
+                            spacing={40}
+                            innerRadius={'50%'}
+                            valueAccessor={({ item }) => item.amount}
+                            >
+                                <Labels />
+                            </PieChart>
+                        </View>
                         <View style={{position: 'absolute', right: 15, top: 100}}>
                             <View style={{flexDirection: 'row', marginBottom: 5, alignItems: 'center'}}>
                                 <View style={[styles.quadrado, {backgroundColor: coresGrafico[0]}]}></View>
@@ -229,16 +340,44 @@ export default function({route}){
                                                         width: '100%',
                                                         backgroundColor: value.cor, 
                                                         height: value.valor,
-                                                        alignItems: 'center',
-                                                        justifyContent: 'center',
+                                                        alignItems: 'flex-end',
+                                                        justifyContent: 'flex-end',
                                                         borderTopLeftRadius: 3,
                                                         borderTopRightRadius: 3}}>
+                                                            <AnimatePresence>
+                                                            {visible && <MotiView
+                                                                        from={{
+                                                                            backgroundColor: '#5379AB', height: 0, width: '100%', opacity: 0.5,
+                                                                        }}
+                                                                        animate={{
+                                                                            backgroundColor: '#5379AB', height: value.valorPassado, width: '100%', opacity: 0.5,
+                                                                        }}
+                                                                        exit={{
+                                                                            backgroundColor: '#5379AB', height: 0, width: '100%', opacity: 0.5,
+
+                                                                        }}
+                                                                        transition={{
+                                                                            type: 'timing',
+                                                                            duration: 1300,
+                                                                        }}
+                                                                        style={{
+                                                                            borderTopLeftRadius: 3,
+                                                                            borderTopRightRadius: 3
+                                                                        }}
+                                                                    >
+                                                                    </MotiView>}
+                                                            </AnimatePresence>
                                             </View>
                                             </View>
                                         </View>)
                                     }
                             </View>
-                            
+                            <View style={{flex: 1, justifyContent: 'center', paddingLeft: 17, alignItems: 'center'}}>
+                                <TouchableOpacity onPress={() => setVisible(true)}
+                                style={{backgroundColor: '#03295B', height: 50, width: 50, borderRadius: 60, alignItems: 'center', justifyContent: 'center'}}>
+                                        {verIcon()}
+                                </TouchableOpacity> 
+                            </View>
                         </View>
                     </Grafico>
                 </GraficoContainer>

@@ -22,7 +22,7 @@ const HEIGHT = '100%' + '150%';
 
 export default function({ navigation }){
 
-    const pageName = 'Modo Gerente';
+    const pageName = 'Alocarr';
 
     function rightActions(){
         return(

@@ -47,11 +47,11 @@ export default function({route}){
     function colorConferirEspeci(){
         if(colorTrueEspeci == false){
             return <TouchableOpacity onPress={() => conferirAbaUm()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Especificações</Text></View>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: '100%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Especificações</Text></View>
                     </TouchableOpacity>
         }else{
             return <TouchableOpacity onPress={() => conferirAbaUm()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1, backgroundColor: '#5379AB'}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Especificações</Text></View>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: '100%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Especificações</Text></View>
                     </TouchableOpacity>
 
         }
@@ -60,11 +60,11 @@ export default function({route}){
     function colorConferirDeta(){
         if(colorTrueDeta == false){
             return <TouchableOpacity onPress={() => conferirAbaDois()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Detalhes</Text></View>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: '100%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Detalhes</Text></View>
                     </TouchableOpacity>
         }else{
             return <TouchableOpacity onPress={() => conferirAbaDois()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1, backgroundColor: '#5379AB'}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Detalhes</Text></View>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: '100%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Detalhes</Text></View>
                     </TouchableOpacity>
 
         }
@@ -72,11 +72,11 @@ export default function({route}){
     function colorConferirAva(){
         if(colorTrueAva == false){
             return <TouchableOpacity onPress={() => conferirAbaTres()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Avaliações</Text></View>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: '100%', backgroundColor: 'transparent'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Avaliações</Text></View>
                     </TouchableOpacity>
         }else{
             return <TouchableOpacity onPress={() => conferirAbaTres()} style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%', flex: 1, backgroundColor: '#5379AB'}}>
-                        <View style={{alignItems: 'center', justifyContent: 'center', width: 100/3 + '%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Avaliações</Text></View>
+                        <View style={{alignItems: 'center', justifyContent: 'center', width: '100%'}}><Text style={{color: 'white', fontWeight: 'bold'}}>Avaliações</Text></View>
                     </TouchableOpacity>
 
         }
@@ -173,8 +173,8 @@ export default function({route}){
                 </View>
                 <View style={{flex: 1, backgroundColor: 'transparent', padding: 10}}>
                     <ScrollView horizontal pagingEnabled style={{flex: 1, flexDirection: 'row'}}> 
-                        <Image source={dusterFront} style={{height: '100%', width: width / 2., resizeMode: 'contain'}}/> 
-                        <Image source={dusterBack} style={{height: '100%', width: width / 2., resizeMode: 'contain'}}/>                
+                        <Image source={dusterFront} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/> 
+                        <Image source={dusterBack} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/>                
                         <Image source={dusterDrift} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/>                
                     </ScrollView>
                 </View>

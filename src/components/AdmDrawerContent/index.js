@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 /* StyledComponents */
 
-import { View, Text, StyleSheet, TouchableOpacity, Image, Linking } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Linking, Alert } from 'react-native';
 import { 
     DrawerContainer, DrawerHeader, DrawerMain, DrawerFooter, DrawerHeaderTitle,
     CloseIcon, SearchInput, SearchContainer, SearchButton, ItemsContainer, ItemMain,
@@ -19,6 +19,7 @@ import {
 } from './style';
 
 const APP_NAME = 'Alocarr';
+const pageName = 'Gerente';
 
 import logoALocarr from '../../../img/logo.png'
 
@@ -30,11 +31,28 @@ export default function AdmDrawerContent({navigation}){
 
     const localizacao = 'Arapiraca Garden Shopping';
 
+    function confLogout(){
+        console.log(APP_NAME)
+        Alert.alert('Confirmação.', 'Tem certeza que desejas sair de sua conta?', [
+            {
+                text: 'Sim',
+                onPress: () => {
+                    navigation.navigate('LoginRouter');
+                }
+            },
+            {
+                text: 'Não',
+                onPress: () => 0
+            }
+        ])
+
+    }
+
     return(
         <DrawerContainer>
              <StatusBar hidden/>
             <DrawerHeader style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-                <TouchableOpacity onPress={() => navigation.navigate('Gerente')} style={{marginTop: 5}}><DrawerHeaderTitle>{logo()}<Text style={{fontSize: 25, color: '#1B4274', fontWeight: 'bold'}}>{APP_NAME}</Text></DrawerHeaderTitle></TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Gerente')} style={{marginTop: 5}}><DrawerHeaderTitle>{logo()}<Text style={{fontSize: 23, color: '#1B4274', fontWeight: 'bold'}}>{pageName}</Text></DrawerHeaderTitle></TouchableOpacity>
                 <CloseIcon onPress={()=> navigation.closeDrawer()} st><Icon name="times" style={styles.fonte}/></CloseIcon>
             </DrawerHeader>
             <DrawerMain style={{backgroundColor: 'white', justifyContent: 'space-between'}}>
@@ -81,7 +99,7 @@ export default function AdmDrawerContent({navigation}){
                             />
                             <FooterUserName>Linaldo Brito</FooterUserName>
                         </View>
-                        <TouchableOpacity style={{justifyContent: 'space-evenly'}} onPress={()=> navigation.navigate('LoginRouter')}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
+                        <TouchableOpacity onPress={()=> confLogout()} style={{justifyContent: 'space-evenly'}}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
                     </View>
                 </DrawerFooter>
         </DrawerContainer>

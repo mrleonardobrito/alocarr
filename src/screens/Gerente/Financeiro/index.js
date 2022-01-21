@@ -1,7 +1,7 @@
 /* Expo, React */
 
 import React, {useEffect, useReducer, useState} from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, FlatList, TextInput, Animated, Pressable, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, FlatList, Alert } from 'react-native';
 
 /* VectorIcons */
 
@@ -116,7 +116,6 @@ export default function({route}){
 
     function removerItem(){
 
-
         Alert.alert("Confirmação", "Tem certeza que quer excluir o item de código " + excluirText + "?" , [
             {
                 text: 'Sim',
@@ -147,7 +146,7 @@ export default function({route}){
               animate={{
                 opacity: 1,
                 height: 350,
-                marginBottom: 15
+                marginBottom: 16
               }}
             exit={{
               opacity: 0,
@@ -421,7 +420,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     shape: {
-        height: 250,
+        height: 245,
         width: '100%',
         borderRadius: 5,
         marginRight: 10,
