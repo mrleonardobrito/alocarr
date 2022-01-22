@@ -210,7 +210,7 @@ export default function({route}){
                         
                     </Grafico>
                     <Grafico style={{flexDirection: 'column'}}>
-                        <Text style={styles.graficoLinhaTitulo}>Status locação - ultimos 30 dias</Text>
+                        <Text style={styles.graficoLinhaTitulo}>Status locação - por funcionário</Text>
 
                         <View style={{width: '100%', alignItems: 'flex-start', height: '100%'}}>
                             <PieChart 

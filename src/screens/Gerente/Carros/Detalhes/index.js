@@ -11,6 +11,7 @@ import Stars from 'react-native-stars'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import IconF from 'react-native-vector-icons/FontAwesome';
+import IconFF from 'react-native-vector-icons/Feather'
 import { useNavigation } from "@react-navigation/core";
 
 
@@ -33,12 +34,13 @@ export default function({route}){
     const pageName = 'Detalhes';
 
     const images = [dusterFront, dusterBack, dusterDrift]
-    const [starValue, setStarValue] = useState(3.5);
+    const [starValue, setStarValue] = useState(4);
     const [decidir, setDecidir] = useState(1);
 
     const navigation = useNavigation();
 
-    const starValues = [90, 70, 100, 40, 20];
+    const starValues = [50, 35, 20, 10, 5];
+
 
     const [colorTrueEspeci, setColorTrueEspeci] = useState(true);
     const [colorTrueDeta, setColorTrueDeta] = useState(false);
@@ -225,7 +227,82 @@ export default function({route}){
         }
         if(decidir == 3){
             return <View style={{backgroundColor: '#5379AB', flex: 1, padding: 10}}>
-                <Text>3</Text>
+                <View style={{height: '35%', width: '100%', flexDirection: 'row'}}>
+                    <View style={{height: '100%', width: '35%', backgroundColor: 'gray', alignItems: 'center', justifyContent: 'flex-start'}}>
+                        <Text style={{fontSize: 30, color: 'white', marginTop: 2}}>{starValue}</Text>
+                        <Stars
+                            default={starValue}
+                            half={true}
+                            starSize={20}
+                            count={5}
+                            fullStar={<IconF name='star' style={{fontSize: 20, color: '#ABCFFF'}}/>}
+                            emptyStar={<IconF name='star-o' style={{fontSize: 20, color: '#ABCFFF'}}/>}
+                            halfStar={<IconF name='star-half-empty' style={{fontSize: 20, color: '#ABCFFF'}}/>}
+
+                        ></Stars>
+                    </View>
+                    <View style={{height: '100%', width: '65%', backgroundColor: 'green', justifyContent: 'space-evenly'}}>
+                        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
+                            <Text style={{fontSize: 11, color: 'white',}}>5</Text>
+                            <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
+                                <View style={{height: '100%', width: starValues[0] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                            </View>
+                        </View>
+                        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
+                            <Text style={{fontSize: 11, color: 'white',}}>4</Text>
+                            <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
+                                <View style={{height: '100%', width: starValues[1] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                            </View>
+                        </View>
+                        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
+                            <Text style={{fontSize: 11, color: 'white',}}>3</Text>
+                            <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
+                                <View style={{height: '100%', width: starValues[2] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                            </View>
+                        </View>
+                        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
+                            <Text style={{fontSize: 11, color: 'white',}}>2</Text>
+                            <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
+                                <View style={{height: '100%', width: starValues[3] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                            </View>
+                        </View>
+                        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
+                            <Text style={{fontSize: 11, color: 'white',}}>1</Text>
+                            <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
+                                <View style={{height: '100%', width: starValues[4] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+                <View style={{height: '35%', width: '100%', flexDirection: 'row'}}>
+                        <View style={{width: '10%', backgroundColor: 'white', alignItems: 'center'}}>
+                            <View style={{height: 35, width: 35, backgroundColor: 'red', borderRadius: 60}}></View>
+                        </View>
+                        <View style={{width: '85%', backgroundColor: 'transparent', flexDirection: 'row'}}>
+                            <View style={{height: '35%', width: '50%', alignItems: 'flex-start'}}>
+                                <View style={{fontSize: 13, color: 'white'}}>Gabriel Favroir</View>
+                                <View style={{flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                                    <Stars
+                                        default={starValue}
+                                        half={true}
+                                        starSize={9}
+                                        count={5}
+                                        fullStar={<IconF name='star' style={{fontSize: 9, color: '#ABCFFF'}}/>}
+                                        emptyStar={<IconF name='star-o' style={{fontSize: 9, color: '#ABCFFF'}}/>}
+                                        halfStar={<IconF name='star-half-empty' style={{fontSize: 9, color: '#ABCFFF'}}
+                                        />}
+
+                                    ></Stars>
+                                    <View style={{fontSize: 10, color: 'white', fontWeight: 'bold', marginLeft: 5}}>02 de janeiro</View>
+                                </View>
+                            </View>
+                            <View style={{width: '50%', alignItems: 'flex-end'}}>
+                                <IconFF name='thumbs-up' style={{marginRight: 10, fontSize: 17}}></IconFF>
+                            </View>
+                        </View>
+                        <View style={{width: '5%', backgroundColor: 'white'}}>
+                        </View>
+                </View>
             </View>
         }
     }
