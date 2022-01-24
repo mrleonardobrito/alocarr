@@ -104,6 +104,8 @@ export default function({route}){
         }
     }
 
+    const data = [20,30,40,50];
+
     const dataCirculo = [
         {
             key: 1,
@@ -149,25 +151,21 @@ export default function({route}){
         },
     ];
 
-    const Labels = ({ slices, height, width }) => {
-        return slices.map((slice, index) => {
-            const { labelCentroid, pieCentroid, data } = slice;
-            return (
-                <Text
-                    key={index}
-                    x={pieCentroid[ 0 ]}
-                    y={pieCentroid[ 1 ]}
-                    fill={'red'}
-                    textAnchor={'middle'}
-                    alignmentBaseline={'middle'}
-                    fontSize={24}
-                    stroke={'black'}
-                    strokeWidth={0.2}
-                >
-                    {data.amount}
-                </Text>
-            )
-        })
+    const Labels = ({ slices }) => {
+            return slices.map((slice, index)=> {
+                const {pieCentroid, data} = slice;
+                return(
+                    <Text
+                        key={`label-${index}`}
+                        x={pieCentroid[0]}
+                        y={pieCentroid[1]}
+                        fill='black'
+                        textAnchor={'middle'}
+                        alignmentBaseline={'middle'}
+                        fontSize={28}
+                    >{data.value}</Text>
+                )
+            })
     }
 
     return(
@@ -328,7 +326,6 @@ export default function({route}){
                                 <View style={{width: '100%', height: 1, backgroundColor: 'lightgray'}}></View>
                                 <View style={{width: '100%', height: 1, backgroundColor: 'lightgray'}}></View>
                             </View>
-
 
                             <View name="linha-grafico" style={{width: '65%', height: '100%', flexDirection: 'row', zIndex: 5, backgroundColor: 'transparent'}}>
                                    {
