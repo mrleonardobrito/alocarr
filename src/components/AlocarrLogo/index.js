@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageSourcePropType } from 'react-native';
+import { Image } from 'react-native';
 
 const AlocarrLogo = ({ color = '#fff', size}) => {
     const hermesLogo = require('../../assets/logo.png')

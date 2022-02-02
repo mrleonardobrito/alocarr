@@ -49,7 +49,7 @@ export const SearchInput = styled.TextInput`
     border-bottom-right-radius: 13px;
     border-top-right-radius: 13px;
     font-weight: bold;
-    padding: 0px 10px 0 10px
+    padding: 0px 10px 0 10px;
 `;
 export const SearchButton = styled.TouchableOpacity`
     width: 20%;
@@ -82,7 +82,7 @@ export const ItemText = styled.Text`
 `;
 export const ItemIcon = styled.View`
     margin-left: 6%;
-    width: 15%
+    width: 15%;
 `;
 
 export const FooterIcon = styled.View`

@@ -1,0 +1,29 @@
+import styled from "styled-components/native"
+import Icon from 'react-native-vector-icons/FontAwesome5'
+
+export const VantagemContainer = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5px;
+    margin-bottom: 15px;
+`
+export const Vantagens = styled.View`
+    width: 80%;
+    margin-left: 5px;
+`
+export const VantagemIcone = styled(Icon)`
+    color: #ABCFFF;
+`
+export const VantagemTitulo = styled.Text`
+    font-family: 'OpenSans-SemiBold';
+    font-size: 20pt;
+    margin-bottom: 5px;
+    color: ${props => props.theme.cliente.text1};
+`
+export const VantagemTexto = styled.Text`
+    font-family: 'OpenSans-SemiBold ';
+    font-size: 14pt;
+    margin-left: 5px;
+    color: ${props => props.theme.cliente.text1};
+`

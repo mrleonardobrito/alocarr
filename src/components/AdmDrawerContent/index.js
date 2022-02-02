@@ -78,7 +78,7 @@ export default function AdmDrawerContent({navigation}){
                     />
                     </FooterImage>
                     <FooterUserName>Linaldo Brito</FooterUserName>
-                    <TouchableOpacity style={{height: 100, width: 100}} onPress={()=> navigation.navigate('LoginRouter')}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
+                    <TouchableOpacity style={{height: 100, width: 100, }} onPress={()=> navigation.navigate('LoginRouter')}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
                 </DrawerFooter>
             </DrawerFooterContainer>
         </DrawerContainer>

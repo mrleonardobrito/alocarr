@@ -17,6 +17,8 @@ import Cadastro5 from './screens/Cadastro/Cadastro5'
 import Login from './screens/Login'
 
 import AdmDrawerContent from './components/AdmDrawerContent'
+import Home from './screens/Cliente/Home';
+import UserNavContent from './components/Cliente/UserNavContent';
 
 const UserDrawer = createDrawerNavigator()
 const Stack = createStackNavigator()
@@ -26,19 +28,19 @@ const AdmDrawer = createDrawerNavigator()
 //   console.log('handleSubmit chamado')
 // }
 
-// const UserNavigation = () => {
-//   return (
-//     <UserDrawer.Navigator 
-//       initialRouteName="Home" 
-//       screenOptions={{headerShown: false}}
-//       drawerContent={(props) => <UserNavContent {...props} />}  
-//     >
-//       <UserDrawer.Screen name="Home" component={Home}/>
-//       <UserDrawer.Screen name="Carros" component={Carros}/>
-//       <UserDrawer.Screen name="LoginRouter" component={LoginRouter} />
-//     </UserDrawer.Navigator>
-//   );
-// }
+const UserNavigation = () => {
+  return (
+    <UserDrawer.Navigator 
+      initialRouteName="Home" 
+      screenOptions={{headerShown: false}}
+      drawerContent={(props) => <UserNavContent {...props} />}  
+    >
+      <UserDrawer.Screen name="Home" component={Home}/>
+      {/* <UserDrawer.Screen name="Carros" component={Carros}/> */}
+      <UserDrawer.Screen name="LoginRouter" component={LoginRouter} />
+    </UserDrawer.Navigator>
+  );
+}
 
 const AdmNavigation = () => {
 
@@ -87,8 +89,8 @@ export const gerente = [
 const Router = () => {
   const [isGerente, setIsGerente] = React.useState(true)
 
-  return <AdmNavigation />
-  // return <UserNavigation />
+  // return <AdmNavigation />
+  return <UserNavigation />
 }
 
 export default Router;

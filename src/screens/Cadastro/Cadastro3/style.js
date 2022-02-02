@@ -67,7 +67,7 @@ export const CidadeInputContainer = styled.View`
 `;
 
 export const CidadeInput = styled.TextInput`
-    width: 60%
+    width: 60%;
     height: 35px;
     border: 2px solid #fff;
     border-bottom-color: #b4b4b4;
