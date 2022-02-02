@@ -1,7 +1,7 @@
 import Icon from "react-native-vector-icons/AntDesign"
 import styled from "styled-components/native"
 
-export const Container = styled.View`
+export const Container = styled.Pressable`
     width: 95%;
 `
 export const TitleContainer = styled.View`
@@ -14,14 +14,16 @@ export const Title = styled.Text`
     font-size: 16pt;
     color: ${props => props.theme.cliente.text1};
 `
-export const Arrow = styled.Pressable``
+export const Arrow = styled.Pressable`
+    align-self: center;
+`
 export const StyledIcon = styled(Icon)`
     color: ${props => props.theme.cliente.button};
-    width: 20%;
+    width: 20px;
 `
 export const Descricao = styled.Text`
     font-family: 'arial';
-    font-size: 14pt;
+    font-size: 12pt;
     color: ${props => props.theme.cliente.text1};   
     margin: 5px;
     margin-bottom: 15px;
