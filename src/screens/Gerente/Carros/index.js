@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
 
-import Header from '../../components/Header';
+import Header from '../../../components/Header';
 
 import { CarroContainer, Bolinha } from './style';
 import { ButtonVer, ButtonText } from '../Gerente/style';
@@ -43,7 +43,6 @@ export default function({ navigation }){
                 <CarroContainer>
                     <View style={styles.carroView}>
                         <View><Image source={item.imagem} style={styles.carroImage}/></View>
-                        <View style={styles.linha}></View>
                         {conferirBolinha(item.situacao)}
                         <View style={{position: 'absolute', left: 150, top: -9}}>
                             <Text style={styles.nomeCarro}>{item.nomeCarro}</Text>

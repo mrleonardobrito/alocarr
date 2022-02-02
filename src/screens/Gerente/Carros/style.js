@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 export const CarroContainer = styled.View`
     width: 100%;
@@ -7,7 +7,7 @@ export const CarroContainer = styled.View`
     border-radius: 5px;
     margin-top: 15px;
     display: flex;
-    justify-content: center
+    justify-content: center;
 
 `;
 

@@ -2,13 +2,18 @@ import styled from 'styled-components/native';
 
 export const Content = styled.View`
     background-color: ${props => props.theme.mainColor};
+<<<<<<< HEAD
     height: 100%;
+=======
+    height: 90%;
+>>>>>>> fc4f0d5675d115fc8e762a8475601637f3f4384d
 `;
 
 export const Main = styled.View`
     padding: 20px 10px 15px 10px;
     height: 100%;
     width: 100%;
+    background-color: ${props => props.theme.corTitulo};
 `;
 
 export const DadosContainer = styled.View`
@@ -19,6 +24,7 @@ export const DadosContainer = styled.View`
 `;
 export const InputsContainer = styled.View`
     padding: 25px 20px 25px 20px;
+    height: 100%;
 `;
 export const InputDiv = styled.View`
     height: 60px;
@@ -59,13 +65,12 @@ export const InputEntradaText = styled.TextInput`
 `;
 
 export const ButtonContainer = styled.View`
-    height: 30px;
+    height: 30%;
     width: 100%;
     display: flex;
     flex-direction: row;
-    position: absolute;
-    bottom: -10px;
-    left: 20px;
+    align-items: flex-end;
+    justify-content: space-between;
 `;
 
 export const ButtonConcluir = styled.TouchableOpacity`

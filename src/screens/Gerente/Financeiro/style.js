@@ -17,7 +17,7 @@ export const ResumoButton = styled.Pressable`
 export const ResumoText = styled.Text`
     font-weight: bold;
     font-size: 20px;
-    color: ${props => props.theme.corTitulo}
+    color: ${props => props.theme.corTitulo};
 `;
 export const ResumoIcon = styled.View`
     position: absolute;
@@ -34,17 +34,17 @@ export const FuncaoContainer = styled.View`
 `;
 
 export const ExcluirButton = styled.TouchableOpacity`
-    width: 30%;
+    width: 32%;
     height: 100%;
     background-color: #c3453f;
 `;
 export const AdicionarButton = styled.TouchableOpacity`
-    width: 34%;
+    width: 32%;
     height: 100%;
     background-color: #00d1d1;
 `;
 export const QuitarButton = styled.TouchableOpacity`
-    width: 30%;
+    width: 32%;
     height: 100%;
     background-color: #32cd32;
 `;
@@ -123,7 +123,7 @@ export const SituacoesItem = styled.View`
     padding: 4px;
     margin-bottom: 15px;
     border-radius: 8px;
-    background-color: ${props => props.theme.corTitulo}
+    background-color: ${props => props.theme.corTitulo};
 `;
 
 export const SitItemLeft = styled.View`

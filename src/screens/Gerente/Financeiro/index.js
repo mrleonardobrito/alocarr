@@ -1,7 +1,7 @@
 /* Expo, React */
 
 import React, {useEffect, useReducer, useState} from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, FlatList, TextInput, Animated, Pressable, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, FlatList, Alert } from 'react-native';
 
 /* VectorIcons */
 
@@ -35,6 +35,7 @@ import {
 
 } from '../Financeiro/FinanceiroComponents/Excluir/style';
 
+import Stars from 'react-native-stars'
 
 import HeaderOb from '../../../components/Header';
 
@@ -44,7 +45,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import dados from "./Adicionar/dados";
 
-import {  MotiView, AnimatePresence} from 'moti';
+import {MotiView, AnimatePresence} from 'moti';
 
 
 export default function({route}){
@@ -57,8 +58,6 @@ export default function({route}){
     const [visible, setVisible] = useState(false);
     const [visibleTwo, setVisibleTwo] = useState(false);
 
-    const [altura, setAltura] = useState(90);
-    const [largura, setLargura] = useState(new Animated.Value(0));
 
     const [searchText, setSearchText] = useState();
     const [excluirText, setExcluirText] = useState('');
@@ -117,7 +116,6 @@ export default function({route}){
 
     function removerItem(){
 
-
         Alert.alert("Confirmação", "Tem certeza que quer excluir o item de código " + excluirText + "?" , [
             {
                 text: 'Sim',
@@ -139,8 +137,7 @@ export default function({route}){
     }
 
     function Shape(){
-        return(
-            <MotiView
+        return <MotiView
             from={{
                 opacity: 0,
                 height: 0,
@@ -149,7 +146,7 @@ export default function({route}){
               animate={{
                 opacity: 1,
                 height: 350,
-                marginBottom: 15
+                marginBottom: 16
               }}
             exit={{
               opacity: 0,
@@ -164,7 +161,6 @@ export default function({route}){
             }
             style={styles.shape}
           >
-
             <Entradas>
                 <View style={{backgroundColor: '#A9F9B6', height: '35%', borderTopLeftRadius: 3, borderTopRightRadius: 3}}>
                     <MotiView style={styles.quadradoEntradas}><Icon name="plus" style={{fontSize: 20, color: 'white'}}/></MotiView>
@@ -193,18 +189,16 @@ export default function({route}){
                 </View>
             </Entradas>
           </MotiView>
-        )
+        
     }
 
     return(
-        <ScrollView>
+        <ScrollView style={{backgroundColor: '#34598A'}}>
             <HeaderOb pageName={pageName}/>
             <Main>
-                <FinanceiroButtonContainer>
-                   
+                <FinanceiroButtonContainer>   
                 
-                <AnimatePresence>{contasVisible && <Shape />}</AnimatePresence>
-                    
+                <AnimatePresence>{contasVisible && <Shape />}</AnimatePresence>  
 
                     <ResumoButton onPress={toggle}>
                         <ResumoText>Resumos</ResumoText>
@@ -213,25 +207,28 @@ export default function({route}){
 
                         </ResumoIcon>
                     </ResumoButton>
+                
                     <FuncaoContainer>
-                        <ExcluirButton style={styles.buttonStyle} onPress={()=> {setVisibleTwo(true)}}>
-                            <FuncContainer>
-                                <FuncaoIcon><Icon name="times" style={styles.iconePlusMinor}></Icon></FuncaoIcon>
-                                <TextButton>Excluir</TextButton>
-                            </FuncContainer>
-                        </ExcluirButton>
-                        <AdicionarButton style={styles.buttonStyle} onPress={()=> navigation.navigate('Adicionar')}>
-                            <FuncContainer>
-                                <FuncaoIcon><Icon name="plus" style={styles.iconePlusMinor}></Icon></FuncaoIcon>
-                                <TextButton>Adicionar</TextButton>
-                            </FuncContainer>
-                        </AdicionarButton>
-                        <QuitarButton style={styles.buttonStyle} onPress={()=> {setVisible(true)}}>
-                            <FuncContainer>
-                                <FuncaoIcon><Icon name="dollar-sign" style={styles.iconePlusMinor}/></FuncaoIcon>
-                                <TextButton>Quitar</TextButton>
-                            </FuncContainer>
-                        </QuitarButton>
+                        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
+                            <ExcluirButton style={styles.buttonStyle} onPress={()=> {setVisibleTwo(true)}}>
+                                <FuncContainer>
+                                    <FuncaoIcon><Icon name="times" style={styles.iconePlusMinor}></Icon></FuncaoIcon>
+                                    <TextButton>Excluir</TextButton>
+                                </FuncContainer>
+                            </ExcluirButton>
+                            <AdicionarButton style={styles.buttonStyle} onPress={()=> navigation.navigate('Adicionar')}>
+                                <FuncContainer>
+                                    <FuncaoIcon><Icon name="plus" style={styles.iconePlusMinor}></Icon></FuncaoIcon>
+                                    <TextButton>Adicionar</TextButton>
+                                </FuncContainer>
+                            </AdicionarButton>
+                            <QuitarButton style={styles.buttonStyle} onPress={()=> {setVisible(true)}}>
+                                <FuncContainer>
+                                    <FuncaoIcon><Icon name="dollar-sign" style={styles.iconePlusMinor}/></FuncaoIcon>
+                                    <TextButton>Quitar</TextButton>
+                                </FuncContainer>
+                            </QuitarButton>
+                        </View>
 
                         <Modal 
                             isVisible={visible} 
@@ -330,7 +327,10 @@ export default function({route}){
                         <View style={styles.linha}></View>
                     </SearchDiv>
                     
+                                        
+
                         <FlatList 
+                        extraData
                         nestedScrollEnabled
                         data={list}
                         keyExtractor={((_, index) => index.toString())}
@@ -387,7 +387,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4,
-        marginHorizontal: 4
     },
     searchIcon: {
         color: '#fff',
@@ -421,7 +420,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     shape: {
-        height: 250,
+        height: 245,
         width: '100%',
         borderRadius: 5,
         marginRight: 10,
