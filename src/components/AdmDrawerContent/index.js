@@ -92,16 +92,6 @@ export default function AdmDrawerContent({navigation}){
                 </View>
             </DrawerMain>                
                 <DrawerFooter>
-<<<<<<< HEAD
-                    <FooterImage>
-                        <Luffy
-                        style={styles.tinyLogo}
-                        source={require('./luffy.jpg')}
-                    />
-                    </FooterImage>
-                    <FooterUserName>Linaldo Brito</FooterUserName>
-                    <TouchableOpacity style={{height: 100, width: 100, }} onPress={()=> navigation.navigate('LoginRouter')}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
-=======
                     <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 5, paddingRight: 10}}>
                         <View style={{alignItems: 'flex-start', flexDirection: 'row', alignItems: 'center'}}>
                             <Luffy
@@ -111,7 +101,6 @@ export default function AdmDrawerContent({navigation}){
                         </View>
                         <TouchableOpacity onPress={()=> confLogout()} style={{justifyContent: 'space-evenly'}}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
                     </View>
->>>>>>> fc4f0d5675d115fc8e762a8475601637f3f4384d
                 </DrawerFooter>
         </DrawerContainer>
     );
