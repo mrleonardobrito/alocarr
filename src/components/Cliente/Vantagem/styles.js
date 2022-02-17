@@ -6,7 +6,7 @@ export const VantagemContainer = styled.View`
     justify-content: space-between;
     align-items: center;
     margin-left: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 `
 export const Vantagens = styled.View`
     width: 80%;
@@ -16,14 +16,16 @@ export const VantagemIcone = styled(Icon)`
     color: #ABCFFF;
 `
 export const VantagemTitulo = styled.Text`
-    font-family: 'OpenSans-SemiBold';
-    font-size: 20pt;
+    font-family: 'OpenSans-ExtraBold';
+    font-size: 25px;
     margin-bottom: 5px;
+    margin-left: 10px;
     color: ${props => props.theme.cliente.text1};
 `
 export const VantagemTexto = styled.Text`
     font-family: 'OpenSans-SemiBold ';
-    font-size: 14pt;
-    margin-left: 5px;
+    font-size: 15px;
+    margin-left: 15px;
+    text-align: left;
     color: ${props => props.theme.cliente.text1};
 `

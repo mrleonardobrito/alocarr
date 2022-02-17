@@ -11,7 +11,7 @@ export const TitleContainer = styled.View`
 `
 export const Title = styled.Text`
     font-family: 'OpenSans-ExtraBold';
-    font-size: 16pt;
+    font-size: 21px;
     color: ${props => props.theme.cliente.text1};
 `
 export const Arrow = styled.Pressable`
@@ -22,10 +22,11 @@ export const StyledIcon = styled(Icon)`
     width: 20px;
 `
 export const Descricao = styled.Text`
-    font-family: 'arial';
-    font-size: 12pt;
+    font-family: 'OpenSans-SemiBold';
+    font-size: 14px;
     color: ${props => props.theme.cliente.text1};   
     margin: 5px;
+    height: 150px;
     margin-bottom: 15px;
 `
 export const Linha = styled.View`

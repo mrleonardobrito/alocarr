@@ -29,11 +29,10 @@ export const InformationContainer = styled.View`
     width: 80%;
     flex-direction: column;
     justify-content: center;
-    box-sizing: border-box;
     text-decoration: none;
 `
 export const HorarioText = styled(DataText)`
-    top: 8px;
+    top: 18px;
     font-family: 'OpenSans-SemiBold';
 `
 export const HorarioPicker = styled(Picker).attrs((props) => ({

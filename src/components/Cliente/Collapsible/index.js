@@ -46,9 +46,10 @@ const Collapsible = (props) => {
                 duration: 300
               }}
             >
-              <Descricao onLayout={(event) => { 
-                const {x, y, height, width} = event.nativeEvent.layout
-                setDescritionHeight(height+10)
+              <Descricao onLayout={(event) => {
+                const {width, height, x, y} = event.nativeEvent.layout
+                setDescritionHeight(height + 10)
+                console.log(height)
               }}>{props.textContent}</Descricao>
             </MotiView>
           ) : (null)

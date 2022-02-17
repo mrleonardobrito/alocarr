@@ -20,7 +20,7 @@ import { LogoWrapper, Title } from '../../../components/Cliente/UserNavHeader/st
 const Home = ({ navigation }) => {
     return (
       <Container>
-      <StatusBar translucent />
+      <StatusBar style='auto' translucent/>
       <UserNavHeader navigation={navigation} color={cores.cliente.primary} withMenu/>
       <Wrapper>
         <Main>
@@ -48,7 +48,7 @@ const Home = ({ navigation }) => {
         <Propaganda>
           <SubtituloReserva>Propaganda</SubtituloReserva>
         </Propaganda>
-        <OperationBox type='primary'>
+        {/* <OperationBox type='primary'>
           <Subtitulo>Avaliação de Clientes</Subtitulo>
           <Linha/>
           <AvaliacaoGeral>
@@ -57,7 +57,7 @@ const Home = ({ navigation }) => {
           </AvaliacaoGeral>
           <LinhaReserva/>
           <Comentarios/>
-        </OperationBox>
+        </OperationBox> */}
         <OperationBox type='secondary'>
           <SubtituloLongo>Requisitos para alugar um veículo</SubtituloLongo>
           <Linha/>
@@ -177,10 +177,10 @@ const LocationPicker = () => {
     <InputContainer> 
       <Icon 
         name='map-marker-alt' 
-        style={{color: cores.cliente.primary, paddingRight: 5, marginLeft: 3}} 
+        style={{color: cores.cliente.primary, paddingRight: 5, marginLeft: 3, width: 30}} 
         size={25}/>
         <Picker
-          style={{ width: '100%', height: 40 }}
+          style={{ width: '85%', height: 40 }}
           selectedValue={selectedValue}
           onValueChange={(itemValue, itemIndex) =>
             setSelectedValue(itemValue)

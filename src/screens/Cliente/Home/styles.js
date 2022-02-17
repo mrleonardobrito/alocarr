@@ -3,15 +3,12 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
     flex: 1;
 `;
-
 export const OperationBox = styled.View`
-    height: fit-content;
     width: 100%;
     border-radius: 5px;
     margin-bottom: 5px;
-    padding: 10px;    
+    padding: 15px;    
     align-items: center;
-    justify-content: center;
     background-color: ${props => props.type === 'primary' ? props.theme.cliente.primary : props.theme.cliente.secondary};
 `;
 export const Wrapper = styled.ScrollView`
@@ -126,7 +123,6 @@ export const InputContainer = styled.View`
 `
 export const Footer = styled.View`
     width: 100%;
-    height: max-content;
     background-color: ${props => props.theme.cliente.secondary};
     align-items: center;
     padding: 5px;
@@ -155,6 +151,7 @@ export const FooterOption = styled.Text`
 `
 export const AvaliacaoGeral = styled.View`
     width: 100%;
+    background-color: '#f0f';
     flex-direction: row;
     justify-content: space-evenly;
 `

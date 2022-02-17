@@ -22,24 +22,24 @@ import Login from './screens/Login'
 import AdmDrawerContent from './components/AdmDrawerContent'
 import Home from './screens/Cliente/Home';
 import UserNavContent from './components/Cliente/UserNavContent';
+import Reserva from './screens/Cliente/Reserva'
+import CarrosCliente from './screens/Cliente/Carros'
 
 const UserDrawer = createDrawerNavigator()
 const Stack = createStackNavigator()
 const AdmDrawer = createDrawerNavigator()
 
-// function handleSubmit() {
-//   console.log('handleSubmit chamado')
-// }
 
 const UserNavigation = () => {
   return (
     <UserDrawer.Navigator 
-      initialRouteName="Home" 
+      initialRouteName="Carros" 
       screenOptions={{headerShown: false}}
       drawerContent={(props) => <UserNavContent {...props} />}  
     >
       <UserDrawer.Screen name="Home" component={Home}/>
-      {/* <UserDrawer.Screen name="Carros" component={Carros}/> */}
+      <UserDrawer.Screen name="Carros" component={CarrosCliente}/>
+      <UserDrawer.Screen name="Reserva" component={Reserva}/>
       <UserDrawer.Screen name="LoginRouter" component={LoginRouter} />
     </UserDrawer.Navigator>
   );
@@ -80,6 +80,7 @@ const LoginRouter = () => {
     <Stack.Screen name="Cadastro3" component={Cadastro3}/>
     <Stack.Screen name="Cadastro4" component={Cadastro4}/>
     <Stack.Screen name="Cadastro5" component={Cadastro5}/>
+    <Stack.Screen name="UserNavRouter" component={UserNavigation} />
     <Stack.Screen name="Login" component={Login}/>
   </Stack.Navigator>
   )
