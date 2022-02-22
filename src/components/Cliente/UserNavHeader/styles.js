@@ -13,7 +13,7 @@ export const Header = styled.View`
     background-color: ${props => props.color};
 `;
 
-export const LogoWrapper = styled.View`
+export const LogoWrapper = styled.Pressable`
     flex-direction: row;
     align-items: center;
     justify-content: center;

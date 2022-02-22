@@ -1,7 +1,8 @@
+import Animated from "react-native-reanimated"
 import Icon from "react-native-vector-icons/AntDesign"
 import styled from "styled-components/native"
 
-export const Container = styled.Pressable`
+export const Container = styled.View`
     width: 95%;
 `
 export const TitleContainer = styled.View`

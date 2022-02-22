@@ -33,7 +33,7 @@ const AdmDrawer = createDrawerNavigator()
 const UserNavigation = () => {
   return (
     <UserDrawer.Navigator 
-      initialRouteName="Carros" 
+      initialRouteName="Home" 
       screenOptions={{headerShown: false}}
       drawerContent={(props) => <UserNavContent {...props} />}  
     >
@@ -46,7 +46,6 @@ const UserNavigation = () => {
 }
 
 const AdmNavigation = () => {
-
   return (
     <AdmDrawer.Navigator 
       initialRouteName="Detalhes" 

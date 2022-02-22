@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import Router from './src/routes'
 import AppLoading from 'expo-app-loading'
+import { StatusBar } from 'react-native'
 
 import { cores } from './src/utils/cores'
 
