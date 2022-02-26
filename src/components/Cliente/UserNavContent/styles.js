@@ -30,7 +30,7 @@ export const SearchContainer = styled.View`
   padding: 5px;
   border-radius: 10px;
   margin-bottom: 10px;
-  background-color: ${props => props.theme.cliente.marked1};
+  background-color: ${props => props.theme.cliente.background2};
 `
 export const SearchInput = styled.TextInput`
   margin-left: 5px;

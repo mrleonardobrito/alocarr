@@ -21,35 +21,35 @@ const UserNavContent = ({ navigation }) => {
                 <ItemContainer
                     onPress={() => navigation.navigate('LoginRouter', {screen: 'Login'})}
                 >
-                    <Icon name="door-open"  size={27} style={{color: cores.cliente.marked1}}/>
+                    <Icon name="door-open"  size={27} style={{color: cores.cliente.background2}}/>
                     <NavName>Login</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Carros")}
                 >
-                    <Icon name="car" size={30} style={{color: cores.cliente.marked1}}/>
+                    <Icon name="car" size={30} style={{color: cores.cliente.background2}}/>
                     <NavName>Carros</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Home")}
                 >
-                    <Icon name="cog" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="cog" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Configurações</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => setIsConnected(true)}
                 >
-                    <Icon name="car-side" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="car-side" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Minhas Reservas</NavName>
                 </ItemContainer>
             </Main>
             <BottomContainer>
                 <BottomItem>
-                    <Icon name="question-circle" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="question-circle" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Ajuda</NavName>
                 </BottomItem>
                 <BottomItem>
-                    <Icon name="file-alt" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="file-alt" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Termos de Uso</NavName>
                 </BottomItem>
             </BottomContainer>
@@ -66,27 +66,27 @@ const UserNavContent = ({ navigation }) => {
                     <SearchInput placeholder="Pesquisar"/>
                 </SearchContainer>
                 <ItemContainer
-                    onPress={() => navigation.navigate('LoginRouter', {screen: 'Login'})}
+                    onPress={() => navigation.navigate('Perfil')}
                 >
-                    <Icon name="user-alt"  size={30} style={{color: cores.cliente.marked1}}/>
+                    <Icon name="user-alt"  size={30} style={{color: cores.cliente.background2}}/>
                     <NavName>Perfil</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Carros")}
                 >
-                    <Icon name="car" size={30} style={{color: cores.cliente.marked1}}/>
+                    <Icon name="car" size={30} style={{color: cores.cliente.background2}}/>
                     <NavName>Carros</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Home")}
                 >
-                    <Icon name="cog" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="cog" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Configurações</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Home")}
                 >
-                    <Icon name="car-side" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="car-side" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Minhas Reservas</NavName>
                 </ItemContainer>
             </Main>

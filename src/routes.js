@@ -24,6 +24,7 @@ import Home from './screens/Cliente/Home';
 import UserNavContent from './components/Cliente/UserNavContent';
 import Reserva from './screens/Cliente/Reserva'
 import CarrosCliente from './screens/Cliente/Carros'
+import Perfil from './screens/Cliente/Perfil';
 
 const UserDrawer = createDrawerNavigator()
 const Stack = createStackNavigator()
@@ -33,7 +34,7 @@ const AdmDrawer = createDrawerNavigator()
 const UserNavigation = () => {
   return (
     <UserDrawer.Navigator 
-      initialRouteName="Home" 
+      initialRouteName="Perfil" 
       screenOptions={{headerShown: false}}
       drawerContent={(props) => <UserNavContent {...props} />}  
     >
@@ -41,6 +42,7 @@ const UserNavigation = () => {
       <UserDrawer.Screen name="Carros" component={CarrosCliente}/>
       <UserDrawer.Screen name="Reserva" component={Reserva}/>
       <UserDrawer.Screen name="LoginRouter" component={LoginRouter} />
+      <UserDrawer.Screen name="Perfil" component={Perfil} />
     </UserDrawer.Navigator>
   );
 }
