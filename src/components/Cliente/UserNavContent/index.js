@@ -6,7 +6,7 @@ import { cores } from '../../../utils/cores'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const UserNavContent = ({ navigation }) => {
+const UserNavContent = ({ navigation, route }) => {
     const [isConnected, setIsConnected] = React.useState(false)
     const perfilImage = require('../../../assets/default-user-avatar-300x300.png')
     if(!isConnected){
@@ -66,7 +66,7 @@ const UserNavContent = ({ navigation }) => {
                     <SearchInput placeholder="Pesquisar"/>
                 </SearchContainer>
                 <ItemContainer
-                    onPress={() => navigation.navigate('Perfil')}
+                    onPress={() => navigation.navigate('PerfilRouter', { name: 'Perfil', params: {}})}
                 >
                     <Icon name="user-alt"  size={30} style={{color: cores.cliente.background2}}/>
                     <NavName>Perfil</NavName>

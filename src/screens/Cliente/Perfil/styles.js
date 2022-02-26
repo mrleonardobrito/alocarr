@@ -56,7 +56,7 @@ export const ImagemPerfilCircle = styled(Animated.View)`
     justify-content: center;
     background-color: ${props => props.theme.cliente.primary};
 `
-export const ImagemPerfil = styled.View`
+export const ImagemPerfil = styled.Image`
     width: 95%;
     height: 95%;
     border-radius: 200px;

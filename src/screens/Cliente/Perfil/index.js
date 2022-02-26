@@ -27,9 +27,10 @@ import { useWindowDimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-const Perfil = ({ navigation }) => {
-    const { width, height } = useWindowDimensions();
+const Perfil = ({ navigation, route }) => {
     const scrollY = useSharedValue(0);
+
+    const userImage = require('../../../assets/default-user-avatar-300x300.png')
 
     const scrollImageAnimation = useAnimatedStyle(() => {
         return {
@@ -64,14 +65,14 @@ const Perfil = ({ navigation }) => {
                 <Wrapper>
                     <PerfilTop>
                         <ImagemPerfilCircle style={scrollImageAnimation}>
-                            <ImagemPerfil />
+                            <ImagemPerfil source={route.params?.avatar !== userImage ? {uri: route.params?.avatar.uri}: userImage}/>
                         </ImagemPerfilCircle>
-                        <EditarPerfilButton>
+                        <EditarPerfilButton onPress={() => navigation.navigate('PerfilRouter', {screen: 'EditarPerfil'})}>
                             <EditarPerfilLabel>Editar Perfil</EditarPerfilLabel>
                         </EditarPerfilButton>    
                     </PerfilTop>
                     <FormularioWrapper>
-                        <NomePerfil>Adailton Neves</NomePerfil>
+                        <NomePerfil>{route.params ? route.params?.nome: 'Adailton Neves'}</NomePerfil>
                         <DataInput>
                             <DataInputContent>
                                 <Ionicons name='speedometer' size={22} color={'#fff'} style={{ paddingRight: 10 }}/>
@@ -80,15 +81,15 @@ const Perfil = ({ navigation }) => {
                         </DataInput>
                         <DataInput>
                             <DataInputLabel>Gênero</DataInputLabel> 
-                            <DataInputContent>Masculino</DataInputContent>
+                            <DataInputContent>{route.params ? route.params?.genero: 'Masculino'}</DataInputContent>
                         </DataInput> 
                         <DataInput>
                             <DataInputLabel>Número de Telefone</DataInputLabel>
-                            <DataInputContent>+55 (82) 99999-9999</DataInputContent>
+                            <DataInputContent>{route.params ? route.params?.telefone: '+55 (82) 99999-9999'}</DataInputContent>
                         </DataInput>
                         <DataInput>
                             <DataInputLabel>E-mail</DataInputLabel> 
-                            <DataInputContent>exemplo@gmail.com</DataInputContent>
+                            <DataInputContent>{route.params ? route.params?.email: 'exemplo@gmail.com'}</DataInputContent>
                         </DataInput> 
                         <DataInput>
                             <DataInputLabel>Senha</DataInputLabel>
@@ -96,7 +97,7 @@ const Perfil = ({ navigation }) => {
                         </DataInput> 
                         <DataInput>
                             <DataInputLabel>Endereço</DataInputLabel>
-                            <DataInputContent>Rua Dom Pedro II, 102, Arapiraca-AL</DataInputContent>
+                            <DataInputContent>{route.params ? route.params?.endereco: 'Rua Dom Pedro II, 102, Arapiraca-AL'}</DataInputContent>
                         </DataInput>  
                         <DataInput>
                             <TouchableOpacity>

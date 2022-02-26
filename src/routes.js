@@ -25,16 +25,41 @@ import UserNavContent from './components/Cliente/UserNavContent';
 import Reserva from './screens/Cliente/Reserva'
 import CarrosCliente from './screens/Cliente/Carros'
 import Perfil from './screens/Cliente/Perfil';
+import EditarPerfil from './screens/Cliente/Perfil/EditarPerfil';
 
 const UserDrawer = createDrawerNavigator()
 const Stack = createStackNavigator()
 const AdmDrawer = createDrawerNavigator()
 
+const PerfilRouter = () => {
+  return (
+    <Stack.Navigator
+    initialRouteName="Perfil"
+    screenOptions={{ headerShown: false }}
+  >
+    <Stack.Screen 
+      name="Perfil" 
+      component={Perfil} 
+      initialParams={{ 
+        avatar: require('./assets/default-user-avatar-300x300.png'),
+        nome: 'Adailton Neves', 
+        genero: 'Masculino', 
+        telefone: '+55 (82) 99999-9999', 
+        email: 'exemplo@gmail.com', 
+        endereco: 'Rua Dom Pedro II, 102, Arapiraca-AL' 
+      }}/>
+    <Stack.Screen 
+      name="EditarPerfil" 
+      component={EditarPerfil}
+    />
+  </Stack.Navigator>
+  )
+}
 
 const UserNavigation = () => {
   return (
     <UserDrawer.Navigator 
-      initialRouteName="Perfil" 
+      initialRouteName="Home" 
       screenOptions={{headerShown: false}}
       drawerContent={(props) => <UserNavContent {...props} />}  
     >
@@ -42,7 +67,7 @@ const UserNavigation = () => {
       <UserDrawer.Screen name="Carros" component={CarrosCliente}/>
       <UserDrawer.Screen name="Reserva" component={Reserva}/>
       <UserDrawer.Screen name="LoginRouter" component={LoginRouter} />
-      <UserDrawer.Screen name="Perfil" component={Perfil} />
+      <UserDrawer.Screen name="PerfilRouter" component={PerfilRouter} />
     </UserDrawer.Navigator>
   );
 }
