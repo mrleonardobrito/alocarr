@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from 'react';
 
-import { View, Text, StyleSheet, Image, ScrollView, Dimensions, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Dimensions, TouchableOpacity, TextInput} from 'react-native';
 import {CarroView, Carro, BotaoEditar} from './style'
 
 import Header from '../../../../components/Header'
@@ -11,35 +11,53 @@ import Stars from 'react-native-stars'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import IconF from 'react-native-vector-icons/FontAwesome';
-import IconFF from 'react-native-vector-icons/Feather'
+import IconFF from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/core";
 
 
 import dusterFront from '../../../../../car_photos/renault_duster/duster_front.jpg'
 import dusterBack from '../../../../../car_photos/renault_duster/duster_back.jpg'
 import dusterDrift from '../../../../../car_photos/renault_duster/duster_drift.jpg'
-import { MotiView } from 'moti';
+import { MotiView, MotiImage, AnimatePresence } from 'moti';
 
 
 import dataCarros from '../carros'
 
-const {width} = Dimensions.get("screen");
-const height = width * 100/99;
+const {width} = Dimensions.get("window");
 
-const starMinorSize = 12;
-const starSize = 25;
+
 const starColor = '#' + '91B4E3'
 
 export default function({route}){
     const pageName = 'Detalhes';
 
     const images = [dusterFront, dusterBack, dusterDrift]
-    const [starValue, setStarValue] = useState(4);
     const [decidir, setDecidir] = useState(1);
-
     const navigation = useNavigation();
 
-    const starValues = [50, 35, 20, 10, 5];
+
+    const starValues = [450, 10, 20, 10, 5];
+    const starValue = 7;
+
+    const calculaStarValue = starValues[0] + starValues[1] + starValues[2] + starValues[3] + starValues[4];
+
+    function mediaStars(){
+        const starPercent = (starValues[0] * 100) / calculaStarValue;
+        return starPercent.toFixed(2);
+    }
+    function mediaStars2(){
+        const starPercent = (starValues[1] * 100) / calculaStarValue;
+        return starPercent.toFixed(2);
+    }function mediaStars3(){
+        const starPercent = (starValues[2] * 100) / calculaStarValue;
+        return starPercent.toFixed(2);
+    }function mediaStars4(){
+        const starPercent = (starValues[3] * 100) / calculaStarValue;
+        return starPercent.toFixed(2);
+    }function mediaStars5(){
+        const starPercent = (starValues[4] * 100) / calculaStarValue;
+        return starPercent.toFixed(2);
+    }
 
 
     const [colorTrueEspeci, setColorTrueEspeci] = useState(true);
@@ -140,6 +158,7 @@ export default function({route}){
         }
     }
 
+
     function decidirAba(decidir){
         if(decidir == 1){
             return <View style={{backgroundColor: '#5379AB', flex: 1}}>
@@ -228,10 +247,10 @@ export default function({route}){
         if(decidir == 3){
             return <View style={{backgroundColor: '#5379AB', flex: 1, padding: 10}}>
                 <View style={{height: '35%', width: '100%', flexDirection: 'row'}}>
-                    <View style={{height: '100%', width: '35%', backgroundColor: 'gray', alignItems: 'center', justifyContent: 'flex-start'}}>
-                        <Text style={{fontSize: 30, color: 'white', marginTop: 2}}>{starValue}</Text>
+                    <View style={{height: '100%', width: '35%', backgroundColor: 'transparent', alignItems: 'center', justifyContent: 'flex-start'}}>
+                        <Text style={{fontSize: 30, color: 'white', marginTop: 2}}>{(mediaStars() / 100 * 5).toFixed(1)}</Text>
                         <Stars
-                            default={starValue}
+                            default={mediaStars() / 100 * 5}
                             half={true}
                             starSize={20}
                             count={5}
@@ -240,131 +259,241 @@ export default function({route}){
                             halfStar={<IconF name='star-half-empty' style={{fontSize: 20, color: '#ABCFFF'}}/>}
 
                         ></Stars>
+                        <Text style={{fontSize: 16, color: 'white'}}>{calculaStarValue}</Text>
                     </View>
-                    <View style={{height: '100%', width: '65%', backgroundColor: 'green', justifyContent: 'space-evenly'}}>
+                    <View style={{height: '100%', width: '65%', backgroundColor: 'transparent', justifyContent: 'space-evenly'}}>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
                             <Text style={{fontSize: 11, color: 'white',}}>5</Text>
                             <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
-                                <View style={{height: '100%', width: starValues[0] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                                <View style={{height: '100%', width: mediaStars() + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
                             </View>
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
                             <Text style={{fontSize: 11, color: 'white',}}>4</Text>
                             <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
-                                <View style={{height: '100%', width: starValues[1] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                                <View style={{height: '100%', width: mediaStars2() + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
                             </View>
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
                             <Text style={{fontSize: 11, color: 'white',}}>3</Text>
                             <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
-                                <View style={{height: '100%', width: starValues[2] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                                <View style={{height: '100%', width: mediaStars3() + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
                             </View>
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
                             <Text style={{fontSize: 11, color: 'white',}}>2</Text>
                             <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
-                                <View style={{height: '100%', width: starValues[3] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                                <View style={{height: '100%', width: mediaStars4() + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
                             </View>
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', marginBottom: 2, height: 100/5 + '%'}}>
                             <Text style={{fontSize: 11, color: 'white',}}>1</Text>
                             <View style={{width: '90%', height: '40%', backgroundColor: 'white', borderRadius: 10}}>
-                                <View style={{height: '100%', width: starValues[4] + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
+                                <View style={{height: '100%', width: mediaStars5() + '%', backgroundColor: '#ABCFFF', borderRadius: 10}}></View>
                             </View>
                         </View>
                     </View>
                 </View>
-                <View style={{height: '35%', width: '100%', flexDirection: 'row'}}>
-                        <View style={{width: '10%', backgroundColor: 'white', alignItems: 'center'}}>
-                            <View style={{height: 35, width: 35, backgroundColor: 'red', borderRadius: 60}}></View>
+                <View style={{width: '100%', flexDirection: 'row', paddingTop: 5, marginTop: 10}}>
+                    <View style={{width: '10%', alignItems: 'center'}}>
+                        <View style={{height: 40, width: 40, backgroundColor: 'red', borderRadius: 60, borderColor: 'white', borderWidth: 1}}>
+                            <Image source={require('../../../../../img/usopp.jpg')} style={{width: '100%', height: '100%', borderRadius: 100}} />
                         </View>
-                        <View style={{width: '85%', backgroundColor: 'transparent', flexDirection: 'row'}}>
-                            <View style={{height: '35%', width: '50%', alignItems: 'flex-start'}}>
-                                <View style={{fontSize: 13, color: 'white'}}>Gabriel Favroir</View>
-                                <View style={{flexDirection: 'row', width: '100%', alignItems: 'center'}}>
-                                    <Stars
-                                        default={starValue}
-                                        half={true}
-                                        starSize={9}
-                                        count={5}
-                                        fullStar={<IconF name='star' style={{fontSize: 9, color: '#ABCFFF'}}/>}
-                                        emptyStar={<IconF name='star-o' style={{fontSize: 9, color: '#ABCFFF'}}/>}
-                                        halfStar={<IconF name='star-half-empty' style={{fontSize: 9, color: '#ABCFFF'}}
-                                        />}
+                    </View>
+                    <View style={{width: '75%', backgroundColor: 'transparent', flexDirection: 'row', marginTop: 5}}>
+                        <View style={{height: '35%', width: '50%', alignItems: 'flex-start', marginLeft: 5}}>
+                            <View><Text style={{fontSize: 13, color: 'white'}}>Gabriel Favroir</Text></View>
+                            <View style={{flexDirection: 'row', width: '100%', alignItems: 'center', marginTop: 3}}>
+                                <Stars
+                                    default={starValue}
+                                    half={true}
+                                    starSize={9}
+                                    count={5}
+                                    fullStar={<IconF name='star' style={{fontSize: 9, color: '#ABCFFF'}}/>}
+                                    emptyStar={<IconF name='star-o' style={{fontSize: 9, color: '#ABCFFF'}}/>}
+                                    halfStar={<IconF name='star-half-empty' style={{fontSize: 9, color: '#ABCFFF'}}
+                                    />}></Stars>
+                                <View><Text style={{fontSize: 10, color: 'white', fontWeight: 'bold', marginLeft: 5}}>02 de janeiro</Text></View>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={{width: '15%', backgroundColor: 'transparent', paddingTop: 5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                        <View style={{height: 40, width: 25, alignItems: 'center', justifyContent: 'flex-end', backgroundColor: 'transparent', marginTop: 6}}>
+                            <IconFF name='thumbs-up-sharp' style={{fontSize: 18, color: 'white'}}></IconFF>
+                            <Text style={{fontSize: 11, color: 'white'}}>111</Text>
+                        </View>
+                        <View style={{height: 40, width: 25, alignItems: 'center', justifyContent: 'center', backgroundColor: 'transparent'}}>
+                            <IconF name='ellipsis-v' style={{fontSize: 18, color: 'white'}}></IconF>
+                        </View>
+                    </View>
+                </View>
+                <View style={{padding: 5, marginLeft: 40, width: '85%'}}>
+                    <Text style={{color: 'white', fontSize: 11}}>
+                        No alto daquele cume
+                        Plantei uma roseira
+                        O vento no cume bate
+                        A rosa no cume cheira
 
-                                    ></Stars>
-                                    <View style={{fontSize: 10, color: 'white', fontWeight: 'bold', marginLeft: 5}}>02 de janeiro</View>
-                                </View>
-                            </View>
-                            <View style={{width: '50%', alignItems: 'flex-end'}}>
-                                <IconFF name='thumbs-up' style={{marginRight: 10, fontSize: 17}}></IconFF>
-                            </View>
-                        </View>
-                        <View style={{width: '5%', backgroundColor: 'white'}}>
-                        </View>
+                        Quando vem a chuva fina
+                        Salpicos no cume caem
+                        Formigas no cume entram
+                        Abelhas do cume saem
+
+                        Quando cai a chuva grossa
+                        A água do cume desce
+                        O barro do cume escorre
+                        O mato no cume cresce.
+                    </Text>
                 </View>
             </View>
         }
     }
 
-    function graficoLinha(starPosition){
-        return <View style={{height: 5, width: starValues[starPosition] + '%', backgroundColor: starColor, borderRadius: 5}}></View>
+    const [contasVisible, toggle] = useReducer((s)=> !s, 0)
+
+    function animarPerfil(){
+        if(contasVisible){
+            return <MotiView style={{height: '100%', width: '100%'}} 
+                        from={{translateX: 0, translateY: 0}} 
+                        animate={{translateX: width/3.2}} 
+                        transition={{ type: 'timing',duration: 900}}>
+                
+                        <AnimatePresence>
+                            <CarroView style={{marginTop: '49%'}}><MotiImage source={duster} 
+                            style={{ width: '95%', height: '55%'}}
+                            from={{scale: 1}} 
+                            animate={{scale: 1.5}} 
+                            exit={{scale: 1}}
+                            transition={{ type: 'timing', duration: 900}}
+                        /></CarroView>
+                        </AnimatePresence>
+                    </MotiView>
+        }
+        if(contasVisible == false){
+            return <MotiView style={{height: '100%', width: '100%'}} 
+                        from={{translateX: width/3.2, translateY: 0}} 
+                        animate={{translateX: 0, translateY: 0}} 
+                        transition={{ type: 'timing', duration: 500}}>
+                
+                            <CarroView style={{marginTop: '49%'}}><MotiImage source={duster} 
+                                style={{ width: '95%', height: '55%'}}
+                                from={{scale: 1.5}} 
+                                animate={{scale: 1}} 
+                                transition={{ type: 'timing', duration: 600}}
+                            /></CarroView>
+                    </MotiView>
+        }
     }
+    
+    function decidirDetalhes(){
+        if(contasVisible == false){
+            return (
+               <View style={{flex: 1}}>
+                   <View style={{height: '32%', padding: 10, marginBottom: 15}}>
+                        <BotaoEditar style={{alignSelf: 'flex-end'}} onPress={toggle}><Text style={{fontWeight: 'bold', color: 'white'}}>Editar veículo</Text></BotaoEditar>
+                        <View style={{paddingLeft: 5}}>
+                            <Text style={{fontSize: 23, fontWeight: 'bold'}}>Renault Duster</Text>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5, alignItems: 'flex-end'}}><View style={styles.textView}><Icon name='car' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Placa: JML 9605</Text></View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='tachometer-alt' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Quilometragem: 7.465km</Text></View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='calendar' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Proxima revisão: 10/09/2022</Text></View>
+                        </View>
+                    </View>
+                    <View style={{flex: 1}}>
 
+                        <View style={{flexDirection: 'row', width: '100%', backgroundColor: '#34598A', height: '10%'}}>
+                            {colorConferirEspeci()}
+                            {colorConferirDeta()}
+                            {colorConferirAva()}
+                        </View>
+                        {decidirAba(decidir)}
 
+                        
+                        <View style={{justifyContent: 'center', backgroundColor: '#5379AB', padding: 7, height: '15%'}}>
+                            <TouchableOpacity 
+                            onPress={() => navigation.navigate('Carros')}
+                            style={{backgroundColor: 'white', height: '100%', borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}>
+                                <Text style={{fontWeight: 'bold', fontSize: 16, color: '#5379AB'}}>Voltar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+               </View> 
+            )
+        }
+        else{
+            return <ScrollView style={{padding: 10, marginBottom: 15}}>
+                    <TouchableOpacity onPress={toggle} style={{height: 35, width: '29%', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FF8B8B', borderRadius: 100, alignSelf: 'flex-end'}}>
+                        <MotiView>
+                            <Text style={{color: 'white', fontWeight: 'bold'}}>Cancelar</Text>
+                        </MotiView>
+                    </TouchableOpacity>
+                    <View style={{backgroundColor: 'transparent', marginTop: 20, paddingHorizontal: 10}}>
+                        <View style={{marginBottom: 10}}>
+                            <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Descrição do carro* </Text>
+                            <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                        </View>
+                        <View style={{width: '100%', paddingHorizontal: 15, marginTop: 10}}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                                <View style={{width: '40%'}}>
+                                    <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Última revisão*</Text>
+                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                </View>
+                                <View style={{width: '40%'}}>
+                                    <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Proxima revisão*</Text>
+                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                </View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
+                                <View style={{width: '40%'}}>
+                                    <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Quilometragem*</Text>
+                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                </View>
+                                <View style={{width: '40%'}}>
+                                    <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Código GPS*</Text>
+                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                </View>
+                            </View>
+                        </View>
+                        <View>
+                            <View>
+                                <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Combustível*</Text>
+                                <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '75%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                            </View>
+                            <View style={{marginTop: 10}}>
+                                <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Próxima troca de óleo*</Text>
+                                <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '75%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                            </View>
+                        </View>
+                        <View style={{marginTop: 10}}>
+                            <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Imagens</Text>
+                        
+                        </View>
+                    </View>
+            </ScrollView>
+        }
+    }
 
     return(
         <View style={{backgroundColor: 'white', height: '100%'}}>
             <Header pageName={pageName}/>
             <View style={styles.profileHeader}>
-                <View style={styles.photoView}>
-                    <CarroView><Carro source={duster} style={{resizeMode: 'cover'}}/></CarroView>
+                <View style={{width: 100, height: 100}}>
+                <AnimatePresence>
+                        {animarPerfil()}
+                </AnimatePresence>
                 </View>
             </View>
-            <View style={{height: '25%', padding: 10, marginBottom: 15}}>
-                <BotaoEditar style={{alignSelf: 'flex-end'}} onPress={()=> navigation.navigate('EditarDetalhes')}><Text style={{fontWeight: 'bold', color: 'white'}}>Editar veículo</Text></BotaoEditar>
-                <View style={{paddingLeft: 5}}>
-                    <Text style={{fontSize: 23, fontWeight: 'bold'}}>Renault Duster</Text>
-                    <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5, alignItems: 'flex-end'}}><View style={styles.textView}><Icon name='car' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Placa: JML 9605</Text></View>
-                    <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='tachometer-alt' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Quilometragem: 7.465km</Text></View>
-                    <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='calendar' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Proxima revisão: 10/09/2022</Text></View>
-                </View>
-            </View>
-            <View style={{flex: 1}}>
-
-                <View style={{flexDirection: 'row', width: '100%', backgroundColor: '#34598A', height: '10%'}}>
-                    {colorConferirEspeci()}
-                    {colorConferirDeta()}
-                    {colorConferirAva()}
-                </View>
-                {decidirAba(decidir)}
-
-                
-                <View style={{justifyContent: 'center', backgroundColor: '#5379AB', padding: 7, height: '15%'}}>
-                    <TouchableOpacity 
-                    onPress={() => navigation.navigate('Carros')}
-                    style={{backgroundColor: 'white', height: '100%', borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}>
-                        <Text style={{fontWeight: 'bold', fontSize: 16, color: '#5379AB'}}>Voltar</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-
-
+            {decidirDetalhes()}
+            
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     profileHeader: { 
-        height: '15%',
+        height: '12%',
         backgroundColor: '#002B64',
-    },
-    photoView: {
-        height: 100,
-        width: 100,
-        position: 'absolute',
-        left: 15,
-        top: 45,
+        justifyContent: 'flex-end',
+        paddingLeft: 15,
     },
     icon: {
         color: 'gray', 

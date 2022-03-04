@@ -73,8 +73,7 @@ export const FinancasContainer = styled.SafeAreaView`
     width: 100%;
     padding: 15px 10px 15px 10px;
     border-radius: 6px;
-    min-height: 370px;
-    max-height: 1000px;
+    min-height: 470px;
 `;
 
 export const SearchDiv = styled.View`

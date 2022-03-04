@@ -96,6 +96,7 @@ export default function AdmDrawerContent({navigation}){
                         <View style={{alignItems: 'flex-start', flexDirection: 'row', alignItems: 'center'}}>
                             <Luffy
                             source={require('./luffy.jpg')}
+                            style={{borderWidth: 2, borderColor: 'white'}}
                             />
                             <FooterUserName>Linaldo Brito</FooterUserName>
                         </View>

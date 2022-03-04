@@ -22,8 +22,8 @@ export default function Header(props){
             <H1>{props.pageName}</H1>
         </H1Section>
         <IconSection>
-            <TouchableOpacity onPress= {()=> {Linking.openURL(`whatsapp://send?phone${82993225338}&text=${message}`)}}><ZapIcon><Icon name="whatsapp" color="#34598A" style={styles.icone}/></ZapIcon></TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.openDrawer()}><BarsIcon><Icon name="bars" color="#34598A" style={styles.icone}/></BarsIcon></TouchableOpacity>
+            <TouchableOpacity onPress= {()=> {Linking.openURL(`whatsapp://send?phone${82993225338}&text=${message}`)}}><ZapIcon><Icon name="whatsapp" color="white" style={styles.icone}/></ZapIcon></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.openDrawer()}><BarsIcon><Icon name="bars" color="white" style={styles.icone}/></BarsIcon></TouchableOpacity>
         </IconSection>
     </StyledHeader>
     );

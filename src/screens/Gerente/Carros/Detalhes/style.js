@@ -6,8 +6,8 @@ export const Carro = styled.Image`
 `;
 
 export const CarroView = styled.View`
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     background-color: #5379AB;
     border-radius: 160px;
     display: flex;

@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const StyledHeader = styled.View`
     width: 100%;
     height: ${props => props.theme.headerHeight};
-    background-color: ${props => props.theme.headerColor};
+    background-color: #285084;
     flex-direction: row;
     padding: 0px 20px 0px 20px;
 `;
@@ -39,7 +39,7 @@ export const H1Section = styled.View`
 `;
 
 export const H1 = styled.Text`
-    color: ${props => props.theme.mainColor};
+    color: white;
     font-weight: ${props => props.theme.negrito};
     font-size: 23px;
 `;

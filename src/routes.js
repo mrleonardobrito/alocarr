@@ -17,6 +17,7 @@ import Cadastro2 from './screens/Cadastro/Cadastro2'
 import Cadastro3 from './screens/Cadastro/Cadastro3'
 import Cadastro4 from './screens/Cadastro/Cadastro4'
 import Cadastro5 from './screens/Cadastro/Cadastro5'
+import Colaboradores from './screens/Gerente/Colaboradores';
 import Login from './screens/Login'
 
 import AdmDrawerContent from './components/AdmDrawerContent'
@@ -49,7 +50,7 @@ const AdmNavigation = () => {
 
   return (
     <AdmDrawer.Navigator 
-      initialRouteName="Detalhes" 
+      initialRouteName="Colaboradores" 
       screenOptions={{ headerShown: false }}
       drawerContent={(props) => <AdmDrawerContent {...props}/>}
     >
@@ -62,8 +63,10 @@ const AdmNavigation = () => {
       <AdmDrawer.Screen name="Quitar" component={Quitar}/>
       <AdmDrawer.Screen name="Carros" component={Carros}/>
       <AdmDrawer.Screen name="Detalhes" component={Detalhes}/>
+      <AdmDrawer.Screen name="Colaboradores" component={Colaboradores}/>
       <AdmDrawer.Screen name="EditarDetalhes" component={EditarDetalhes}/>
       <AdmDrawer.Screen name="LoginRouter" component={LoginRouter}/>
+
 
     </AdmDrawer.Navigator>
   )

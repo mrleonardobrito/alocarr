@@ -327,8 +327,6 @@ export default function({route}){
                         <View style={styles.linha}></View>
                     </SearchDiv>
                     
-                                        
-
                         <FlatList 
                         extraData
                         nestedScrollEnabled
@@ -357,7 +355,9 @@ export default function({route}){
                         </SituacoesDiv>     
 
                         }/>
-                    
+                        <SituacoesDiv>
+                            
+                        </SituacoesDiv>
                 </FinancasContainer>
             </Main>
         </ScrollView>
