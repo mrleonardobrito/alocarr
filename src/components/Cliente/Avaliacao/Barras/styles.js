@@ -2,12 +2,13 @@ import styled from "styled-components/native";
 
 export const BarrasContainer = styled.View`
     width: 50%;
+    height: 25%;
     margin-top: 10px;
+    justify-content: space-between;
 `
 export const BarraContainer = styled.View`
     width: 100%;
     height: 17%;
-    justify-content: space-between;
     align-self: center;
 `
 

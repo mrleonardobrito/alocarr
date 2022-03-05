@@ -23,14 +23,39 @@ import Login from './screens/Login'
 import AdmDrawerContent from './components/AdmDrawerContent'
 import Home from './screens/Cliente/Home';
 import UserNavContent from './components/Cliente/UserNavContent';
+import Reserva from './screens/Cliente/Reserva'
+import CarrosCliente from './screens/Cliente/Carros'
+import Perfil from './screens/Cliente/Perfil';
+import EditarPerfil from './screens/Cliente/Perfil/EditarPerfil';
 
 const UserDrawer = createDrawerNavigator()
 const Stack = createStackNavigator()
 const AdmDrawer = createDrawerNavigator()
 
-// function handleSubmit() {
-//   console.log('handleSubmit chamado')
-// }
+const PerfilRouter = () => {
+  return (
+    <Stack.Navigator
+    initialRouteName="Perfil"
+    screenOptions={{ headerShown: false }}
+  >
+    <Stack.Screen 
+      name="Perfil" 
+      component={Perfil} 
+      initialParams={{ 
+        avatar: require('./assets/default-user-avatar-300x300.png'),
+        nome: 'Adailton Neves', 
+        genero: 'Masculino', 
+        telefone: '+55 (82) 99999-9999', 
+        email: 'exemplo@gmail.com', 
+        endereco: 'Rua Dom Pedro II, 102, Arapiraca-AL' 
+      }}/>
+    <Stack.Screen 
+      name="EditarPerfil" 
+      component={EditarPerfil}
+    />
+  </Stack.Navigator>
+  )
+}
 
 const UserNavigation = () => {
   return (
@@ -40,14 +65,15 @@ const UserNavigation = () => {
       drawerContent={(props) => <UserNavContent {...props} />}  
     >
       <UserDrawer.Screen name="Home" component={Home}/>
-      {/* <UserDrawer.Screen name="Carros" component={Carros}/> */}
+      <UserDrawer.Screen name="Carros" component={CarrosCliente}/>
+      <UserDrawer.Screen name="Reserva" component={Reserva}/>
       <UserDrawer.Screen name="LoginRouter" component={LoginRouter} />
+      <UserDrawer.Screen name="PerfilRouter" component={PerfilRouter} />
     </UserDrawer.Navigator>
   );
 }
 
 const AdmNavigation = () => {
-
   return (
     <AdmDrawer.Navigator 
       initialRouteName="Colaboradores" 
@@ -83,6 +109,7 @@ const LoginRouter = () => {
     <Stack.Screen name="Cadastro3" component={Cadastro3}/>
     <Stack.Screen name="Cadastro4" component={Cadastro4}/>
     <Stack.Screen name="Cadastro5" component={Cadastro5}/>
+    <Stack.Screen name="UserNavRouter" component={UserNavigation} />
     <Stack.Screen name="Login" component={Login}/>
   </Stack.Navigator>
   )

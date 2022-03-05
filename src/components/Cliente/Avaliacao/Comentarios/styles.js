@@ -4,7 +4,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { Linha } from '../../Collapsible/styles';
 
 export const ComentariosContainer = styled.ScrollView`
-    height: 290px;
 `;
 export const ComentarioContainer = styled.View`
 
@@ -34,14 +33,14 @@ export const FotoPerfil = styled.Image`
 export const NomePerfil = styled.Text`
     margin-right: 40%;
     margin-bottom: 5px;
-    font-size: 12pt;
-    font-family: 'Arial';
+    font-size: 16px;
+    font-family: 'OpenSans-SemiBold';
     font-weight: bold;
     color: ${props => props.theme.cliente.text1};
 `
 export const DataComentario = styled.Text`
-    font-size: 10pt;
-    font-family: 'Arial';
+    font-size: 13px;
+    font-family: 'OpenSans-SemiBold';
     font-weight: bold;
     color: ${props => props.theme.cliente.text1};
 `
@@ -49,21 +48,20 @@ export const LikeIcon = styled(AntDesign)`
     color: ${props => props.theme.cliente.text1};
 `
 export const LikeNumber = styled.Text`
-    font-size: 8pt;
-    font-family: 'Arial';
+    font-size: 10px;
+    font-family: '';
     color: ${props => props.theme.cliente.text1};
 `
 export const OptionsIcon = styled(SimpleLineIcons)`
     color: #aaa;
-    float: right;
 `
 export const ComentarioContent = styled.Text`
     width: 83%;
     right: 15px;
     margin-right: 8px;
     flex-wrap: wrap;
-    font-size: 10pt;
-    font-family: 'Arial';
+    font-size: 13px;
+    font-family: 'OpenSans-SemiBold';
     align-self: flex-end;
     text-align: justify;
     color: ${props => props.theme.cliente.text1};

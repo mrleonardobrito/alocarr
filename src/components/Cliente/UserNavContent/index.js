@@ -6,7 +6,7 @@ import { cores } from '../../../utils/cores'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const UserNavContent = ({ navigation }) => {
+const UserNavContent = ({ navigation, route }) => {
     const [isConnected, setIsConnected] = React.useState(false)
     const perfilImage = require('../../../assets/default-user-avatar-300x300.png')
     if(!isConnected){
@@ -21,35 +21,35 @@ const UserNavContent = ({ navigation }) => {
                 <ItemContainer
                     onPress={() => navigation.navigate('LoginRouter', {screen: 'Login'})}
                 >
-                    <Icon name="door-open"  size={27} style={{color: cores.cliente.marked1}}/>
+                    <Icon name="door-open"  size={27} style={{color: cores.cliente.background2}}/>
                     <NavName>Login</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Carros")}
                 >
-                    <Icon name="car" size={30} style={{color: cores.cliente.marked1}}/>
+                    <Icon name="car" size={30} style={{color: cores.cliente.background2}}/>
                     <NavName>Carros</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Home")}
                 >
-                    <Icon name="cog" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="cog" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Configurações</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => setIsConnected(true)}
                 >
-                    <Icon name="car-side" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="car-side" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Minhas Reservas</NavName>
                 </ItemContainer>
             </Main>
             <BottomContainer>
                 <BottomItem>
-                    <Icon name="question-circle" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="question-circle" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Ajuda</NavName>
                 </BottomItem>
                 <BottomItem>
-                    <Icon name="file-alt" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="file-alt" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Termos de Uso</NavName>
                 </BottomItem>
             </BottomContainer>
@@ -66,27 +66,27 @@ const UserNavContent = ({ navigation }) => {
                     <SearchInput placeholder="Pesquisar"/>
                 </SearchContainer>
                 <ItemContainer
-                    onPress={() => navigation.navigate('LoginRouter', {screen: 'Login'})}
+                    onPress={() => navigation.navigate('PerfilRouter', { name: 'Perfil', params: {}})}
                 >
-                    <Icon name="user-alt"  size={30} style={{color: cores.cliente.marked1}}/>
+                    <Icon name="user-alt"  size={30} style={{color: cores.cliente.background2}}/>
                     <NavName>Perfil</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Carros")}
                 >
-                    <Icon name="car" size={30} style={{color: cores.cliente.marked1}}/>
+                    <Icon name="car" size={30} style={{color: cores.cliente.background2}}/>
                     <NavName>Carros</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Home")}
                 >
-                    <Icon name="cog" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="cog" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Configurações</NavName>
                 </ItemContainer>
                 <ItemContainer
                     onPress={() => navigation.navigate("Home")}
                 >
-                    <Icon name="car-side" size={30} style={{ color: cores.cliente.marked1}}/>
+                    <Icon name="car-side" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Minhas Reservas</NavName>
                 </ItemContainer>
             </Main>

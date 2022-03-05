@@ -13,7 +13,7 @@ const UserNavHeader = (props) => {
     {props.withMenu && (
       <HamburguerMenu navigation={props.navigation}/>
     )}
-    <LogoWrapper>
+    <LogoWrapper onPress={() => props.navigation.navigate('Home')}>
       <AlocarrLogo color={cores.cliente.text1} size={50}/>
       <Title>ALOCARR</Title>
     </LogoWrapper>

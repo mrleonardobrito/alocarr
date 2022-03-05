@@ -8,17 +8,18 @@ export const DrawerContainer = styled.View`
 export const DrawerHeader = styled.View`
     padding: 0 20px 0 15px;
     height: 10%;
-    background-color: #f1f1f1;
+    background-color: #295084;
     justify-content: center;
 `;
 
 export const DrawerMain = styled.View`
     padding: 15px 10px 0px 20px;
     height: 77%;
+    background-color: #295084;
 `;
 
 export const DrawerFooter = styled.View`
-    background-color: ${props => props.theme.corTitulo};
+    background-color: #38659F;
     height: 13%;
     padding: 2%;
     display: flex;
@@ -36,7 +37,7 @@ export const CloseIcon = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     width: 89%;
-    color: ${props => props.theme.corTitulo};
+    color: #fff;
 
 `;
 
@@ -68,7 +69,7 @@ export const SearchButton = styled.TouchableOpacity`
 export const ItemsContainer = styled.View``;
 
 export const ItemMain = styled.TouchableOpacity`
-    height: 45px;
+    height: 35px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -78,9 +79,9 @@ export const ItemMain = styled.TouchableOpacity`
 `;
 
 export const ItemText = styled.Text`
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    color: ${props => props.theme.corTitulo};
+    color: white;
     margin-left: 12px;
 
 `;
@@ -119,8 +120,8 @@ export const ItemIconFooter = styled.View`
 `;
 
 export const Luffy = styled.Image`
-    height: 60px;
-    width: 60px;
+    height: 65px;
+    width: 65px;
     border-radius: 50px;
     margin-right: 10px;
 `;

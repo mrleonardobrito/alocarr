@@ -12,15 +12,16 @@ import AlocarrLogo from '../../../components/AlocarrLogo'
 import NotaGeral from '../../../components/Cliente/Avaliacao/NotaGeral'
 import Barras from '../../../components/Cliente/Avaliacao/Barras'
 import Comentarios from '../../../components/Cliente/Avaliacao/Comentarios'
-import Collapsible from '../../../components/Cliente/Collapsible'
+import {Collapsible, CollapsibleHeader, CollapsibleBody} from '../../../components/Cliente/Collapsible'
 import Vantagem from '../../../components/Cliente/Vantagem'
 import { LogoWrapper, Title } from '../../../components/Cliente/UserNavHeader/styles';
 
+import { View, Text } from 'react-native'
 
 const Home = ({ navigation }) => {
     return (
       <Container>
-      <StatusBar translucent />
+      <StatusBar style='auto' translucent/>
       <UserNavHeader navigation={navigation} color={cores.cliente.primary} withMenu/>
       <Wrapper>
         <Main>
@@ -48,7 +49,7 @@ const Home = ({ navigation }) => {
         <Propaganda>
           <SubtituloReserva>Propaganda</SubtituloReserva>
         </Propaganda>
-        <OperationBox type='primary'>
+        {/* <OperationBox type='primary'>
           <Subtitulo>Avaliação de Clientes</Subtitulo>
           <Linha/>
           <AvaliacaoGeral>
@@ -57,23 +58,23 @@ const Home = ({ navigation }) => {
           </AvaliacaoGeral>
           <LinhaReserva/>
           <Comentarios/>
-        </OperationBox>
+        </OperationBox> */}
         <OperationBox type='secondary'>
           <SubtituloLongo>Requisitos para alugar um veículo</SubtituloLongo>
           <Linha/>
-          <Collapsible title='Idade mínima' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
-          <Collapsible title='Carteira Nacional de Habilitação(CNH)' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
-          <Collapsible title='Documentos de identificação e CPF' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
-          <Collapsible title='Cartão de Crédito' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
-          <Collapsible title='Importante' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
+          <Collapsible title='Idade mínima' contentHeight={150} textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
+          <Collapsible title='Carteira Nacional de Habilitação(CNH)' contentHeight={150}  textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
+          <Collapsible title='Documentos de identificação e CPF' contentHeight={150}  textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
+          <Collapsible title='Cartão de Crédito' contentHeight={150} textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
+          <Collapsible title='Importante' contentHeight={150} textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book'/>
         </OperationBox>
         <OperationBox type='primary'>
           <Subtitulo>Principais Seguros Disponíveis</Subtitulo>
           <Linha></Linha>
-          <Collapsible title='Not Included' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting'/>
-          <Collapsible title='Not Included' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting'/>
-          <Collapsible title='Not Included' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting'/>
-          <Collapsible title='Not Included' textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting'/>
+          <Collapsible title='Not Included' contentHeight={170} textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting'/>
+          <Collapsible title='Not Included' contentHeight={170} textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting'/>
+          <Collapsible title='Not Included' contentHeight={170} textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting'/>
+          <Collapsible title='Not Included' contentHeight={170} textContent='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting'/>
         </OperationBox>
         <OperationBox type='secondary'>
           <Subtitulo>Saiba mais sobre a Alocarr</Subtitulo>
@@ -177,10 +178,10 @@ const LocationPicker = () => {
     <InputContainer> 
       <Icon 
         name='map-marker-alt' 
-        style={{color: cores.cliente.primary, paddingRight: 5, marginLeft: 3}} 
+        style={{color: cores.cliente.primary, paddingRight: 5, marginLeft: 3, width: 30}} 
         size={25}/>
         <Picker
-          style={{ width: '100%', height: 40 }}
+          style={{ width: '85%', height: 40 }}
           selectedValue={selectedValue}
           onValueChange={(itemValue, itemIndex) =>
             setSelectedValue(itemValue)
