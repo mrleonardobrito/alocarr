@@ -127,7 +127,7 @@ const Router = () => {
   const [isGerente, setIsGerente] = React.useState(true)
 
   return <AdmNavigation />
-  return <UserNavigation />
+  // return <UserNavigation />
 }
 
 export default Router;

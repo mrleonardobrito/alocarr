@@ -26,6 +26,7 @@ import Animated, { Extrapolate, interpolate, interpolateColor, useAnimatedScroll
 
 import * as ImagePicker from 'expo-image-picker'
 
+
 const EditarPerfil = ({ navigation }) => {
     const scrollY = useSharedValue(0);
 
@@ -39,7 +40,7 @@ const EditarPerfil = ({ navigation }) => {
     const [endereco, setEndereco] = useState('Rua Dom Pedro II, 102, Arapiraca-AL')
   
     const PickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
+        let result = await ImagePicker.launchCameraAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
             aspect: [4,3],
@@ -131,7 +132,7 @@ const EditarPerfil = ({ navigation }) => {
                         </DataInput>  
                     </FormularioWrapper>
                     <SalvarButton onPress={() => navigation.navigate({
-                        name: "Perfil",
+                        name: "Perfil",     
                         params: { 
                             avatar: avatar,
                             nome: nome, 

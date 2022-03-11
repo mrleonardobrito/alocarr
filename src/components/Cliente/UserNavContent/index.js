@@ -84,7 +84,7 @@ const UserNavContent = ({ navigation, route }) => {
                     <NavName>Configurações</NavName>
                 </ItemContainer>
                 <ItemContainer
-                    onPress={() => navigation.navigate("Home")}
+                    onPress={() => navigation.navigate("Reserva")}
                 >
                     <Icon name="car-side" size={30} style={{ color: cores.cliente.background2}}/>
                     <NavName>Minhas Reservas</NavName>
