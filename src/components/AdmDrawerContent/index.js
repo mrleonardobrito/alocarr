@@ -2,7 +2,7 @@
 
 import { StatusBar } from 'expo-status-bar';
 
-import React, {useReducer, useState} from 'react';
+import React, {useReducer, useState, useEffect} from 'react';
 
 /* VectorIcons */
 
@@ -52,10 +52,30 @@ export default function AdmDrawerContent({navigation}){
 
     }
 
-    const [visibleCadastroEspeci, toggleCadastroEspeci] = useReducer((s)=> !s, false);
-    const [visibleFinanceiro, toggleFinanceiro] = useReducer((s)=> !s, false)
-    const [visibleLocacoes, toggleLocacoes] = useReducer((s)=> !s, false)
+    function verificarOpen(){
+        if(visibleCadastroEspeci){
+            console.log('Cadastro')
+            toggleFinanceiro(false);
+            toggleLocacoes(false);
+        }
+        if(visibleFinanceiro){
+            console.log('Fina')
+            toggleCadastroEspeci(true);
+            toggleLocacoes(true);
+        }
+        if(visibleLocacoes){
+            console.log('Loca')
+            toggleCadastroEspeci(true);
+            toggleFinanceiro(true);
+        }
+    }
 
+    const [visibleCadastroEspeci, toggleCadastroEspeci] = useReducer((s)=> !s, false);
+    const [visibleFinanceiro, toggleFinanceiro] = useReducer((s)=> !s, false);
+    const [visibleLocacoes, toggleLocacoes] = useReducer((s)=> !s, false);
+
+
+    
     function CadastrosGerais(){
         return(
             <MotiView
@@ -241,7 +261,7 @@ export default function AdmDrawerContent({navigation}){
 
     return(
         <DrawerContainer>
-             <StatusBar hidden/>
+            
             <DrawerHeader style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 <TouchableOpacity onPress={() => navigation.navigate('Gerente')} style={{marginTop: 5}}><DrawerHeaderTitle>{logo()}<Text style={{fontSize: 23, color: '#fff', fontWeight: 'bold'}}>{pageName}</Text></DrawerHeaderTitle></TouchableOpacity>
                 <CloseIcon onPress={()=> navigation.closeDrawer()} st><Icon name="times" style={styles.fonte}/></CloseIcon>

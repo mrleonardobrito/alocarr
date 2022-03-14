@@ -8,7 +8,7 @@ import IconMaterial from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function(){
     return(
-        <View>
+        <View style={{backgroundColor: '#011631', flex: 1}}>
             <Header pageName="Colaboradores"/>
             <View style={{padding: 10}}>
                 <View style={{height: 35, backgroundColor: '#285084', borderRadius: 5, flexDirection: 'row'}}>
