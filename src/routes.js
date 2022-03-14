@@ -14,6 +14,7 @@ import Carros from './screens/Gerente/Carros'
 import AdicionarCarro from './screens/Gerente/AdicionarCarro';
 import Detalhes from './screens/Gerente/Carros/Detalhes'
 import EditarDetalhes from './screens/Gerente/Carros/Detalhes/EditarDetalhes';
+import DetalhesFinanceiroCarro from './screens/Gerente/Financeiro/FinanceiroCarros/DetalhesFinanceiroCarro';
 import Cadastro1 from './screens/Cadastro/Cadastro1'
 import Cadastro2 from './screens/Cadastro/Cadastro2'
 import Cadastro3 from './screens/Cadastro/Cadastro3'
@@ -78,7 +79,7 @@ const UserNavigation = () => {
 const AdmNavigation = () => {
   return (
     <AdmDrawer.Navigator 
-      initialRouteName="AdicionarCarro" 
+      initialRouteName="DetalhesFinanceiroCarro" 
       screenOptions={{ headerShown: false }}
       drawerContent={(props) => <AdmDrawerContent {...props}/>}
     >
@@ -87,6 +88,7 @@ const AdmNavigation = () => {
       <AdmDrawer.Screen name="Dados" component={Dados} />
       <AdmDrawer.Screen name="Financeiro" component={Financeiro} />
       <AdmDrawer.Screen name="FinanceiroCarros" component={FinanceiroCarros} />
+      <AdmDrawer.Screen name="DetalhesFinanceiroCarro" component={DetalhesFinanceiroCarro} />
       <AdmDrawer.Screen name="Adicionar" component={Adicionar}/>
       <AdmDrawer.Screen name="Excluir" component={Excluir}/>
       <AdmDrawer.Screen name="Quitar" component={Quitar}/>

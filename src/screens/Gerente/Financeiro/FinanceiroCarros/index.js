@@ -55,7 +55,7 @@ export default function({navigation}){
                             <Text style={{color: '#fff', fontSize: 15}}>{item.id}</Text>
                         </View>
                     </View>
-                    <ButtonVer onPress={()=> navigation.navigate('Detalhes', id)}><ButtonText>Detalhes</ButtonText></ButtonVer>
+                    <ButtonVer onPress={()=> navigation.navigate('DetalhesFinanceiroCarro')}><ButtonText>Detalhes</ButtonText></ButtonVer>
                 </CarroContainer>
         
                 }
