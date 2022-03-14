@@ -2,7 +2,7 @@
 
 import { StatusBar } from 'expo-status-bar';
 
-import React, {useReducer, useState} from 'react';
+import React, {useReducer, useState, useEffect} from 'react';
 
 /* VectorIcons */
 
@@ -14,7 +14,7 @@ import {MotiView, AnimatePresence} from 'moti';
 
 /* StyledComponents */
 
-import { View, Text, StyleSheet, TouchableOpacity, Image, Linking, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
 import { 
     DrawerContainer, DrawerHeader, DrawerMain, DrawerFooter, DrawerHeaderTitle,
     CloseIcon, SearchInput, SearchContainer, SearchButton, ItemsContainer, ItemMain,
@@ -52,10 +52,30 @@ export default function AdmDrawerContent({navigation}){
 
     }
 
-    const [visibleCadastroEspeci, toggleCadastroEspeci] = useReducer((s)=> !s, false);
-    const [visibleFinanceiro, toggleFinanceiro] = useReducer((s)=> !s, false)
-    const [visibleLocacoes, toggleLocacoes] = useReducer((s)=> !s, false)
+    function verificarOpen(){
+        if(visibleCadastroEspeci){
+            console.log('Cadastro')
+            toggleFinanceiro(false);
+            toggleLocacoes(false);
+        }
+        if(visibleFinanceiro){
+            console.log('Fina')
+            toggleCadastroEspeci(true);
+            toggleLocacoes(true);
+        }
+        if(visibleLocacoes){
+            console.log('Loca')
+            toggleCadastroEspeci(true);
+            toggleFinanceiro(true);
+        }
+    }
 
+    const [visibleCadastroEspeci, toggleCadastroEspeci] = useReducer((s)=> !s, false);
+    const [visibleFinanceiro, toggleFinanceiro] = useReducer((s)=> !s, false);
+    const [visibleLocacoes, toggleLocacoes] = useReducer((s)=> !s, false);
+
+
+    
     function CadastrosGerais(){
         return(
             <MotiView
@@ -113,8 +133,8 @@ export default function AdmDrawerContent({navigation}){
               }}
             animate={{
                 opacity: 1,
-                height: 110,
-                marginBottom: 0
+                height: 100,
+                marginBottom: 20
               }}
             exit={{
                 opacity: 0,
@@ -133,6 +153,12 @@ export default function AdmDrawerContent({navigation}){
             >
                 <TouchableOpacity style={{flexDirection: 'row', backgroundColor: 'transparent', height: 100/3 + '%', alignItems: 'center'}}
                 onPress={() => navigation.navigate('Financeiro')}
+                >
+                    <IconDot name='dot-single' style={[styles.itemFonte, {fontSize: 28, backgroundColor: 'transparent'}]}/>
+                    <Text style={[styles.fonte, {fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}]}>Geral</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{flexDirection: 'row', backgroundColor: 'transparent', height: 100/3 + '%', alignItems: 'center'}}
+                    onPress={() => navigation.navigate('FinanceiroCarros')}
                 >
                     <IconDot name='dot-single' style={[styles.itemFonte, {fontSize: 28, backgroundColor: 'transparent'}]}/>
                     <Text style={[styles.fonte, {fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}]}>Veículos</Text>
@@ -241,7 +267,7 @@ export default function AdmDrawerContent({navigation}){
 
     return(
         <DrawerContainer>
-             <StatusBar hidden/>
+            
             <DrawerHeader style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 <TouchableOpacity onPress={() => navigation.navigate('Gerente')} style={{marginTop: 5}}><DrawerHeaderTitle>{logo()}<Text style={{fontSize: 23, color: '#fff', fontWeight: 'bold'}}>{pageName}</Text></DrawerHeaderTitle></TouchableOpacity>
                 <CloseIcon onPress={()=> navigation.closeDrawer()} st><Icon name="times" style={styles.fonte}/></CloseIcon>
@@ -250,7 +276,7 @@ export default function AdmDrawerContent({navigation}){
                 <View>
                     <SearchContainer>
                         <SearchButton><Icon name="search" style={styles.fonteSearch}/></SearchButton>
-                        <SearchInput placeholderTextColor="#fff" color="#fff" placeholder="Pesquisar..." />
+                        <SearchInput placeholderTextColor="#fff" placeholder="Pesquisar..." style={{color: '#fff'}}/>
                     </SearchContainer>
                     <ItemsContainer>
                         <ItemMain onPress={() => navigation.navigate('Graficos')}>
@@ -294,7 +320,7 @@ export default function AdmDrawerContent({navigation}){
                     </ItemsContainer>
                 </View>
                 <View>
-                    <ItemHelpMain onPress={() => Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${localizacao}`)}>
+                    <ItemHelpMain>
                         <ItemIconFooter><Icon name="question-circle" style={styles.itemFonte}/></ItemIconFooter>
                         <ItemText>Ajuda</ItemText>
                     </ItemHelpMain>

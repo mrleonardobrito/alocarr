@@ -53,10 +53,12 @@ export const Main = styled.View`
 
 export const MainItem = styled.View`
     width: 100%;
-    height: 120px;
-    background-color: #fff;
+    height: 175px;
+    background-color: #254A7B;
     border-radius: 5px;
     margin-top: 15px;
+    display: flex;
+    justify-content: center;
 `;
 
 export const CarIcon = styled.View`
@@ -87,10 +89,7 @@ export const MinorIcon = styled.View``;
 
 export const Descrip = styled.View`
     display: flex;
-    align-items: center;
-    position: absolute;
-    right: 20px;
-    bottom: 15px;
+    
 `;
 
 export const DescripNum = styled.Text`
@@ -106,18 +105,19 @@ export const DescripText = styled.Text`
 `;
 
 export const ButtonVer = styled.TouchableOpacity`
-    height: 40px;
-    width: 100%;
     position: absolute;
     bottom: 0;
-    background-color: #e0e0e0;
+    height: 40px;
+    width: 100%;
+    background-color: #4576B6;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    padding-left: 10px
+    padding-left: 10px;
+    
 `;
 
 export const ButtonText = styled.Text`
-    color: ${props => props.theme.mainColor};
+    color: #fff;
     font-weight: ${props => props.theme.negrito};
     line-height: 40px;
 `;

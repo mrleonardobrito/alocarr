@@ -6,12 +6,15 @@ import Gerente from './screens/Gerente/Gerente'
 import Graficos from './screens/Gerente/Graficos'
 import Dados from './screens/Gerente/Dados'
 import Financeiro from './screens/Gerente/Financeiro'
+import FinanceiroCarros from './screens/Gerente/Financeiro/FinanceiroCarros'
 import Adicionar from './screens/Gerente/Financeiro/Adicionar'
 import Excluir from './screens/Gerente/Financeiro/FinanceiroComponents/Excluir'
 import Quitar from './screens/Gerente/Financeiro/FinanceiroComponents/Quitar'
 import Carros from './screens/Gerente/Carros'
+import AdicionarCarro from './screens/Gerente/AdicionarCarro';
 import Detalhes from './screens/Gerente/Carros/Detalhes'
 import EditarDetalhes from './screens/Gerente/Carros/Detalhes/EditarDetalhes';
+import DetalhesFinanceiroCarro from './screens/Gerente/Financeiro/FinanceiroCarros/DetalhesFinanceiroCarro';
 import Cadastro1 from './screens/Cadastro/Cadastro1'
 import Cadastro2 from './screens/Cadastro/Cadastro2'
 import Cadastro3 from './screens/Cadastro/Cadastro3'
@@ -76,7 +79,7 @@ const UserNavigation = () => {
 const AdmNavigation = () => {
   return (
     <AdmDrawer.Navigator 
-      initialRouteName="Colaboradores" 
+      initialRouteName="DetalhesFinanceiroCarro" 
       screenOptions={{ headerShown: false }}
       drawerContent={(props) => <AdmDrawerContent {...props}/>}
     >
@@ -84,6 +87,8 @@ const AdmNavigation = () => {
       <AdmDrawer.Screen name="Graficos" component={Graficos}/>
       <AdmDrawer.Screen name="Dados" component={Dados} />
       <AdmDrawer.Screen name="Financeiro" component={Financeiro} />
+      <AdmDrawer.Screen name="FinanceiroCarros" component={FinanceiroCarros} />
+      <AdmDrawer.Screen name="DetalhesFinanceiroCarro" component={DetalhesFinanceiroCarro} />
       <AdmDrawer.Screen name="Adicionar" component={Adicionar}/>
       <AdmDrawer.Screen name="Excluir" component={Excluir}/>
       <AdmDrawer.Screen name="Quitar" component={Quitar}/>
@@ -92,6 +97,8 @@ const AdmNavigation = () => {
       <AdmDrawer.Screen name="Colaboradores" component={Colaboradores}/>
       <AdmDrawer.Screen name="EditarDetalhes" component={EditarDetalhes}/>
       <AdmDrawer.Screen name="LoginRouter" component={LoginRouter}/>
+      <AdmDrawer.Screen name="AdicionarCarro" component={AdicionarCarro}/>
+
 
 
     </AdmDrawer.Navigator>

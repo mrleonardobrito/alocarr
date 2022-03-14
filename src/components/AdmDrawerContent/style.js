@@ -50,9 +50,9 @@ export const SearchContainer = styled.View`
 export const SearchInput = styled.TextInput`
     width: 80%;
     height: 45px;
-    background-color: ${props => props.theme.corTitulo};
-    border-bottom-right-radius: 13px;
-    border-top-right-radius: 13px;
+    background-color: #3766A4;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
     font-weight: bold;
     padding: 0px 10px 0 10px;
 `;
@@ -60,9 +60,9 @@ export const SearchButton = styled.TouchableOpacity`
     width: 20%;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.theme.corTitulo};
-    border-bottom-left-radius: 13px;
-    border-top-left-radius: 13px;
+    background-color: #3766A4;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
     color: #fff;
 `;
 

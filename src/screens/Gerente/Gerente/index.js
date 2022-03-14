@@ -2,7 +2,7 @@
 
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Animated, ScrollView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Animated, ScrollView, Image } from 'react-native';
 
 
 /* VectorIcons, StyledComponents, Swipeable */
@@ -22,7 +22,7 @@ const HEIGHT = '100%' + '150%';
 
 export default function({ navigation }){
 
-    const pageName = 'Alocarr';
+    const pageName = 'Aloccar';
 
     function rightActions(){
         return(
@@ -47,35 +47,54 @@ export default function({ navigation }){
     }
 
     const quantidadeCarros = 5;
-    const valoresFinanceiro = [500.53, 343]
-
+    const valoresFinanceiro = [500.5323, 343.7765];
+    
     return(
         <View style={styles.container}>
             <StatusBar hidden/>
             <HeaderOb pageName={pageName}/>
             <View style={{paddingHorizontal: 10}}>
                 <MainItem>
-                    <MainSection>
-                        <CarIcon><Icon name="car" color="#34598A" style={styles.iconeCarro}/></CarIcon>
-                        <Descrip><DescripNum>{quantidadeCarros}</DescripNum><DescripText>Locados</DescripText></Descrip>
-                    </MainSection>
-                    <ButtonVer onPress={() => navigation.navigate('Carros')}><ButtonText>Ver</ButtonText></ButtonVer>
+                    <View style={{width: '100%', height: '77%', alignItems: 'center', flexDirection: 'row'}}>
+                        <Image source={require("../../../../img/gerente_home_carro.png")} style={{height: '100%', width: '40%', resizeMode: 'center'}}/>
+                        <View style={{width: '60%', height: '100%' , alignItems: 'flex-end', paddingTop: 20, backgroundColor: 'transparent', paddingRight: 25}}>
+                            <Text style={{fontSize: 23, fontWeight: 'bold', color: 'white'}}>Carros locados</Text>
+                            <Text style={{fontSize: 35, fontWeight: 'bold', color: 'white'}}>{quantidadeCarros}</Text>
+                        </View>
+                    </View>
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('Carros')}
+                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10}}>
+                        <ButtonText>Ver</ButtonText>
+                    </TouchableOpacity>
                 </MainItem>
-                <Swipeable renderRightActions={rightActions} renderLeftActions={leftActions}>
-                    <MainItem>
-                        <MainSection>
-                            <MajorIcon><Icon name="plus" color="#fff" style={styles.iconePlusMinor}/></MajorIcon>
-                            <Descrip><DescripNum>R${valoresFinanceiro[0]}</DescripNum><DescripText>A receber</DescripText></Descrip>
-                        </MainSection>
-                        <ButtonVer onPress={()=> navigation.navigate('Financeiro')}><ButtonText>Ver</ButtonText></ButtonVer>
-                    </MainItem>
-                </Swipeable>
                 <MainItem>
-                    <MainSection>
-                        <MajorIcon><Icon name="minus" color="#fff" style={styles.iconePlusMinor}/></MajorIcon>
-                        <Descrip><DescripNum>R${valoresFinanceiro[1]}</DescripNum><DescripText>A pagar</DescripText></Descrip>
-                    </MainSection>
-                    <ButtonVer onPress={()=> navigation.navigate('Financeiro')}><ButtonText>Ver</ButtonText></ButtonVer>
+                    <View style={{width: '100%', height: '77%', alignItems: 'center', flexDirection: 'row', paddingLeft: 20}}>
+                        <View style={{width: '60%', height: '100%' , alignItems: 'flex-start', paddingTop: 20, backgroundColor: 'transparent', paddingRight: 25}}>
+                            <Text style={{fontSize: 23, fontWeight: 'bold', color: 'white'}}>Lucro do mês</Text>
+                            <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white', marginTop: 10}}>R${valoresFinanceiro[0].toFixed(2)}</Text>
+                        </View>
+                        <Image source={require("../../../../img/gerente_home_grafic.png")} style={{height: '100%', width: '40%', resizeMode: 'center'}}/>
+                    </View>
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('Financeiro')}
+                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10}}>
+                        <ButtonText>Ver</ButtonText>
+                    </TouchableOpacity>
+                </MainItem>
+                <MainItem>
+                    <View style={{width: '100%', height: '77%', alignItems: 'center', flexDirection: 'row'}}>
+                        <Image source={require("../../../../img/gerente_home_grafic2.png")} style={{height: '100%', width: '35%', resizeMode: 'center', backgroundColor: 'transparent'}}/>
+                        <View style={{width: '65%', height: '100%' , alignItems: 'flex-end', paddingTop: 20, backgroundColor: 'transparent', paddingRight: 25}}>
+                            <Text style={{fontSize: 23, fontWeight: 'bold', color: 'white'}}>Contas a pagar</Text>
+                            <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white', marginTop: 10}}>R${valoresFinanceiro[1].toFixed(2)}</Text>
+                        </View>
+                    </View>
+                    <TouchableOpacity
+                    onPress={() => navigation.navigate('Financeiro')}
+                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10}}>
+                        <ButtonText>Ver</ButtonText>
+                    </TouchableOpacity>
                 </MainItem>
                 
                 
@@ -100,7 +119,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: '#34598A'
+        backgroundColor: '#001732'
     }
 
 });
