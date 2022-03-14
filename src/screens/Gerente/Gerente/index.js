@@ -22,7 +22,7 @@ const HEIGHT = '100%' + '150%';
 
 export default function({ navigation }){
 
-    const pageName = 'Alocarr';
+    const pageName = 'Aloccar';
 
     function rightActions(){
         return(

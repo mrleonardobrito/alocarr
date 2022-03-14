@@ -5,7 +5,7 @@ export const CarroContainer = styled.View`
     height: 150px;
     background-color: #295084;
     border-radius: 5px;
-    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
 

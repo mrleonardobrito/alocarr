@@ -171,7 +171,7 @@ export const Footer = styled.View`
 `;
 
 export const Main = styled.View`
-    background-color: ${props => props.theme.mainColor};
+    background-color: #021732;
     padding: 20px 10px 0 10px;
     padding-bottom: 60px;
 `;

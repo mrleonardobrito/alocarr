@@ -193,7 +193,7 @@ export default function({route}){
     }
 
     return(
-        <ScrollView style={{backgroundColor: '#34598A'}}>
+        <ScrollView style={{backgroundColor: '#021732'}}>
             <HeaderOb pageName={pageName}/>
             <Main>
                 <FinanceiroButtonContainer>   

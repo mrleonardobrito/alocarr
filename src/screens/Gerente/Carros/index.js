@@ -50,8 +50,15 @@ export default function({ navigation }){
                 </TouchableOpacity>
                 <TextInput style={{backgroundColor: '#3766A4', width: '85%', height: '100%', borderBottomRightRadius: 7, borderTopRightRadius: 7, padding: 10, color: '#fff'}}/>
             </View>
-            <View style={{width: '100%', marginTop: '2.5%', alignItems: 'center'}}>
+            <View style={{width: '100%', marginTop: '2.5%', alignItems: 'center', marginBottom: '3%'}}>
                 <View style={{paddingHorizontal: 10, width: '90%', height: 2, borderRadius: 50, backgroundColor: '#3766A4'}}></View>
+            </View>
+            <View style={{width: '100%', height: 50, paddingHorizontal: 10, marginBottom: 5}}>
+                <TouchableOpacity 
+                onPress={() => navigation.navigate('AdicionarCarro')}
+                style={{width: '100%', height: '90%', backgroundColor: '#295084', borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}>
+                    <Text style={{color: '#fff', fontSize: 18, fontWeight: 'bold'}}>Adicionar carro</Text>
+                </TouchableOpacity>
             </View>
             <View style={{paddingHorizontal: 10, paddingBottom: 40}}>    
                 <FlatList 
@@ -98,8 +105,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     carroImage: {
-        height: 75,
-        width: '100%',
+        height: 85,
+        width: 130,
+        resizeMode: 'contain'
     },
     linha: {
         height: 95,

@@ -171,7 +171,7 @@ export default function({route}){
     return(
         <ScrollView>
             <HeaderOb pageName={pageName}/>
-            <Main>
+            <Main style={{backgroundColor: '#021732'}}>
                 <GraficoContainer>
                     <Grafico style={{flexDirection: 'column'}}>
                         <Text style={styles.graficoLinhaTitulo}>Status locação - ultimos 30 dias</Text>
