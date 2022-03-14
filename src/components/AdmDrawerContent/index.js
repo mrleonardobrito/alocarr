@@ -14,7 +14,7 @@ import {MotiView, AnimatePresence} from 'moti';
 
 /* StyledComponents */
 
-import { View, Text, StyleSheet, TouchableOpacity, Image, Linking, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
 import { 
     DrawerContainer, DrawerHeader, DrawerMain, DrawerFooter, DrawerHeaderTitle,
     CloseIcon, SearchInput, SearchContainer, SearchButton, ItemsContainer, ItemMain,
@@ -314,7 +314,7 @@ export default function AdmDrawerContent({navigation}){
                     </ItemsContainer>
                 </View>
                 <View>
-                    <ItemHelpMain onPress={() => Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${localizacao}`)}>
+                    <ItemHelpMain>
                         <ItemIconFooter><Icon name="question-circle" style={styles.itemFonte}/></ItemIconFooter>
                         <ItemText>Ajuda</ItemText>
                     </ItemHelpMain>
