@@ -126,8 +126,8 @@ export const gerente = [
 const Router = () => {
   const [isGerente, setIsGerente] = React.useState(true)
 
-  return <AdmNavigation />
-  // return <UserNavigation />
+  // return <AdmNavigation />
+  return <UserNavigation />
 }
 
 export default Router;

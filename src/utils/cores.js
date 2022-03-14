@@ -1,7 +1,7 @@
 export const cores = {
     cliente: {
-      primary: '#34598A',
-      secondary: '#002B64',
+      primary: '#3E6699',
+      secondary: '#285084',
       background:'#fff',
       background2: '#ECE7E7',
       text1: '#fff',
@@ -28,3 +28,6 @@ export const cores = {
     
     fontSize: 'font-size: 18px;',
   }
+
+  // #34598A
+  // #002B64

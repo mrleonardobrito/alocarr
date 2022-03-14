@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Picker } from '@react-native-picker/picker';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
@@ -154,4 +155,8 @@ export const AvaliacaoGeral = styled.View`
     background-color: '#f0f';
     flex-direction: row;
     justify-content: space-evenly;
+`
+export const LocalPicker = styled(Picker)`
+    height: 40px;
+    width: 93%;
 `
