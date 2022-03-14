@@ -58,7 +58,7 @@ export default function({ navigation }){
             <View style={{paddingHorizontal: 10, paddingVertical: 15, backgroundColor: '#001732'}}>
                 <View style={{backgroundColor: '#295084', borderRadius: 5, padding: 15}}>
                     <View style={{flexDirection: 'row', width: '100%'}}>
-                        <View style={{width: '50%'}}>
+                        <View style={{width: '70%'}}>
                             <Text style={styles.fontePadrao}>Nome</Text>
                             <TextInput 
                             style={styles.inputPequeno} 
@@ -66,7 +66,7 @@ export default function({ navigation }){
                             placeholderTextColor="lightgray"
                             ></TextInput>
                         </View>
-                        <View style={{width: '50%'}}>
+                        <View style={{width: '30%'}}>
                             <Text style={styles.fontePadrao}>Ano</Text>
                             <TextInputMask
                                 type={'datetime'}
@@ -77,7 +77,7 @@ export default function({ navigation }){
                                 placeholder="0000"
                                 placeholderTextColor="lightgray"
                                 onChangeText={(text) => setAno(text)}
-                                style={[styles.inputPequeno, {width: '55%'}]} />
+                                style={[styles.inputPequeno, {width: '100%', textAlign: 'center'}]} />
                         </View>
                     </View>
                     <View style={{marginTop: 10, justifyContent: 'space-between'}}>
@@ -333,9 +333,23 @@ export default function({ navigation }){
                                         style={[styles.inputPequeno, {width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'flex-start', overflow: 'hidden'}]} />
                                 </View>
                             </View>
+                            <View style={{marginTop: 10}}>
+                                <Text style={styles.fontePadrao}>Observação Característica</Text>
+                                <View>
+                                    <TextInput
+                                        value={local}
+                                        multiline={true}
+                                        placeholder="Digite aqui..."
+                                        placeholderTextColor="lightgray"
+                                        onChangeText={(text) => setLocal(text)}
+                                        style={[styles.inputPequeno, {width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'flex-start', overflow: 'hidden'}]} />
+                                </View>
+                            </View>
                         </View>
                     </View>
-
+                    <TouchableOpacity style={{height: 50, width: '100%', borderRadius: 5, backgroundColor: '#254A7C', marginTop: 10, textAlign: 'center', justifyContent: 'center'}}>
+                        <Text style={[styles.fontePadrao, {fontSize: 20}]}>Adicionar carro</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </ScrollView>

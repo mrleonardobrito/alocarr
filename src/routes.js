@@ -6,6 +6,7 @@ import Gerente from './screens/Gerente/Gerente'
 import Graficos from './screens/Gerente/Graficos'
 import Dados from './screens/Gerente/Dados'
 import Financeiro from './screens/Gerente/Financeiro'
+import FinanceiroCarros from './screens/Gerente/Financeiro/FinanceiroCarros'
 import Adicionar from './screens/Gerente/Financeiro/Adicionar'
 import Excluir from './screens/Gerente/Financeiro/FinanceiroComponents/Excluir'
 import Quitar from './screens/Gerente/Financeiro/FinanceiroComponents/Quitar'
@@ -85,6 +86,7 @@ const AdmNavigation = () => {
       <AdmDrawer.Screen name="Graficos" component={Graficos}/>
       <AdmDrawer.Screen name="Dados" component={Dados} />
       <AdmDrawer.Screen name="Financeiro" component={Financeiro} />
+      <AdmDrawer.Screen name="FinanceiroCarros" component={FinanceiroCarros} />
       <AdmDrawer.Screen name="Adicionar" component={Adicionar}/>
       <AdmDrawer.Screen name="Excluir" component={Excluir}/>
       <AdmDrawer.Screen name="Quitar" component={Quitar}/>

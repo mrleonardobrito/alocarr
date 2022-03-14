@@ -133,8 +133,8 @@ export default function AdmDrawerContent({navigation}){
               }}
             animate={{
                 opacity: 1,
-                height: 110,
-                marginBottom: 0
+                height: 100,
+                marginBottom: 20
               }}
             exit={{
                 opacity: 0,
@@ -153,6 +153,12 @@ export default function AdmDrawerContent({navigation}){
             >
                 <TouchableOpacity style={{flexDirection: 'row', backgroundColor: 'transparent', height: 100/3 + '%', alignItems: 'center'}}
                 onPress={() => navigation.navigate('Financeiro')}
+                >
+                    <IconDot name='dot-single' style={[styles.itemFonte, {fontSize: 28, backgroundColor: 'transparent'}]}/>
+                    <Text style={[styles.fonte, {fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}]}>Geral</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{flexDirection: 'row', backgroundColor: 'transparent', height: 100/3 + '%', alignItems: 'center'}}
+                    onPress={() => navigation.navigate('FinanceiroCarros')}
                 >
                     <IconDot name='dot-single' style={[styles.itemFonte, {fontSize: 28, backgroundColor: 'transparent'}]}/>
                     <Text style={[styles.fonte, {fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}]}>Veículos</Text>
