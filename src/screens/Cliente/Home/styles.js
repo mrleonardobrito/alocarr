@@ -1,10 +1,11 @@
 import styled from 'styled-components/native';
 import { Picker } from '@react-native-picker/picker';
+import { MotiView } from 'moti';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
 `;
-export const OperationBox = styled.View`
+export const OperationBox = styled(MotiView)`
     width: 100%;
     border-radius: 5px;
     margin-bottom: 5px;
@@ -28,7 +29,7 @@ export const ReservaContainer = styled.View`
     background-color: ${props => props.theme.cliente.primary};
 `;
 export const AvaliacaoClientes = styled(ReservaContainer)``;
-export const Propaganda = styled.View`
+export const Propaganda = styled(MotiView)`
     height: 120px;
     width: 100%;
     border-radius: 5px;
@@ -152,7 +153,7 @@ export const FooterOption = styled.Text`
 `
 export const AvaliacaoGeral = styled.View`
     width: 100%;
-    background-color: '#f0f';
+    height: 150px;
     flex-direction: row;
     justify-content: space-evenly;
 `

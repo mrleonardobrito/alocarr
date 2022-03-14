@@ -4,7 +4,7 @@ import { Container, ItemContainer, NavName, VerticalLine, SearchContainer, Searc
 import UserNavHeader from '../UserNavHeader';
 import { cores } from '../../../utils/cores'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { FontAwesome5, Entypo } from '@expo/vector-icons';
+import { FontAwesome5, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 
@@ -30,7 +30,7 @@ const UserNavContent = ({ navigation, route }) => {
                     <ItemContainer
                         onPress={() => navigation.navigate('LoginRouter', {screen: 'Login'})}
                     >
-                        <Icon name="door-open"  size={27} style={{color: cores.cliente.text1}}/>
+                        <MaterialCommunityIcons name="car-door"  size={30} style={{color: cores.cliente.text1}}/>
                         <NavName>Login</NavName>
                     </ItemContainer>
                     <ItemContainer
@@ -44,12 +44,6 @@ const UserNavContent = ({ navigation, route }) => {
                     >
                         <Icon name="cog" size={30} style={{ color: cores.cliente.text1}}/>
                         <NavName>Configurações</NavName>
-                    </ItemContainer>
-                    <ItemContainer
-                        onPress={() => setIsConnected(true)}
-                    >
-                        <FontAwesome5 name="clipboard-list" size={30} style={{ color: cores.cliente.text1}}/>
-                        <NavName>Minhas Reservas</NavName>
                     </ItemContainer>
                 </Main>
             <BottomContainer>

@@ -2,6 +2,7 @@ import Animated from "react-native-reanimated"
 import Icon from "react-native-vector-icons/AntDesign"
 import styled from "styled-components/native"
 
+
 export const Container = styled.View`
     width: 95%;
 `
@@ -11,8 +12,8 @@ export const TitleContainer = styled.View`
     justify-content: space-between;
 `
 export const Title = styled.Text`
-    font-family: 'OpenSans-ExtraBold';
-    font-size: 21px;
+    font-family: 'OpenSans-SemiBold';
+    font-size: 20px;
     color: ${props => props.theme.cliente.text1};
 `
 export const Arrow = styled.Pressable`

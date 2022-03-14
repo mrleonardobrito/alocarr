@@ -8,7 +8,7 @@ const NotaGeral = () => {
   return (
       <NotaGeralContainer>
           <Nota>{dadosGerais.nota.toLocaleString('pt-br')}</Nota>
-          <Estrelas index={3.6}/>
+          <Estrelas index={4.7}/>
           <NumeroAvaliacoes>{dadosGerais.numeroDeAvaliacoes.toLocaleString('pt-br')}</NumeroAvaliacoes>
       </NotaGeralContainer>
   );

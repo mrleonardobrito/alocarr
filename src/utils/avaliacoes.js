@@ -10,6 +10,7 @@ const dadosGerais = {
 
 const comentarios = [
 {
+    id: 0,
     fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
     usuario: "Gabriel Felix",
     avaliacao: 4.8,
@@ -18,6 +19,7 @@ const comentarios = [
     comentario: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
 },
 {
+    id: 1,
     fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
     usuario: "Mariana Dutra",
     avaliacao: 5,
@@ -25,38 +27,38 @@ const comentarios = [
     numeroLikes: 709,
     comentario: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
 },
-{
-    fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
-    usuario: "Mariana Dutra",
-    avaliacao: 5,
-    dataAvaliacao: "29 de setembro de 2021",
-    numeroLikes: 709,
-    comentario: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
-},
-{
-    fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
-    usuario: "Mariana Dutra",
-    avaliacao: 5,
-    dataAvaliacao: "29 de setembro de 2021",
-    numeroLikes: 709,
-    comentario: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
-},
-{
-    fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
-    usuario: "Mariana Dutra",
-    avaliacao: 5,
-    dataAvaliacao: "29 de setembro de 2021",
-    numeroLikes: 709,
-    comentario: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
-},
-{
-    fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
-    usuario: "Linaldo Brito",
-    avaliacao: 5,
-    dataAvaliacao: "15 de jandeiro de 2022",
-    numeroLikes: 709,
-    comentario: "Atendimento personalizado e atendeu as minhas expectativas"
-},
+// {
+//     fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
+//     usuario: "Mariana Dutra",
+//     avaliacao: 5,
+//     dataAvaliacao: "29 de setembro de 2021",
+//     numeroLikes: 709,
+//     comentario: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+// },
+// {
+//     fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
+//     usuario: "Mariana Dutra",
+//     avaliacao: 5,
+//     dataAvaliacao: "29 de setembro de 2021",
+//     numeroLikes: 709,
+//     comentario: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+// },
+// {
+//     fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
+//     usuario: "Mariana Dutra",
+//     avaliacao: 5,
+//     dataAvaliacao: "29 de setembro de 2021",
+//     numeroLikes: 709,
+//     comentario: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+// },
+// {
+//     fotoPerfil: require('../assets/default-user-avatar-300x300.png'),
+//     usuario: "Linaldo Brito",
+//     avaliacao: 5,
+//     dataAvaliacao: "15 de jandeiro de 2022",
+//     numeroLikes: 709,
+//     comentario: "Atendimento personalizado e atendeu as minhas expectativas"
+// },
 ]
 
 export { dadosGerais, comentarios }

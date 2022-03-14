@@ -71,11 +71,13 @@ export const UserImage = styled.Image`
 `
 export const LargerNavName = styled(NavName)`
   font-size: 18px;
-  text-align: right ;
+  text-align: right;
   width: 56%;
 `
-// export const HorizontalLine = styled.View`
-//   width: 105%;
-//   left: -3%;
-//   border: 0.5px solid ${props => props.theme.cliente.text1};
-// `
+
+export const LoginTitle = styled.Text`
+  font-size: 16px;
+  font-family: "OpenSans-SemiBold";
+  color: ${props => props.theme.cliente.text1};
+`
+export const LoginSubtitle = styled.Text``
