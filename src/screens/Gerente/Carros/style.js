@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const CarroContainer = styled.View`
     width: 100%;
-    height: 150px;
+    height: 160px;
     background-color: #295084;
     border-radius: 5px;
     margin-bottom: 15px;

@@ -22,11 +22,11 @@ export default function({ navigation }){
                     <View style={{flexDirection: 'row', marginTop: 10, marginBottom: 10}}>
                         <View>
                             <Text style={styles.fontePadrao}>Quantidade de v/:</Text>
-                            <View style={{borderWidth: 1, opacity: 0.6, borderColor: '#fff', borderRadius: 5, height: 25, justifyContent: 'center', marginTop: 5}}><Text style={[styles.fontePadrao, {fontWeight: 0}]}>6</Text></View>
+                            <View style={{borderWidth: 1, opacity: 0.6, borderColor: '#fff', borderRadius: 5, height: 25, justifyContent: 'center', marginTop: 5}}><Text style={[styles.fontePadrao, {fontWeight: 'normal'}]}>6</Text></View>
                         </View>
                         <View style={{marginLeft: 20}}>
                             <Text style={styles.fontePadrao}>Código: </Text>
-                            <View style={{borderWidth: 1, opacity: 0.6, borderColor: '#fff', borderRadius: 5, height: 25, justifyContent: 'center', marginTop: 5}}><Text style={[styles.fontePadrao, {fontWeight: 0}]}>025</Text></View>
+                            <View style={{borderWidth: 1, opacity: 0.6, borderColor: '#fff', borderRadius: 5, height: 25, justifyContent: 'center', marginTop: 5}}><Text style={[styles.fontePadrao, {fontWeight: 'normal'}]}>025</Text></View>
                         </View>
                     </View>
                 </View>

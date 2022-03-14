@@ -70,7 +70,7 @@ export default function({ navigation }){
                         <View style={{width: '30%'}}><Image source={item.imagem} style={styles.carroImage}/></View>
                         <View style={{width: '55%', paddingLeft: 20}}>
                             <Text style={styles.nomeCarro}>{item.nomeCarro}</Text>
-                            <View style={{marginTop: 7}}>
+                            <View style={{marginTop: 0}}>
                                 <Text style={styles.descCarro}>Placa: <Text style={{fontWeight: 'normal'}}>{item.placa}</Text></Text>
                                 <Text style={styles.descCarro}>Proxima revisão: <Text style={{fontWeight: 'normal'}}>{item.proxRevisao}</Text></Text>
                                 <Text style={styles.descCarro}>Troca de óleo: <Text style={{fontWeight: 'normal'}}>{item.trocaOleo}</Text></Text>
