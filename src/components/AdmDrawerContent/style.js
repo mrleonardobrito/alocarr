@@ -50,7 +50,7 @@ export const SearchContainer = styled.View`
 export const SearchInput = styled.TextInput`
     width: 80%;
     height: 45px;
-    background-color: ${props => props.theme.corTitulo};
+    background-color: #3766A4;
     border-bottom-right-radius: 13px;
     border-top-right-radius: 13px;
     font-weight: bold;
@@ -60,7 +60,7 @@ export const SearchButton = styled.TouchableOpacity`
     width: 20%;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.theme.corTitulo};
+    background-color: #3766A4;
     border-bottom-left-radius: 13px;
     border-top-left-radius: 13px;
     color: #fff;
