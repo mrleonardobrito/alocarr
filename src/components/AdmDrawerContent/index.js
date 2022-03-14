@@ -270,7 +270,7 @@ export default function AdmDrawerContent({navigation}){
                 <View>
                     <SearchContainer>
                         <SearchButton><Icon name="search" style={styles.fonteSearch}/></SearchButton>
-                        <SearchInput placeholderTextColor="#fff" color="#fff" placeholder="Pesquisar..." />
+                        <SearchInput placeholderTextColor="#fff" placeholder="Pesquisar..." style={{color: '#fff'}}/>
                     </SearchContainer>
                     <ItemsContainer>
                         <ItemMain onPress={() => navigation.navigate('Graficos')}>

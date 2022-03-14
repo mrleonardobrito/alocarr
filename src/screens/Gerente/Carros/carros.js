@@ -40,4 +40,22 @@ export default [
         situacao: 2,
         imagem: hb20
     },
+    {
+        id: 5,
+        nomeCarro: 'HB20 Sedan',
+        placa: 'THP 2843',
+        proxRevisao: '03/10/2022',
+        trocaOleo: '89km',
+        situacao: 2,
+        imagem: hb20
+    },
+    {
+        id: 4,
+        nomeCarro: 'HB20 Sedan',
+        placa: 'THP 2843',
+        proxRevisao: '03/10/2022',
+        trocaOleo: '89km',
+        situacao: 2,
+        imagem: hb20
+    },
 ]

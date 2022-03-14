@@ -322,7 +322,7 @@ export default function({route}){
                     <SearchDiv>
                         <SearchInput>
                             <SearchButton ><Icon name="search" style={styles.searchIcon}/></SearchButton>
-                            <SearchTextInput placeholder="Pesquise pelo nome..." color="#fff" placeholderTextColor="#fff" onChangeText={(text)=> setSearchText(text)}></SearchTextInput>
+                            <SearchTextInput placeholder="Pesquise pelo nome..." placeholderTextColor="#fff" onChangeText={(text)=> setSearchText(text)}></SearchTextInput>
                         </SearchInput>
                         <View style={styles.linha}></View>
                     </SearchDiv>

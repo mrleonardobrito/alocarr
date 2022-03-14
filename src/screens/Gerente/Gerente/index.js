@@ -47,7 +47,7 @@ export default function({ navigation }){
     }
 
     const quantidadeCarros = 5;
-    const valoresFinanceiro = [500.53, 343];
+    const valoresFinanceiro = [500.5323, 343.7765];
     
     return(
         <View style={styles.container}>
@@ -72,7 +72,7 @@ export default function({ navigation }){
                     <View style={{width: '100%', height: '77%', alignItems: 'center', flexDirection: 'row', paddingLeft: 20}}>
                         <View style={{width: '60%', height: '100%' , alignItems: 'flex-start', paddingTop: 20, backgroundColor: 'transparent', paddingRight: 25}}>
                             <Text style={{fontSize: 23, fontWeight: 'bold', color: 'white'}}>Lucro do mês</Text>
-                            <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white', marginTop: 10}}>R${valoresFinanceiro[0]}</Text>
+                            <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white', marginTop: 10}}>R${valoresFinanceiro[0].toFixed(2)}</Text>
                         </View>
                         <Image source={require("../../../../img/gerente_home_grafic.png")} style={{height: '100%', width: '40%', resizeMode: 'center'}}/>
                     </View>
@@ -87,7 +87,7 @@ export default function({ navigation }){
                         <Image source={require("../../../../img/gerente_home_grafic2.png")} style={{height: '100%', width: '35%', resizeMode: 'center', backgroundColor: 'transparent'}}/>
                         <View style={{width: '65%', height: '100%' , alignItems: 'flex-end', paddingTop: 20, backgroundColor: 'transparent', paddingRight: 25}}>
                             <Text style={{fontSize: 23, fontWeight: 'bold', color: 'white'}}>Contas a pagar</Text>
-                            <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white', marginTop: 10}}>R${valoresFinanceiro[1]}</Text>
+                            <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white', marginTop: 10}}>R${valoresFinanceiro[1].toFixed(2)}</Text>
                         </View>
                     </View>
                     <TouchableOpacity

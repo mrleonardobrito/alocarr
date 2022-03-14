@@ -51,8 +51,8 @@ export const SearchInput = styled.TextInput`
     width: 80%;
     height: 45px;
     background-color: #3766A4;
-    border-bottom-right-radius: 13px;
-    border-top-right-radius: 13px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
     font-weight: bold;
     padding: 0px 10px 0 10px;
 `;
@@ -61,8 +61,8 @@ export const SearchButton = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     background-color: #3766A4;
-    border-bottom-left-radius: 13px;
-    border-top-left-radius: 13px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
     color: #fff;
 `;
 

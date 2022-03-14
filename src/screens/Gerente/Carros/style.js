@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 export const CarroContainer = styled.View`
     width: 100%;
     height: 150px;
-    background-color: #fff;
+    background-color: #295084;
     border-radius: 5px;
     margin-top: 15px;
     display: flex;
@@ -12,11 +12,8 @@ export const CarroContainer = styled.View`
 `;
 
 export const Bolinha = styled.View`
-    height: 15px;
-    width: 15px;
+    height: 17px;
+    width: 17px;
     background-color: #0e0e0e;
-    position: absolute;
     border-radius: 160px;
-    right: 13px;
-    top: -9px
 `;
