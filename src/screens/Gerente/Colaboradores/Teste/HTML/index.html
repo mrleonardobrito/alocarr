@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboradores</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+            flex-direction: column;
+        }
+        #container-colaboradores{
+            height: 60px;
+            width: 80%;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+        h1{
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+        img{
+            margin: 0;
+        }
+        #container-titulos{
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid gray;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #container-titulos > p{
+            font-family: Arial, Helvetica, sans-serif;
+            width: 20%;
+        }
+        #container-tabela{
+            width: 80%;
+        }
+        .tabelas{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .tabelas > .p{
+            width: 20%;
+            align-items: flex-start;
+            background-color: lightgray;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container-colaboradores">
+        <img src="../../../../../../img/logo.png" style="height: 50px; width: 50px;">
+        <h1>Aloccar</h1>
+    </div>
+    <div id="container-titulos">
+        <p>Nome</p>
+        <p>Cargo</p>
+        <p>Dept.</p>
+        <p>Carga horária</p>
+        <p>Admissão</p>
+    </div>
+    <div id="container-tabela">
+        <div class="tabelas">
+            <div class="p">Emanuel Vilela</div>
+            <div class="p">CEO</div>
+            <div class="p">Administração</div>
+            <div class="p">9 horas</div>
+            <div class="p">19/09/22</div>
+        </div>
+        <div class="tabelas">
+            <div class="p">Leonardo Ferreira</div>
+            <div class="p">CEO</div>
+            <div class="p">Administração</div>
+            <div class="p">9 horas</div>
+            <div class="p">19/09/22</div>
+        </div>
+        <div class="tabelas">
+            <div class="p">Joel Neto</div>
+            <div class="p">CEO</div>
+            <div class="p">Administração</div>
+            <div class="p">9 horas</div>
+            <div class="p">19/09/22</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -21,7 +21,9 @@ import Cadastro3 from './screens/Cadastro/Cadastro3'
 import Cadastro4 from './screens/Cadastro/Cadastro4'
 import Cadastro5 from './screens/Cadastro/Cadastro5'
 import Colaboradores from './screens/Gerente/Colaboradores';
-import Login from './screens/Login'
+import Login from './screens/Login';
+
+import Teste from './screens/Gerente/Colaboradores/Teste';
 
 import AdmDrawerContent from './components/AdmDrawerContent'
 import Home from './screens/Cliente/Home';
@@ -79,7 +81,7 @@ const UserNavigation = () => {
 const AdmNavigation = () => {
   return (
     <AdmDrawer.Navigator 
-      initialRouteName="DetalhesFinanceiroCarro" 
+      initialRouteName="Colaboradores" 
       screenOptions={{ headerShown: false }}
       drawerContent={(props) => <AdmDrawerContent {...props}/>}
     >
@@ -98,6 +100,7 @@ const AdmNavigation = () => {
       <AdmDrawer.Screen name="EditarDetalhes" component={EditarDetalhes}/>
       <AdmDrawer.Screen name="LoginRouter" component={LoginRouter}/>
       <AdmDrawer.Screen name="AdicionarCarro" component={AdicionarCarro}/>
+      <AdmDrawer.Screen name="Teste" component={Teste}/>
 
 
 
@@ -133,8 +136,8 @@ export const gerente = [
 const Router = () => {
   const [isGerente, setIsGerente] = React.useState(true)
 
-  // return <AdmNavigation />
-  return <UserNavigation />
+  return <AdmNavigation />
+  // return <UserNavigation />
 }
 
 export default Router;

@@ -78,7 +78,7 @@ export default function({ navigation }){
                         </View>
                         <View style={{width: '15%', alignItems: 'center', backgroundColor: 'transparent'}}> 
                             {conferirBolinha(item.situacao)}
-                            <Text style={{color: '#fff', fontSize: 15}}>{item.id}</Text>
+                            <Text style={{color: '#fff', fontSize: 15}}>0{item.id}</Text>
                         </View>
                     </View>
                     <ButtonVer onPress={()=> navigation.navigate('Detalhes', id)}><ButtonText>Detalhes</ButtonText></ButtonVer>

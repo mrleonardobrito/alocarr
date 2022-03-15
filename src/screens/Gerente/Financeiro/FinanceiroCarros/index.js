@@ -47,12 +47,11 @@ export default function({navigation}){
                         <View style={{width: '55%', paddingLeft: 20, marginLeft: 15}}>
                             <Text style={styles.nomeCarro}>{item.nomeCarro}</Text>
                             <View style={{marginTop: 7}}>
-                                <Text style={{fontSize: 13, fontWeight: 'bold', color: '#fff'}}>Placa: {item.placa}</Text>
-                                <Text style={{fontSize: 16, fontWeight: 'bold', color: '#fff'}}>{item.saldo < 0 ? <Text style={styles.debitoText}>Débito:</Text> : <Text style={styles.lucroText}>Lucro: </Text>} R$ {item.saldo}</Text>
+                                <Text style={{fontSize: 17, fontWeight: 'bold', color: '#fff'}}>{item.saldo < 0 ? <Text style={styles.debitoText}>Débito:</Text> : <Text style={styles.lucroText}>Lucro: </Text>} R$ {item.saldo}</Text>
                             </View>
                         </View>
                         <View style={{width: '8%', alignItems: 'center', backgroundColor: 'transparent'}}> 
-                            <Text style={{color: '#fff', fontSize: 15}}>{item.id}</Text>
+                            <Text style={{color: '#fff', fontSize: 15}}>0{item.id}</Text>
                         </View>
                     </View>
                     <ButtonVer onPress={()=> navigation.navigate('DetalhesFinanceiroCarro')}><ButtonText>Detalhes</ButtonText></ButtonVer>
@@ -102,12 +101,12 @@ const styles = StyleSheet.create({
         color: '#fff'
     },
     debitoText: {
-        fontSize: 23,
+        fontSize: 22,
         color: 'red',
         fontWeight: 'bold'
     },
     lucroText: {
-        fontSize: 23,
+        fontSize: 22,
         color: 'green',
         fontWeight: 'bold'
     },

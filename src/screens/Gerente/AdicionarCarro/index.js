@@ -45,6 +45,8 @@ export default function({ navigation }){
     const [numeroSerie, setNumeroSerie] = useState();
     const [fornecedor, setFornecedor] = useState();
     const [local, setLocal] = useState();
+    const [obs, setObs] = useState();
+    const [obsCarac, setObsCarac] = useState();
 
 
 
@@ -325,11 +327,11 @@ export default function({ navigation }){
                                 <Text style={styles.fontePadrao}>Observações</Text>
                                 <View>
                                     <TextInput
-                                        value={local}
+                                        value={obs}
                                         multiline={true}
                                         placeholder="Digite aqui..."
                                         placeholderTextColor="lightgray"
-                                        onChangeText={(text) => setLocal(text)}
+                                        onChangeText={(text) => setObs(text)}
                                         style={[styles.inputPequeno, {width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'flex-start', overflow: 'hidden'}]} />
                                 </View>
                             </View>
@@ -337,11 +339,11 @@ export default function({ navigation }){
                                 <Text style={styles.fontePadrao}>Observação Característica</Text>
                                 <View>
                                     <TextInput
-                                        value={local}
+                                        value={obsCarac}
                                         multiline={true}
                                         placeholder="Digite aqui..."
                                         placeholderTextColor="lightgray"
-                                        onChangeText={(text) => setLocal(text)}
+                                        onChangeText={(text) => setObsCarac(text)}
                                         style={[styles.inputPequeno, {width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'flex-start', overflow: 'hidden'}]} />
                                 </View>
                             </View>
