@@ -6,13 +6,14 @@ import {
     CalendarInput, 
     ClockInput, 
     DateNTimeContainer, 
+    HorarioPicker, 
+    HorarioPickerItem, 
     HorarioText, 
     InformationContainer, 
-    VerticalLine
 } from './styles';
 import DateInput from './DateInput';
-import { DataText, InputContainer, NomeOperacao } from '../../../screens/Cliente/Home/styles';
-import { Picker } from '@react-native-picker/picker'
+import { StyleSheet } from 'react-native';
+import { DataText, InputContainer} from '../../../screens/Cliente/Home/styles';
 
 const DateNTimePicker = (props) => {
     
@@ -30,7 +31,7 @@ const DateNTimePicker = (props) => {
         <CalendarInput >
           <Icon 
             name="calendar-alt" 
-            style={{color: cores.mainColor, paddingRight: 5}} 
+            style={{color: cores.cliente.button, paddingRight: 10, paddingLeft: 7}} 
             size={20}
           />
           <InformationContainer>
@@ -38,29 +39,35 @@ const DateNTimePicker = (props) => {
             <DateInput />
           </InformationContainer>   
         </CalendarInput>
-        <VerticalLine/>
         <ClockInput>
           <Icon 
               name="clock" 
-              style={{color: cores.mainColor, padding: 5}} 
+              style={{color: cores.cliente.button, paddingRight: 5}} 
               size={20}
             />
           <InformationContainer>
             <HorarioText>Horário:</HorarioText>
-            <Picker
+            <HorarioPicker
               selectedValue={horarioRetirada}
               onValueChange={(itemValue, itemIndex) =>
                 setHorarioRetirada(itemValue)
               }>
-              <Picker.Item label="manhã" value={horarios.manha} />
-              <Picker.Item label="tarde" value={horarios.tarde} />
-              <Picker.Item label="noite" value={horarios.noite} />
-            </Picker>
+              <HorarioPickerItem value="manhã" label={horarios.manha} style={styles.horarioPickerItem}/>
+              <HorarioPickerItem value="tarde" label={horarios.tarde} style={styles.horarioPickerItem}/>
+              <HorarioPickerItem value="noite" label={horarios.noite} style={styles.horarioPickerItem}/>
+            </HorarioPicker>
           </InformationContainer>
         </ClockInput>
       </InputContainer>
     </DateNTimeContainer>
     )
   }
+
+  const styles = StyleSheet.create({
+    horarioPickerItem: {
+      fontSize: 14,
+      fontFamily: "OpenSans-SemiBold"
+    }
+  })
 
 export default DateNTimePicker;

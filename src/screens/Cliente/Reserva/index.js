@@ -3,7 +3,6 @@ import { StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/Zocial';
 import { Entypo } from '@expo/vector-icons'
 import HamburguerMenu from '../../../components/Cliente/UserNavHeader/HamburguerMenu';
-import Collapsible from '../../../components/Cliente/Collapsible'
 
 import { 
   BackgroundImage,
@@ -72,7 +71,6 @@ const Reserva = ({ navigation }) => {
                 <PrecoGeral>R$98,91</PrecoGeral>
               </PagamentoVisaoGeral>
             </VisaoGeral>
-            <Collapsible title='Incluso na reserva' textContent='oi eu sou seu cu'></Collapsible>
           </OperationBox> 
         </Main>
       </Container>

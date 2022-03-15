@@ -1,26 +1,33 @@
+import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+const { width, height } = Dimensions.get('screen')
+
+export const Container = styled.SafeAreaView`
   width: 100%;
   height: 100%;
-  padding: 3%;
-  background-color: ${props => props.theme.cliente.secondary};
+  background-color: #35598B;
   justify-content: space-between;
 `;
+export const Header = styled.View`
+  height: ${height * 0.08}px;
+`
 export const Main = styled.View`
-  height: 50%;
+  height: ${height * 0.54}px;
+  padding: 0 3% 0 3%;
 `
 export const ItemContainer = styled.TouchableOpacity`
-  height: 70px;
+  height: 60px;
   width: 100%;
-  margin-top: 5px;
+  justify-content: space-around;
+  padding: 0px 10px 0px 10px;
   align-items: center;
-  margin-bottom: 5px;
   flex-direction: row;
 `
 export const NavName = styled.Text`
+  width: 80%;
   font-size: 16px;
-  margin-left: 7px;
+  font-family: "OpenSans-SemiBold";
   color: ${props => props.theme.cliente.text1};
 `
 export const SearchContainer = styled.View`
@@ -30,7 +37,7 @@ export const SearchContainer = styled.View`
   padding: 5px;
   border-radius: 10px;
   margin-bottom: 10px;
-  background-color: ${props => props.theme.cliente.background2};
+  background-color: ${props => props.theme.cliente.text1};
 `
 export const SearchInput = styled.TextInput`
   margin-left: 5px;
@@ -40,31 +47,37 @@ export const VerticalLine = styled.View`
   border: 1px solid ${props => props.theme.cliente.marked1};
 `
 export const BottomContainer = styled.View`
-  height: 25%;
+  height: ${height * 0.25}px;
+  width: 100%;
   justify-content: flex-end;
 `
 export const BottomItem = styled.TouchableOpacity`
   flex-direction: row;
   height: 50px;
+  width: 100%;
+  justify-content: space-around;
 `
 export const PerfilContainer = styled.View`
-  height: 11%;
-  width: 107%;
-  left: -10px;
-  bottom: -10px;
   flex-direction: row;
   align-items: center;
-  background-color: ${props => props.theme.cliente.primary};
+  justify-content: space-around;
+  height: 40%;
+  background-color: #2E568A;
 `
 export const UserImage = styled.Image`
-  height: 100%;
-  width: 75px;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
 `
 export const LargerNavName = styled(NavName)`
   font-size: 18px;
+  text-align: right;
+  width: 56%;
 `
-export const HorizontalLine = styled.View`
-  width: 105%;
-  left: -3%;
-  border: 0.5px solid ${props => props.theme.cliente.text1};
+
+export const LoginTitle = styled.Text`
+  font-size: 16px;
+  font-family: "OpenSans-SemiBold";
+  color: ${props => props.theme.cliente.text1};
 `
+export const LoginSubtitle = styled.Text``

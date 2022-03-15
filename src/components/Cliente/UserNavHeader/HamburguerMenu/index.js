@@ -1,13 +1,13 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Menu } from '../styles';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import { MenuIcon } from '../styles';
 
-const HamburguerMenu = ({ navigation, size=32, color='#fff' }) => {
+const HamburguerMenu = ({ navigation, size=32, color='#fff', ...itemProps }) => {
   
   return (
-    <Menu onPress={() => navigation.toggleDrawer()}>
-        <Icon name='bars' size={size} style={{color: color}}/>
-    </Menu>
+    <MenuIcon onPress={() => navigation.toggleDrawer()} style={{ borderRightWidth: 0, ...itemProps}}>
+        <Icon name='menu' size={size} style={{color: color}} />
+    </MenuIcon>
   )
 }
 

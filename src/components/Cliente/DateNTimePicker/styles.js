@@ -4,15 +4,9 @@ import { DataText, NomeOperacao } from '../../../screens/Cliente/Home/styles';
 
 export const DateNTimeContainer = styled.View`
 `
-export const VerticalLine = styled.View`
-    height: 80%;
-    width: 1px;
-    opacity: 0.3;
-    border: 1px solid ${props => props.theme.cliente.marked1};
-`
 export const Input = styled.View`
     height: 100%;
-    width: 50%;
+    width: 47%;
     align-items: center;
     flex-direction: row;
     margin-right: 2px;
@@ -20,26 +14,29 @@ export const Input = styled.View`
 export const CalendarInput = styled(Input)`
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-right-color: ${props => props.theme.cliente.button};
+    border-right-width: 2px;
 `
 export const ClockInput = styled(Input)`
+    width: 50%;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 `
 export const InformationContainer = styled.View`
-    width: 80%;
+    width: 90%;
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
 `
 export const HorarioText = styled(DataText)`
     top: 18px;
+    left: 5px;
     font-family: 'OpenSans-SemiBold';
 `
-export const HorarioPicker = styled(Picker).attrs((props) => ({
-    
-}))`
-    
+export const HorarioPicker = styled(Picker)`
+    width: 100%;
+    height: 20px;
+    top: 3px;
 `
-
-
-
+export const HorarioPickerItem = styled(Picker.Item)``
+    

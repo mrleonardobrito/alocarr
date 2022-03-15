@@ -23,7 +23,7 @@ export const VantagemTitulo = styled.Text`
     color: ${props => props.theme.cliente.text1};
 `
 export const VantagemTexto = styled.Text`
-    font-family: 'OpenSans-SemiBold ';
+    font-family: 'OpenSans-SemiBold';
     font-size: 15px;
     margin-left: 15px;
     text-align: left;

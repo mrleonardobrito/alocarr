@@ -1,8 +1,7 @@
 import styled from "styled-components/native";
 
 export const BarrasContainer = styled.View`
-    width: 50%;
-    height: 25%;
+    flex: 1;
     margin-top: 10px;
     justify-content: space-between;
 `
