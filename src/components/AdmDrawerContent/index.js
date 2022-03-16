@@ -3,6 +3,8 @@
 import { StatusBar } from 'expo-status-bar';
 
 import React, {useReducer, useState, useEffect} from 'react';
+import { useDrawerStatus } from '@react-navigation/drawer';
+
 
 /* VectorIcons */
 
@@ -35,6 +37,12 @@ export default function AdmDrawerContent({navigation}){
 
     const [searchText, setSearchText] = useState();
 
+    function pesquisar(){
+        const textoDigitado = searchText[0].toUpperCase() + searchText.slice(1).toLowerCase();
+        
+        navigation.navigate(textoDigitado);
+    }
+
     function confLogout(){
         console.log(APP_NAME)
         Alert.alert('Confirmação.', 'Tem certeza que desejas sair de sua conta?', [
@@ -56,7 +64,6 @@ export default function AdmDrawerContent({navigation}){
     const [visibleFinanceiro, toggleFinanceiro] = useReducer((s)=> !s, false);
     const [visibleLocacoes, toggleLocacoes] = useReducer((s)=> !s, false);
 
-    
     function verificarCadastro(){
         toggleCadastroEspeci();
 
@@ -266,8 +273,6 @@ export default function AdmDrawerContent({navigation}){
         }
     }
 
-    const [decidir, setDecidir] = useState(false);
-
     function openAnimation(value){
         if(value == 1){
             return(<CadastrosGerais />);
@@ -285,13 +290,13 @@ export default function AdmDrawerContent({navigation}){
             
             <DrawerHeader style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 <TouchableOpacity onPress={() => navigation.navigate('Gerente')} style={{marginTop: 5}}><DrawerHeaderTitle>{logo()}<Text style={{fontSize: 23, color: '#fff', fontWeight: 'bold'}}>{pageName}</Text></DrawerHeaderTitle></TouchableOpacity>
-                <CloseIcon onPress={()=> navigation.closeDrawer()} st><Icon name="times" style={styles.fonte}/></CloseIcon>
+                <CloseIcon onPress={()=> navigation.closeDrawer()}><Icon name="times" style={styles.fonte}/></CloseIcon>
             </DrawerHeader>
             <DrawerMain style={{backgroundColor: '#295084', justifyContent: 'space-between'}}>
                 <View>
                     <SearchContainer>
-                        <SearchButton><Icon name="search" style={styles.fonteSearch}/></SearchButton>
-                        <SearchInput placeholderTextColor="#fff" placeholder="Pesquisar..." style={{color: '#fff'}}/>
+                        <SearchButton onPress={() => pesquisar()}><Icon name="search" style={styles.fonteSearch}/></SearchButton>
+                        <SearchInput placeholderTextColor="#fff" placeholder="Pesquisar..." style={{color: '#fff'}} onChangeText={(text) => setSearchText(text)}/>
                     </SearchContainer>
                     <ItemsContainer>
                         <ItemMain onPress={() => navigation.navigate('Graficos')}>

@@ -57,7 +57,7 @@ export default function({ navigation }){
                 <MainItem>
                     <View style={{width: '100%', height: '77%', alignItems: 'center', flexDirection: 'row'}}>
                         <Image source={require("../../../../img/gerente_home_carro.png")} style={{height: '100%', width: '40%', resizeMode: 'center'}}/>
-                        <View style={{width: '60%', height: '100%' , alignItems: 'flex-end', paddingTop: 20, backgroundColor: 'transparent', paddingRight: 25}}>
+                        <View style={{width: '60%', height: '100%' , alignItems: 'center', paddingTop: 20, backgroundColor: 'transparent', paddingRight: 25}}>
                             <Text style={{fontSize: 23, fontWeight: 'bold', color: 'white'}}>Carros locados</Text>
                             <Text style={{fontSize: 35, fontWeight: 'bold', color: 'white'}}>{quantidadeCarros}</Text>
                         </View>

@@ -81,7 +81,7 @@ const UserNavigation = () => {
 const AdmNavigation = () => {
   return (
     <AdmDrawer.Navigator 
-      initialRouteName="Gerente" 
+      initialRouteName="Colaboradores" 
       screenOptions={{ headerShown: false }}
       drawerContent={(props) => <AdmDrawerContent {...props}/>}
     >
