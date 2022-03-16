@@ -60,7 +60,7 @@ export const BottomItem = styled.TouchableOpacity`
 export const PerfilContainer = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   height: 40%;
   background-color: #2E568A;
 `
@@ -71,7 +71,8 @@ export const UserImage = styled.Image`
 `
 export const LargerNavName = styled(NavName)`
   font-size: 18px;
-  text-align: right;
+  text-align: center;
+  padding-right: 5px;
   width: 56%;
 `
 

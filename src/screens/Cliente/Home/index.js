@@ -17,6 +17,7 @@ import { LogoWrapper, Title } from '../../../components/Cliente/UserNavHeader/st
 import { Picker } from '@react-native-picker/picker';
 import { FontAwesome } from '@expo/vector-icons';
 import { MotiView, useAnimationState } from 'moti';
+import CarList from './CarList';
 
 const Home = ({ navigation }) => {
   const fadeInDown = useAnimationState({
@@ -40,15 +41,19 @@ const Home = ({ navigation }) => {
     animationTrigger(true)
   }, [])
 
+  const delay = 600
   return (
     <Container>
     <StatusBar translucent/>
     <UserNavHeader navigation={navigation} color={cores.cliente.secondary} withMenu/>
     <Wrapper>
       <Main>
-      <OperationBox 
+      {/* <OperationBox 
        type='primary'
-       delay= {800}
+       delay= {delay}
+       transition={{
+        type: 'timing'
+      }}
        state={fadeInDown}
       >
         <SubtituloReserva>Começar uma reserva</SubtituloReserva>
@@ -72,12 +77,16 @@ const Home = ({ navigation }) => {
         <Pesquisar><NomePesquisar>Pesquisar</NomePesquisar></Pesquisar>
       </OperationBox>
       <Propaganda
-        delay= {800}
+        delay= {delay + 400}
         state={fadeInDown}
+        transition={{
+          type: 'timing'
+        }}
       >
         <SubtituloReserva>Propaganda</SubtituloReserva>
-      </Propaganda>
-      {/* <OperationBox 
+      </Propaganda> */}
+      <CarList/>
+      <OperationBox 
         type='primary'
         delay= {800}
         state={fadeInDown}
@@ -90,10 +99,13 @@ const Home = ({ navigation }) => {
         </AvaliacaoGeral>
         <LinhaReserva/>
         <Comentarios/>
-      </OperationBox> */}
+      </OperationBox>
       <OperationBox 
         type='secondary'
-        delay= {800}
+        delay= {delay + 800}
+        transition={{
+          type: 'timing'
+        }}
         state={fadeInDown}
       >
         <SubtituloLongo>Requisitos para alugar um veículo</SubtituloLongo>
@@ -106,8 +118,11 @@ const Home = ({ navigation }) => {
       </OperationBox>
       <OperationBox 
         type='primary'
-        delay= {800}
+        delay= {delay + 1200}
         state={fadeInDown}
+        transition={{
+          type: 'timing'
+        }}
       >
         <Subtitulo>Principais Seguros Disponíveis</Subtitulo>
         <Linha></Linha>
@@ -118,16 +133,22 @@ const Home = ({ navigation }) => {
       </OperationBox>
       <OperationBox 
         type='secondary'
-        delay= {800}
+        delay= {delay+ 1200}
         state={fadeInDown}
+        transition={{
+          type: 'timing'
+        }}
       >
         <Subtitulo>Saiba mais sobre a Aloccar</Subtitulo>
         <Linha/>
       </OperationBox>
       <OperationBox 
         type='primary'
-        delay= {800}
-       state={fadeInDown}
+        delay= {delay + 1200}
+        transition={{
+          type: 'timing'
+        }}
+        state={fadeInDown}
       >
         <Subtitulo>Vantagens do Aloccar</Subtitulo>
         <Linha />

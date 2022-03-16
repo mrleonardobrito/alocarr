@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, StatusBar, StyleSheet, Pressable } from 'react-native';
 import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons'
 import HamburguerMenu from '../../../../components/Cliente/UserNavHeader/HamburguerMenu';
@@ -25,20 +25,36 @@ import {
 import Animated, { Extrapolate, interpolate, interpolateColor, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
 import * as ImagePicker from 'expo-image-picker'
+import AuthContext from '../../../../contexts/auth';
 
 
 const EditarPerfil = ({ navigation }) => {
-    const scrollY = useSharedValue(0);
+    const { user, updateUser } = useContext(AuthContext)
 
-    const userImage = require('../../../../assets/default-user-avatar-300x300.png')
+    const scrollY = useSharedValue(0);
     
-    const [avatar, setAvatar] = useState(userImage)
-    const [nome, setNome] = useState('Adailton Neves')
-    const [genero, setGenero] = useState('Masculino')
-    const [telefone, setTelefone] = useState('+55 (82) 99999-9999')
-    const [email, setEmail] = useState('exemplo@gmail.com')
-    const [endereco, setEndereco] = useState('Rua Dom Pedro II, 102, Arapiraca-AL')
+    const [avatar, setAvatar] = useState(user.avatar)
+    const [nome, setNome] = useState(user.nome)
+    const [genero, setGenero] = useState(user.genero)
+    const [telefone, setTelefone] = useState(user.telefone)
+    const [email, setEmail] = useState(user.email)
+    const [endereco, setEndereco] = useState(user.endereco)
   
+    async function handleUpdate(){
+        const response = await updateUser({
+            id: user.id,
+            avatar: avatar,
+            nome: nome, 
+            genero: genero, 
+            telefone: telefone, 
+            email: email, 
+            senha: user.senha,
+            endereco: endereco 
+        })
+
+        navigation.navigate("Perfil")
+    }
+    
     const PickImage = async () => {
         let result = await ImagePicker.launchCameraAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -131,17 +147,7 @@ const EditarPerfil = ({ navigation }) => {
                             ></DataInputContent>
                         </DataInput>  
                     </FormularioWrapper>
-                    <SalvarButton onPress={() => navigation.navigate({
-                        name: "Perfil",     
-                        params: { 
-                            avatar: avatar,
-                            nome: nome, 
-                            genero: genero, 
-                            telefone: telefone, 
-                            email: email, 
-                            endereco: endereco 
-                        }
-                    })}>
+                    <SalvarButton onPress={handleUpdate}>
                         <SalvarButtonLabel>Salvar</SalvarButtonLabel>
                     </SalvarButton>
                 </Wrapper>

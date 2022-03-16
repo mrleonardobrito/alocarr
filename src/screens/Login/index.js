@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
-
+import { Alert } from 'react-native';
+import AuthContext from '../../contexts/auth';
 import { 
     LoginView, 
     Underlined,
@@ -26,11 +27,17 @@ import {
     StyledAlocarrLogo,
 } from './styles';
 
-const Login = ({ navigation, route, handleSubmit }) => {
+const Login = ({ navigation, route }) => {
+
+    const { signed, user, signIn } = useContext(AuthContext)
 
     const [hidepass, setHidepass] = useState(true)
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
+
+    async function handleSignIn() {
+        await signIn(email, senha)
+    }
 
     return (
         <LoginView>
@@ -63,7 +70,7 @@ const Login = ({ navigation, route, handleSubmit }) => {
                             <Icon name={hidepass ? 'eye-slash': 'eye'} size={20} />
                         </TouchableOpacity>
                     </InputContainer>
-                    <EntrarButton onPress={handleSubmit}>
+                    <EntrarButton onPress={handleSignIn}>
                         <EntrarLabel>Entrar</EntrarLabel>
                     </EntrarButton>
                     <Detail>Esqueceu seus dados de login? <Marked>Obtenha ajuda para entrar</Marked></Detail>

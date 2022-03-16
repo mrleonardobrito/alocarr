@@ -21,9 +21,10 @@ import {
 const InformacoesCarro = ({ carro }) => {
 
   const garagemLocation = "Rua Walter Bezerra,331"
+  const novaGaragem = "Rua Paavo Fraça,202 - Nova Esperança"
 
   const linkinToMaps = () => {
-    const url = `https://www.google.com/maps/search/?api=1&query=${garagemLocation}`
+    const url = `https://www.google.com/maps/search/?api=1&query=${novaGaragem}`
     const canOpenURL = Linking.canOpenURL(url)
     if(canOpenURL){
       Linking.openURL(url)
@@ -51,7 +52,7 @@ const InformacoesCarro = ({ carro }) => {
               size={22}
               color={cores.cliente.marked1}
             />
-            <Data>{carro.cambio}</Data>
+            <Data>{carro.cambio.split(' ')[0]}</Data>
           </AdicionalItem>
           <AdicionalItem>
             <Icon 

@@ -6,13 +6,13 @@ import Modal from 'react-native-modal';
 
 export const ComentariosContainer = styled.ScrollView`
     width: 100%;
-    z-index: 1;
-    background-color: red;
+    z-index: 1; 
 `;
 export const ComentarioContainer = styled.View`
     border-bottom-width: 1px;
     border-bottom-color: ${props => props.theme.cliente.marked1};
     position: relative;
+    padding: 0 5px 10px 0;
 `;
 export const CometarioHeader = styled.View`
     flex-direction: row;
@@ -23,8 +23,9 @@ export const CometarioHeader = styled.View`
     margin-top: 5px;  
 `
 export const InformacoesPerfil = styled.View`
+    width: 75%;
     flex-direction: row;
-    width: 70%;
+    align-items: center;
     flex-wrap: wrap;
 `
 export const Options = styled.View`
@@ -39,7 +40,7 @@ export const FotoPerfil = styled.Image`
     width: 42px;
 `
 export const NomePerfil = styled.Text`
-    margin-right: 40%;
+    width: 100%;
     margin-bottom: 5px;
     font-size: 16px;
     font-family: 'OpenSans-SemiBold';
@@ -55,7 +56,6 @@ export const DataComentario = styled.Text`
     color: ${props => props.theme.cliente.text1};
 `
 export const LikeIcon = styled(AntDesign)`
-    color: ${props => props.theme.cliente.text1};
 `
 export const LikeNumber = styled.Text`
     font-size: 10px;

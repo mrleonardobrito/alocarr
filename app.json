@@ -6,7 +6,8 @@
     "orientation": "portrait",
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "web"
     ],
     "icon": "./assets/icon.png",
     "splash": {
@@ -36,7 +37,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "publicando pra o Neto ver",
+    "description": "logando com as rotas de autenticação",
     "githubUrl": "https://github.com/web-hermes/alocarr.git"
   }
 }

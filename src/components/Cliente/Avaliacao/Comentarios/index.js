@@ -18,7 +18,9 @@ const Comentarios = ({ deleteComentario }) => {
     }
 
     return (
-        <ComentariosContainer scrollEnabled>
+        <ComentariosContainer
+            vertical
+        >
             {coments.map((value, index) => {
                 return value ? (<Comentario data={value} key={value.id} id={value.id} deletar={(itemId) => deleteComentario(itemId)} />) : <View><Text>Não renderizado</Text></View>
             })}
@@ -28,12 +30,23 @@ const Comentarios = ({ deleteComentario }) => {
 
 const Comentario = ({ data, id, deletar }) => {
     const [showOptions, setShowOptions] = useState(false)
+    const [like, setLike] = useState({ toggled: false, number: data.numeroLikes })
 
     const comentarioRef = useRef(null)
     const comentarioID = id
 
     function toggleOptions(event) {
         setShowOptions(!showOptions)
+    }
+
+    function toggleLike(event) {
+        setLike({
+            toggled: !like.toggled,
+            number: like.toggled ? like.number - 1 : like.number + 1 
+        })
+
+        console.log(like.toggled)
+        console.log(like.nu)
     }
 
     function deleteComentario(event) {
@@ -51,11 +64,11 @@ const Comentario = ({ data, id, deletar }) => {
                     <DataComentario>{data.dataAvaliacao}</DataComentario> 
                 </InformacoesPerfil>
                 <Options>  
-                    <TouchableOpacity onPress={() => {}}>
-                        <LikeIcon name='like1' size={22}></LikeIcon>
-                        <LikeNumber>{data.numeroLikes}</LikeNumber> 
+                    <TouchableOpacity onPress={toggleLike}>
+                        <LikeIcon name='like1' size={22} color={like.toggled ? "#ABCFFF" : "#FFFF"}></LikeIcon>
+                        <LikeNumber style={{ color: like.toggled ? "#ABCFFF" : "#FFFF"}}>{like.number}</LikeNumber> 
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={toggleOptions}>
+                    {/* <TouchableOpacity onPress={toggleOptions}>
                         <OptionsIcon name='options-vertical' size={22}></OptionsIcon>
                     </TouchableOpacity>
                     <OptionsModal 
@@ -68,7 +81,7 @@ const Comentario = ({ data, id, deletar }) => {
                                 <OptionLabel>Deletar</OptionLabel>
                             </Option>
                         </OptionsContainer>
-                    </OptionsModal>
+                    </OptionsModal> */}
                 </Options>
             </CometarioHeader>
             <ComentarioContent>{data.comentario}</ComentarioContent>

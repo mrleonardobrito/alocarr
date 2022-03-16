@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StatusBar, StyleSheet } from 'react-native';
 import { Ionicons, AntDesign } from '@expo/vector-icons'
 import HamburguerMenu from '../../../components/Cliente/UserNavHeader/HamburguerMenu';
@@ -25,12 +25,12 @@ import {
 import Animated, { Extrapolate, interpolate, interpolateColor, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import { useWindowDimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import AuthContext from '../../../contexts/auth'
 
 const Perfil = ({ navigation, route }) => {
-    const scrollY = useSharedValue(0);
+    const { user } = useContext(AuthContext)
 
-    const userImage = require('../../../assets/default-user-avatar-300x300.png')
+    const scrollY = useSharedValue(0);
 
     const scrollImageAnimation = useAnimatedStyle(() => {
         return {
@@ -48,7 +48,6 @@ const Perfil = ({ navigation, route }) => {
             backgroundColor: interpolateColor(scrollY.value, [0, 50], [cores.cliente.primary, cores.cliente.secondary])    
         }
     })
-
   return (
       <Container>
           <Header style={scrollHeaderAnimation}>
@@ -65,14 +64,14 @@ const Perfil = ({ navigation, route }) => {
                 <Wrapper>
                     <PerfilTop>
                         <ImagemPerfilCircle style={scrollImageAnimation}>
-                            <ImagemPerfil source={route.params?.avatar !== userImage ? {uri: route.params?.avatar.uri}: userImage}/>
+                            <ImagemPerfil source={{ uri: user.avatar.uri ? user.avatar.uri : 'https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image.png' }}/>
                         </ImagemPerfilCircle>
                         <EditarPerfilButton onPress={() => navigation.navigate('PerfilRouter', {screen: 'EditarPerfil'})}>
                             <EditarPerfilLabel>Editar Perfil</EditarPerfilLabel>
                         </EditarPerfilButton>    
                     </PerfilTop>
                     <FormularioWrapper>
-                        <NomePerfil>{route.params ? route.params?.nome: 'Adailton Neves'}</NomePerfil>
+                        <NomePerfil>{user.nome}</NomePerfil>
                         <DataInput>
                             <DataInputContent>
                                 <Ionicons name='speedometer' size={22} color={'#fff'} style={{ paddingRight: 10 }}/>
@@ -81,23 +80,23 @@ const Perfil = ({ navigation, route }) => {
                         </DataInput>
                         <DataInput>
                             <DataInputLabel>Gênero</DataInputLabel> 
-                            <DataInputContent>{route.params ? route.params?.genero: 'Masculino'}</DataInputContent>
+                            <DataInputContent>{user.genero}</DataInputContent>
                         </DataInput> 
                         <DataInput>
                             <DataInputLabel>Número de Telefone</DataInputLabel>
-                            <DataInputContent>{route.params ? route.params?.telefone: '+55 (82) 99999-9999'}</DataInputContent>
+                            <DataInputContent>{user.telefone}</DataInputContent>
                         </DataInput>
                         <DataInput>
                             <DataInputLabel>E-mail</DataInputLabel> 
-                            <DataInputContent>{route.params ? route.params?.email: 'exemplo@gmail.com'}</DataInputContent>
+                            <DataInputContent>{user.email}</DataInputContent>
                         </DataInput> 
                         <DataInput>
                             <DataInputLabel>Senha</DataInputLabel>
-                            <DataInputContent>••••••</DataInputContent>
+                            <DataInputContent>{'••••••'}</DataInputContent>
                         </DataInput> 
                         <DataInput>
                             <DataInputLabel>Endereço</DataInputLabel>
-                            <DataInputContent>{route.params ? route.params?.endereco: 'Rua Dom Pedro II, 102, Arapiraca-AL'}</DataInputContent>
+                            <DataInputContent>{user.endereco}</DataInputContent>
                         </DataInput>  
                         <DataInput>
                             <TouchableOpacity>

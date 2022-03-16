@@ -2,7 +2,7 @@
 
 import { StatusBar } from 'expo-status-bar';
 
-import React, {useReducer, useState, useEffect} from 'react';
+import React, {useReducer, useState, useEffect, useContext} from 'react';
 
 /* VectorIcons */
 
@@ -26,8 +26,10 @@ const APP_NAME = 'Alocarr';
 const pageName = 'Gerente';
 
 import logoALocarr from '../../../img/logo.png'
+import AuthContext from '../../contexts/auth';
 
 export default function AdmDrawerContent({navigation}){
+    const { user, signOut } = useContext(AuthContext)
 
     function logo(){
         return <Image source={logoALocarr} style={{height: 40, width: 40}}/>
@@ -41,7 +43,7 @@ export default function AdmDrawerContent({navigation}){
             {
                 text: 'Sim',
                 onPress: () => {
-                    navigation.navigate('LoginRouter');
+                    signOut()
                 }
             },
             {
@@ -330,10 +332,10 @@ export default function AdmDrawerContent({navigation}){
                 <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 5, paddingRight: 10, height: 100}}>
                     <View style={{alignItems: 'flex-start', flexDirection: 'row', alignItems: 'center'}}>
                         <Luffy
-                        source={require('./luffy.jpg')}
+                        source={user.avatar}
                         style={{borderWidth: 2, borderColor: 'white'}}
                         />
-                        <FooterUserName>Linaldo Brito</FooterUserName>
+                        <FooterUserName>{user.nome}</FooterUserName>
                     </View>
                     <TouchableOpacity onPress={()=> confLogout()} style={{justifyContent: 'space-evenly'}}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
                 </View>
