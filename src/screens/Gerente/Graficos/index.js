@@ -48,40 +48,35 @@ const graficLinhaValues = [
 
 const graficLinhaDoisValue = [
     {
-        cor: corGraficoLinha,
+        cor: '#41B8D5',
         valor: 170,
         valorPassado: 180,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#2D8BBA',
         valor: 100,
         valorPassado: 100 / 2,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#6CE5E8',
         valor: 130,
         valorPassado: 130 / 2,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#41B8D5',
         valor: 200,
         valorPassado: 200 / 2,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#2D8BBA',
         valor: 110,
         valorPassado: 110 / 2,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#6CE5E8',
         valor: 40,
         valorPassado: 40 / 2,
     },
-    {
-        cor: corGraficoLinha,
-        valor: 85,
-        valorPassado: 85 / 2,
-    }
 ]
 
 
@@ -329,41 +324,48 @@ export default function({route}){
 
                             <View name="linha-grafico" style={{width: '65%', height: '100%', flexDirection: 'row', zIndex: 5, backgroundColor: 'transparent'}}>
                                    {
-                                        graficLinhaDoisValue.map((value, index) => 
-                                        <View key={index} style={{height: '100%', width: 100 / graficLinhaDoisValue.length + '%', paddingHorizontal: 2, flexDirection: 'row', alignItems: 'flex-end'}}>
-                                            <View style={{width: '100%', alignItems: 'center'}}>
-                                            <Text style={{fontSize: 14, fontWeight: 'bold', color: '#03295B'}}>{value.valor}</Text>
-                                            <View style={{
-                                                        width: '100%',
-                                                        backgroundColor: value.cor, 
-                                                        height: value.valor,
-                                                        alignItems: 'flex-end',
-                                                        justifyContent: 'flex-end',
-                                                        borderTopLeftRadius: 3,
-                                                        borderTopRightRadius: 3}}>
-                                                            <AnimatePresence>
-                                                            {visible && <MotiView
-                                                                        from={{
-                                                                            backgroundColor: '#5379AB', height: 0, width: '100%', opacity: 0.5,
-                                                                        }}
-                                                                        animate={{
-                                                                            backgroundColor: '#5379AB', height: value.valorPassado, width: '100%', opacity: 0.5,
-                                                                        }}
-                                                                        exit={{
-                                                                            backgroundColor: '#5379AB', height: 0, width: '100%', opacity: 0.5,
-
-                                                                        }}
-                                                                        transition={{
-                                                                            type: 'timing',
-                                                                            duration: 1300,
-                                                                        }}
-                                                                        style={{
-                                                                            borderTopLeftRadius: 3,
-                                                                            borderTopRightRadius: 3
-                                                                        }}
-                                                                    >
-                                                                    </MotiView>}
-                                                            </AnimatePresence>
+                                    graficLinhaDoisValue.map((value, index) => 
+                                    <View key={index} style={{height: '100%', width: 100 / graficLinhaDoisValue.length + '%', paddingHorizontal: 2, flexDirection: 'row', alignItems: 'flex-end'}}>
+                                        <View style={{width: '100%', alignItems: 'center'}}>
+                                        <Text style={{fontSize: 14, fontWeight: 'bold', color: '#03295B'}}>{value.valor}</Text>
+                                        <View style={{
+                                            width: '100%',
+                                                backgroundColor: value.cor, 
+                                                height: value.valor,
+                                                alignItems: 'flex-end',
+                                                justifyContent: 'flex-end',
+                                                borderTopLeftRadius: 3,
+                                                borderTopRightRadius: 3}}>
+                                            <AnimatePresence>
+                                                {visible && <MotiView
+                                                            from={{
+                                                            backgroundColor: '#5379AB', 
+                                                            height: 0, 
+                                                            width: '100%', 
+                                                            opacity: 0.5,
+                                                            }}
+                                                            animate={{
+                                                            backgroundColor: '#5379AB', 
+                                                            height: value.valorPassado, 
+                                                            width: '100%', opacity: 0.5,
+                                                            }}
+                                                            exit={{
+                                                            backgroundColor: '#5379AB', 
+                                                            height: 0, 
+                                                            width: '100%', 
+                                                            opacity: 0.5,
+                                                            }}
+                                                            transition={{
+                                                            type: 'timing',
+                                                            duration: 1300,
+                                                            }}
+                                                            style={{
+                                                            borderTopLeftRadius: 3,
+                                                            borderTopRightRadius: 3
+                                                            }}
+                                                            >
+                                                            </MotiView>}
+                                                        </AnimatePresence>
                                             </View>
                                             </View>
                                         </View>)

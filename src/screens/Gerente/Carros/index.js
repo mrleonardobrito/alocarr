@@ -41,7 +41,7 @@ export default function({ navigation }){
     }
 
     return(
-        <View style={styles.carrosContainer}>
+        <ScrollView style={styles.carrosContainer}>
             <Header pageName={pageName}/>
             <View style={{paddingHorizontal: 10, width: '100%', height: 40, marginTop: '3%', flexDirection: 'row'}}>    
                 <TouchableOpacity
@@ -88,7 +88,7 @@ export default function({ navigation }){
                 
                 />
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     },
     carroImage: {
         height: 85,
-        width: 130,
+        width: '100%',
         resizeMode: 'contain'
     },
     linha: {

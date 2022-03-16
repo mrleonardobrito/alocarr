@@ -215,11 +215,15 @@ export default function({navigation}){
                 }}
                 style={{flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'transparent', borderRadius: 5}}
                 >
-                   <TouchableOpacity style={[styles.botaoColaborador, {width: '40%', backgroundColor: 'lightgreen'}]}>
-                       <Text style={[styles.fontePadrao, {fontSize: 13}]}>Adicionar</Text>
+                   <TouchableOpacity style={[styles.botaoColaborador, {width: '40%'}]}>
+                       <Text style={[styles.fontePadrao, {fontSize: 13, margin: 0, color: 'lightgreen'}]}>Adicionar</Text>
                     </TouchableOpacity>
-                   <TouchableOpacity style={[styles.botaoColaborador, {width: '29%', backgroundColor: '#FF6961'}]}><Text style={[styles.fontePadrao, {fontSize: 13}]}>Remover</Text></TouchableOpacity>
-                   <TouchableOpacity style={[styles.botaoColaborador, {width: '28%', backgroundColor: '#993399'}]}><Text style={[styles.fontePadrao, {fontSize: 13}]}>Demitir</Text></TouchableOpacity>
+                   <TouchableOpacity style={[styles.botaoColaborador, {width: '29%'}]}>
+                       <Text style={[styles.fontePadrao, {fontSize: 13, margin: 0, color: '#FF6961'}]}>Remover</Text>
+                    </TouchableOpacity>
+                   <TouchableOpacity style={[styles.botaoColaborador, {width: '28%'}]}>
+                       <Text style={[styles.fontePadrao, {fontSize: 13, margin: 0, color: '#993399'}]}>Demitir</Text>
+                    </TouchableOpacity>
 
                 </MotiView>
             )
@@ -248,7 +252,9 @@ export default function({navigation}){
             <ScrollView style={{paddingHorizontal: 10, marginTop: 10}}>
                 <View style={{height: 35, backgroundColor: '#285084', borderRadius: 5, flexDirection: 'row'}}>
                     <TouchableOpacity style={{width: '15%', height: '100%', backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'center', borderBottomLeftRadius: 5, borderTopLeftRadius: 5}}><Icon name="search" style={{color: 'white', fontSize: 19}}/></TouchableOpacity>
-                    <TextInput placeholder="Pesquise pelo nome..." style={{paddingLeft: 10, width: '85%', color: 'white'}}/>
+                    <TextInput 
+                    placeholderTextColor="#fff"
+                    placeholder="Pesquise pelo nome..." style={{paddingLeft: 10, width: '85%', color: 'white'}}/>
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', height: 30, marginTop: 7, marginBottom: 10}}>
                     <TouchableOpacity style={{backgroundColor: '#285084', height: '100%', width: '40%', flexDirection: 'row', borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}>
@@ -336,5 +342,7 @@ const styles = StyleSheet.create({
         height: '100%', 
         borderRadius: 5, 
         alignItems: 'center', 
-        justifyContent: 'center'}
+        justifyContent: 'center',
+        backgroundColor: '#3766A4'
+    }
 });

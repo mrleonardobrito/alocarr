@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
 export const DrawerContainer = styled.View`
-    height: 100%;
+    display: flex;
+    flex: 1;
     background-color: red;
 `;
 

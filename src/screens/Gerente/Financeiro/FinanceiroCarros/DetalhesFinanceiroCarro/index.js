@@ -11,6 +11,12 @@ import { Picker } from '@react-native-picker/picker';
 
 export default function({ navigation }){
 
+    const ocorrencias = [
+        {dataLocado: '02/03/22', dataDevolvido: '04/03/22', lucro: 3452.42, horaSaida: '09:00', horaVolta: '14:00'},
+        {dataLocado: '05/03/22', dataDevolvido: '09/03/22', lucro: 2572.25, horaSaida: '12:00', horaVolta: '16:00'},
+        {dataLocado: '05/03/22', dataDevolvido: '09/03/22', lucro: 2572.25, horaSaida: '12:00', horaVolta: '16:00'}
+
+    ]
 
     return(
         <ScrollView style={{backgroundColor: '#001732'}}>
@@ -31,26 +37,19 @@ export default function({ navigation }){
                     </View>
                 </View>
                 <View style={{marginTop: 15}}>
-                    <TouchableOpacity style={{height: 60, width: '100%', backgroundColor: '#295084', flexDirection: 'row', paddingHorizontal: 10, borderRadius: 5, marginBottom: 10}}>
+                    {
+                        ocorrencias.map((item) => { return <TouchableOpacity style={{height: 60, width: '100%', backgroundColor: '#295084', flexDirection: 'row', paddingHorizontal: 10, borderRadius: 5, marginBottom: 10}}>
                         <View style={{width: '50%', justifyContent: 'center'}}>
-                            <Text style={styles.fontePadrao}>06/03/22 - 08/03/22</Text>
-                            <Text style={styles.fontePadrao}>S: 14:00 - V: 14:00</Text>
+                            <Text style={styles.fontePadrao}>{item.dataLocado} - {item.dataDevolvido}</Text>
+                            <Text style={styles.fontePadrao}>S: {item.horaSaida} - V: {item.horaVolta}</Text>
                         </View>
                         <View style={{width: '50%', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
                             <Text style={{fontSize: 13, fontWeight: 'bold', color: 'green'}}>Lucro:</Text>
-                            <Text style={{fontSize: 22, color: 'green', fontWeight: 'bold'}}>{' R$ ' + 5239.34}</Text>
+                            <Text style={{fontSize: 20, color: 'green', fontWeight: 'bold'}}>{' R$ ' + item.lucro}</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{height: 60, width: '100%', backgroundColor: '#295084', flexDirection: 'row', paddingHorizontal: 10, borderRadius: 5, marginBottom: 10}}>
-                        <View style={{width: '50%', justifyContent: 'center'}}>
-                            <Text style={styles.fontePadrao}>06/03/22 - 08/03/22</Text>
-                            <Text style={styles.fontePadrao}>S: 14:00 - V: 14:00</Text>
-                        </View>
-                        <View style={{width: '50%', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                            <Text style={{fontSize: 13, fontWeight: 'bold', color: 'green'}}>Lucro:</Text>
-                            <Text style={{fontSize: 22, color: 'green', fontWeight: 'bold'}}>{' R$ ' + 5239.34}</Text>
-                        </View>
-                    </TouchableOpacity>
+                        })
+                    }
                 </View>
             </View>
         </ScrollView>

@@ -46,8 +46,8 @@ export default function({navigation}){
                         <View style={{width: '30%'}}><Image source={item.imagem} style={styles.carroImage}/></View>
                         <View style={{width: '55%', paddingLeft: 20, marginLeft: 15}}>
                             <Text style={styles.nomeCarro}>{item.nomeCarro}</Text>
-                            <View style={{marginTop: 7}}>
-                                <Text style={{fontSize: 17, fontWeight: 'bold', color: '#fff'}}>{item.saldo < 0 ? <Text style={styles.debitoText}>Débito:</Text> : <Text style={styles.lucroText}>Lucro: </Text>} R$ {item.saldo}</Text>
+                            <View style={{marginTop: 17}}>
+                                <Text style={{fontSize: 17, fontWeight: 'bold', color: '#fff'}}>{item.saldo < 0 ? <Text style={styles.debitoText}>Débito: </Text> : <Text style={styles.lucroText}>Lucro: </Text>} R$ {item.saldo}</Text>
                             </View>
                         </View>
                         <View style={{width: '8%', alignItems: 'center', backgroundColor: 'transparent'}}> 
