@@ -81,7 +81,7 @@ const UserNavigation = () => {
 const AdmNavigation = () => {
   return (
     <AdmDrawer.Navigator 
-      initialRouteName="Colaboradores" 
+      initialRouteName="Gerente" 
       screenOptions={{ headerShown: false }}
       drawerContent={(props) => <AdmDrawerContent {...props}/>}
     >
@@ -100,7 +100,6 @@ const AdmNavigation = () => {
       <AdmDrawer.Screen name="EditarDetalhes" component={EditarDetalhes}/>
       <AdmDrawer.Screen name="LoginRouter" component={LoginRouter}/>
       <AdmDrawer.Screen name="AdicionarCarro" component={AdicionarCarro}/>
-      <AdmDrawer.Screen name="Teste" component={Teste}/>
 
 
 

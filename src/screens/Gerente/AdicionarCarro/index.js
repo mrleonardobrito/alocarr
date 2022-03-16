@@ -349,7 +349,7 @@ export default function({ navigation }){
                             </View>
                         </View>
                     </View>
-                    <TouchableOpacity style={{height: 50, width: '100%', borderRadius: 5, backgroundColor: '#254A7C', marginTop: 10, textAlign: 'center', justifyContent: 'center'}}>
+                    <TouchableOpacity style={{height: 50, width: '100%', borderRadius: 5, backgroundColor: '#254A7C', marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
                         <Text style={[styles.fontePadrao, {fontSize: 20}]}>Adicionar carro</Text>
                     </TouchableOpacity>
                 </View>

@@ -33,7 +33,7 @@ export default function AdmDrawerContent({navigation}){
         return <Image source={logoALocarr} style={{height: 40, width: 40}}/>
     }
 
-    const localizacao = 'Arapiraca Garden Shopping';
+    const [searchText, setSearchText] = useState();
 
     function confLogout(){
         console.log(APP_NAME)
@@ -52,29 +52,44 @@ export default function AdmDrawerContent({navigation}){
 
     }
 
-    function verificarOpen(){
-        if(visibleCadastroEspeci){
-            console.log('Cadastro')
-            toggleFinanceiro(false);
-            toggleLocacoes(false);
-        }
-        if(visibleFinanceiro){
-            console.log('Fina')
-            toggleCadastroEspeci(true);
-            toggleLocacoes(true);
-        }
-        if(visibleLocacoes){
-            console.log('Loca')
-            toggleCadastroEspeci(true);
-            toggleFinanceiro(true);
-        }
-    }
-
     const [visibleCadastroEspeci, toggleCadastroEspeci] = useReducer((s)=> !s, false);
     const [visibleFinanceiro, toggleFinanceiro] = useReducer((s)=> !s, false);
     const [visibleLocacoes, toggleLocacoes] = useReducer((s)=> !s, false);
 
+    
+    function verificarCadastro(){
+        toggleCadastroEspeci();
 
+        if(visibleFinanceiro){
+            return toggleFinanceiro();
+        }
+        if(visibleLocacoes){
+            return toggleLocacoes();
+        }
+    }
+
+    function verificarFinanceiro(){
+        toggleFinanceiro();
+
+        if(visibleCadastroEspeci){
+            return toggleCadastroEspeci();
+        }
+        if(visibleLocacoes){
+            return toggleLocacoes();
+        }
+    }
+
+    function verificarLocacoes(){
+        toggleLocacoes();
+
+        if(visibleCadastroEspeci){
+            return toggleCadastroEspeci();
+        }
+        if(visibleFinanceiro){
+            return toggleFinanceiro();
+        }
+    }
+    
     
     function CadastrosGerais(){
         return(
@@ -283,7 +298,7 @@ export default function AdmDrawerContent({navigation}){
                             <ItemIcon><Icon name="chart-bar" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Estatísticas</ItemText>
                         </ItemMain>
-                        <ItemMain onPress={toggleCadastroEspeci}>
+                        <ItemMain onPress={() => verificarCadastro()}>
                             <ItemIcon><Icon name="cash-register" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Cadastro gerais</ItemText>
                             <AnimatePresence>
@@ -293,7 +308,7 @@ export default function AdmDrawerContent({navigation}){
                         <AnimatePresence>
                         {visibleCadastroEspeci && openAnimation(1)}
                         </AnimatePresence>
-                        <ItemMain onPress={toggleFinanceiro}>
+                        <ItemMain onPress={() => verificarFinanceiro()}>
                             <ItemIcon><Icon name="money-bill-wave" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Financeiro</ItemText>
                             <AnimatePresence>
@@ -303,7 +318,7 @@ export default function AdmDrawerContent({navigation}){
                         <AnimatePresence>
                         {visibleFinanceiro && openAnimation(2)}
                         </AnimatePresence>
-                        <ItemMain onPress={toggleLocacoes}>
+                        <ItemMain onPress={() => verificarLocacoes()}>
                             <ItemIcon><Icon name="car" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Locações</ItemText>
                             <AnimatePresence>
@@ -313,7 +328,7 @@ export default function AdmDrawerContent({navigation}){
                         <AnimatePresence>
                         {visibleLocacoes && openAnimation(3)}
                         </AnimatePresence>
-                        <ItemMain onPress={() => navigation.navigate('Carros')}>
+                        <ItemMain onPress={() => verificarCadastro()}>
                             <ItemIcon><IconConfig name="gear" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Configurações</ItemText>
                         </ItemMain>
