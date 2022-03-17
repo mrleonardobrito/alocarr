@@ -11,6 +11,7 @@ export default [
         trocaOleo: '102km',
         situacao: 1,
         imagem: duster,
+        saldo: 3000
     },
     {
         id: 2,
@@ -19,7 +20,9 @@ export default [
         proxRevisao: '10/09/2022',
         trocaOleo: '94km',
         situacao: 2,
-        imagem: siena
+        imagem: siena,
+        saldo: -3000
+
     },
     {
         id: 3,
@@ -28,7 +31,9 @@ export default [
         proxRevisao: '03/10/2022',
         trocaOleo: '89km',
         situacao: 3,
-        imagem: hb20
+        imagem: hb20,
+        saldo: 3000
+
     },
     {
         id: 4,
@@ -37,6 +42,8 @@ export default [
         proxRevisao: '03/10/2022',
         trocaOleo: '89km',
         situacao: 3,
-        imagem: hb20
+        imagem: hb20,
+        saldo: 3000
+
     },
 ]

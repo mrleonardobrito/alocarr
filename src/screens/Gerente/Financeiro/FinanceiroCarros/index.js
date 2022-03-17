@@ -9,6 +9,7 @@ import { ButtonVer, ButtonText } from '../../Gerente/style';
 import { CarroContainer } from '../../Carros/style';
 
 import dados from '../../Carros/carros';
+import carros from '../../AdicionarCarro/carros';
 
 
 export default function({navigation}){
@@ -38,7 +39,7 @@ export default function({navigation}){
 
             <FlatList
                 style={{paddingHorizontal: 10}}
-                data={dados}
+                data={carros}
                 keyExtractor={(_, index) => index}
                 renderItem={({item})=> 
                 <CarroContainer>
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
         color: '#fff'
     },
     debitoText: {
-        fontSize: 22,
+        fontSize: 21,
         color: 'red',
         fontWeight: 'bold'
     },
