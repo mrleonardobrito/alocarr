@@ -2,11 +2,6 @@ import styled from 'styled-components/native';
 
 export const Content = styled.View`
     background-color: ${props => props.theme.mainColor};
-<<<<<<< HEAD
-    height: 100%;
-=======
-    height: 90%;
->>>>>>> fc4f0d5675d115fc8e762a8475601637f3f4384d
 `;
 
 export const Main = styled.View`

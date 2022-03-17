@@ -8,6 +8,8 @@ import { TextInputMask } from 'react-native-masked-text';
 
 import { Picker } from '@react-native-picker/picker';
 
+import veiculos from './carros';
+
 
 export default function({ navigation }){
 
@@ -20,6 +22,8 @@ export default function({ navigation }){
         }
     }
 
+    const [pickerValues, setPickerValues] = useState();
+
     const [pickerArCond, pickerArCondToggle] = useReducer((s)=> !s, false);
     const [pickerVidro, pickerVidroToggle] = useReducer((s)=> !s, false);
     const [pickerTravaElet, pickerTravaToggle] = useReducer((s)=> !s, false);
@@ -28,7 +32,7 @@ export default function({ navigation }){
     const [pickerRetrovisorElet, pickerRetrovisorEletToggle] = useReducer((s)=> !s, false);
 
     const [nome, setNome] = useState();
-    const [marca, setMarca] = useState();
+    const [marca, setMarca] = useState(['Ford', 'Ferrari']);
     const [ano, setAno] = useState();
     const [grupo, setGrupo] = useState();
     const [modelo, setModelo] = useState();
@@ -48,24 +52,67 @@ export default function({ navigation }){
     const [obs, setObs] = useState();
     const [obsCarac, setObsCarac] = useState();
 
+    function prosseguir(){
+        salvarVeiculo();
+
+        navigation.navigate('Carros');
+    }
+
+    function salvarVeiculo(){
+        let novoVeiculo = lerDados();
+        adicionarVeiculo(novoVeiculo)
+    }
+
+    function adicionarVeiculo(novoVeiculo){
+        veiculos.push(novoVeiculo);
+    }
+
+    function lerDados(){
+        let novoVeiculo = {};
+
+        novoVeiculo.nome = nome;
+        novoVeiculo.marca = marca;
+        novoVeiculo.grupo = grupo;
+        novoVeiculo.modelo = modelo;
+        novoVeiculo.placa = placa;
+        novoVeiculo.chassi = chassi;
+        novoVeiculo.combustivel = combustivel;
+        novoVeiculo.cor = cor;
+        novoVeiculo.valorPagoCarro = valorPagoCarro;
+        novoVeiculo.valorReposicao = valorReposicao;
+        novoVeiculo.valorLocacao = valorLocacao;
+        novoVeiculo.cilindrada = cilindrada;
+        novoVeiculo.codGPS = codGPS;
+        novoVeiculo.cambio = cambio;
+        novoVeiculo.numeroSerie = numeroSerie;
+        novoVeiculo.fornecedor = fornecedor;
+        novoVeiculo.local = local;
+        novoVeiculo.obs = obs;
+        novoVeiculo.obsCarac = obsCarac;
 
 
+        console.log(novoVeiculo)
+
+        return novoVeiculo;
+    }
 
     const [cell, setCell] = useState();
 
     return(
         <ScrollView style={{backgroundColor: '#001732'}}>
             <StatusBar hidden/>
-            <Header pageName="Adiconar carros"/>
+            <Header pageName="Adiconar veículos"/>
             <View style={{paddingHorizontal: 10, paddingVertical: 15, backgroundColor: '#001732'}}>
                 <View style={{backgroundColor: '#295084', borderRadius: 5, padding: 15}}>
                     <View style={{flexDirection: 'row', width: '100%'}}>
                         <View style={{width: '70%'}}>
                             <Text style={styles.fontePadrao}>Nome</Text>
                             <TextInput 
-                            style={styles.inputPequeno} 
+                            style={styles.inputPequeno}
+                            value={nome}
+                            onChangeText={(text) => setNome(text)}
                             placeholder="Digite aqui..."
-                            placeholderTextColor="lightgray"
+                            placeholderTextColor="#AAAAAA"
                             ></TextInput>
                         </View>
                         <View style={{width: '30%'}}>
@@ -77,7 +124,7 @@ export default function({ navigation }){
                                 }}
                                 value={ano}
                                 placeholder="0000"
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setAno(text)}
                                 style={[styles.inputPequeno, {width: '100%', textAlign: 'center'}]} />
                         </View>
@@ -85,22 +132,76 @@ export default function({ navigation }){
                     <View style={{marginTop: 10, justifyContent: 'space-between'}}>
                         <View style={{marginBottom: 5}}>
                             <Text style={styles.fontePadrao}>Marca</Text>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                                <TextInput style={styles.inputGrande}></TextInput>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                                <View style={{width: '87%',
+                                    height: 40,
+                                    backgroundColor: '#295084',
+                                    borderWidth: 1,
+                                    borderColor: '#fff',
+                                    borderRadius: 5,
+                                    marginTop: 5,
+                                    justifyContent: 'center'
+                                    }}>
+                                        <Picker 
+                                    pickerStyleType={true}
+                                    selectedValue={marca}
+                                    onValueChange={(text) => setMarca(text)}
+                                    style={styles.picker}>
+                                        <Picker.Item label='Ford' value='Ford' style={{color: 'gray'}} />
+                                        <Picker.Item label='Ferrari' value='Ferrari' style={{color: 'gray'}} />
+                                        <Picker.Item label='Wolkswagem' value='Wolkswagem' style={{color: 'gray'}} />
+                                        <Picker.Item label='Fiat' value='Fiat' style={{color: 'gray'}} />
+
+                                    </Picker>
+                                </View>
                                 <TouchableOpacity style={styles.inputGrandeBotao}><Icon name="plus" style={[styles.fontePadrao, {marginLeft: 0}]}/></TouchableOpacity>
                             </View>
                         </View>
                         <View style={{marginBottom: 5}}>
                             <Text style={styles.fontePadrao}>Grupo</Text>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                                <TextInput style={styles.inputGrande}></TextInput>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <View style={{width: '87%',
+                                    height: 40,
+                                    backgroundColor: '#295084',
+                                    borderWidth: 1,
+                                    borderColor: '#fff',
+                                    borderRadius: 5,
+                                    marginTop: 5,
+                                    justifyContent: 'center'
+                                    }}>
+                                        <Picker 
+                                    pickerStyleType={true}
+                                    selectedValue={grupo}
+                                    onValueChange={(text) => setGrupo(text)}
+                                    style={styles.picker}>
+                                        <Picker.Item label='Carro' value='Carro'  style={{color: 'gray'}} />
+                                        <Picker.Item label='Moto' value='Moto' style={{color: 'gray'}} />
+                                    </Picker>
+                                </View>
                                 <TouchableOpacity style={styles.inputGrandeBotao}><Icon name="plus" style={[styles.fontePadrao, {marginLeft: 0}]}/></TouchableOpacity>
                             </View>
                         </View>
                         <View style={{marginBottom: 5}}>
                             <Text style={styles.fontePadrao}>Modelo</Text>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                                <TextInput style={styles.inputGrande}></TextInput>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <View style={{width: '87%',
+                                    height: 40,
+                                    backgroundColor: '#295084',
+                                    borderWidth: 1,
+                                    borderColor: '#fff',
+                                    borderRadius: 5,
+                                    marginTop: 5,
+                                    justifyContent: 'center'
+                                    }}>
+                                        <Picker 
+                                    pickerStyleType={true}
+                                    selectedValue={modelo}
+                                    onValueChange={(text) => setModelo(text)}
+                                    style={styles.picker}>
+                                        <Picker.Item label='Ford Ka' value='Ford Ka' style={{color: 'gray'}} />
+                                        <Picker.Item label='Fiat Uno' value='Ford' style={{color: 'gray'}} />
+                                    </Picker>
+                                </View>
                                 <TouchableOpacity style={styles.inputGrandeBotao}><Icon name="plus" style={[styles.fontePadrao, {marginLeft: 0}]}/></TouchableOpacity>
                             </View>
                         </View>
@@ -111,7 +212,7 @@ export default function({ navigation }){
                             <TextInput
                                 value={placa}
                                 placeholder="XXXXXXX"
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setPlaca(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
@@ -120,7 +221,7 @@ export default function({ navigation }){
                             <TextInput
                                 value={chassi}
                                 placeholder="XXXXXXX"
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setChassi(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
@@ -129,7 +230,7 @@ export default function({ navigation }){
                             <TextInput
                                 value={combustivel}
                                 placeholder="Digite aqui..."
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setCombustivel(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
@@ -140,7 +241,7 @@ export default function({ navigation }){
                             <TextInput
                                 value={cor}
                                 placeholder="Digite aqui..."
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setCor(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
@@ -157,7 +258,7 @@ export default function({ navigation }){
                                 }}
                                 value={valorPagoCarro}
                                 placeholder="R$ 000,00"
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setValorPagoCarro(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
@@ -174,7 +275,7 @@ export default function({ navigation }){
                                 }}
                                 value={valorLocacao}
                                 placeholder="R$ 000,00"
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setValorLocacao(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
@@ -193,7 +294,7 @@ export default function({ navigation }){
                                 }}
                                 value={valorReposicao}
                                 placeholder="R$ 000,00"
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setValorReposicao(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
@@ -203,7 +304,7 @@ export default function({ navigation }){
                                 type={'only-numbers'}
                                 value={cilindrada}
                                 placeholder="00"
-                                placeholderTextColor="lightgray"
+                                placeholderTextColor="#AAAAAA"
                                 onChangeText={(text) => setCilindrada(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
@@ -211,10 +312,10 @@ export default function({ navigation }){
                             <Text style={styles.fontePadrao}>Código GPS</Text>
                             <TextInputMask
                                 type={'only-numbers'}
-                                value={cell}
+                                value={codGPS}
                                 placeholder="00000"
-                                placeholderTextColor="lightgray"
-                                onChangeText={(text) => setCell(text)}
+                                placeholderTextColor="#AAAAAA"
+                                onChangeText={(text) => setCodGPS(text)}
                                 style={[styles.inputPequeno, {width: '100%'}]} />
                         </View>
                     </View>
@@ -224,7 +325,24 @@ export default function({ navigation }){
                     <View style={{backgroundColor: '#295084', borderRadius: 5, paddingHorizontal: 15, paddingVertical: 10}}>
                         <View>
                             <Text style={styles.fontePadrao}>Câmbio</Text>
-                            <TextInput style={[styles.inputGrande, {width: '100%'}]}></TextInput>
+                            <View style={{width: '100%',
+                                    height: 40,
+                                    backgroundColor: '#295084',
+                                    borderWidth: 1,
+                                    borderColor: '#fff',
+                                    borderRadius: 5,
+                                    marginTop: 5,
+                                    justifyContent: 'center'
+                                    }}>
+                                   <Picker 
+                                        pickerStyleType={true}
+                                        selectedValue={cambio}
+                                        onValueChange={(text) => setCambio(text)}
+                                        style={styles.picker}>
+                                        <Picker.Item label='Manual' value='Manual' style={{color: 'gray'}} />
+                                        <Picker.Item label='Automático' value='Automático' style={{color: 'gray'}} />
+                                    </Picker>             
+                            </View>
                         </View>
                         <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 5}}>
                             <View style={{width: '32%', alignItems: 'center'}}>
@@ -290,7 +408,7 @@ export default function({ navigation }){
                                     type={'only-numbers'}
                                     value={numeroSerie}
                                     placeholder="00000"
-                                    placeholderTextColor="lightgray"
+                                    placeholderTextColor="#AAAAAA"
                                     onChangeText={(text) => setNumeroSerie(text)}
                                     style={[styles.inputPequeno, {width: '100%'}]} />
                             </View>
@@ -299,7 +417,7 @@ export default function({ navigation }){
                                 <TextInput
                                     value={fornecedor}
                                     placeholder="Digite aqui..."
-                                    placeholderTextColor="lightgray"
+                                    placeholderTextColor="#AAAAAA"
                                     onChangeText={(text) => setFornecedor(text)}
                                     style={[styles.inputPequeno, {width: '100%'}]} />
                             </View>
@@ -311,7 +429,7 @@ export default function({ navigation }){
                                     <TextInput
                                         value={local}
                                         placeholder="Digite aqui..."
-                                        placeholderTextColor="lightgray"
+                                        placeholderTextColor="#AAAAAA"
                                         onChangeText={(text) => setLocal(text)}
                                         style={[styles.inputPequeno, {width: '81%'}]} />
                                     <TouchableOpacity 
@@ -325,32 +443,34 @@ export default function({ navigation }){
                         <View style={{marginTop: 10}}>
                             <View style={{}}>
                                 <Text style={styles.fontePadrao}>Observações</Text>
-                                <View>
+                                <View style={{width: '100%', height: 100}}>
                                     <TextInput
                                         value={obs}
                                         multiline={true}
                                         placeholder="Digite aqui..."
-                                        placeholderTextColor="lightgray"
+                                        placeholderTextColor="#AAAAAA"
                                         onChangeText={(text) => setObs(text)}
-                                        style={[styles.inputPequeno, {width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'flex-start', overflow: 'hidden'}]} />
+                                        style={[styles.inputPequeno, {width: '100%', height: '100%', overflow: 'hidden'}]} />
                                 </View>
                             </View>
                             <View style={{marginTop: 10}}>
                                 <Text style={styles.fontePadrao}>Observação Característica</Text>
-                                <View>
+                                <View style={{width: '100%', height: 100}}>
                                     <TextInput
                                         value={obsCarac}
                                         multiline={true}
                                         placeholder="Digite aqui..."
-                                        placeholderTextColor="lightgray"
+                                        placeholderTextColor="#AAAAAA"
                                         onChangeText={(text) => setObsCarac(text)}
-                                        style={[styles.inputPequeno, {width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'flex-start', overflow: 'hidden'}]} />
+                                        style={[styles.inputPequeno, {width: '100%', height: '100%', overflow: 'hidden'}]} />
                                 </View>
                             </View>
                         </View>
                     </View>
-                    <TouchableOpacity style={{height: 50, width: '100%', borderRadius: 5, backgroundColor: '#254A7C', marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
-                        <Text style={[styles.fontePadrao, {fontSize: 20}]}>Adicionar carro</Text>
+                    <TouchableOpacity 
+                    onPress={() => prosseguir()}
+                    style={{height: 50, width: '100%', borderRadius: 5, backgroundColor: '#254A7C', marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
+                        <Text style={[styles.fontePadrao, {fontSize: 20}]}>Adicionar veículo</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -408,5 +528,8 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         marginLeft: 10,
         marginTop: 5
+    },
+    picker: {
+        height: 10,
     }
 });

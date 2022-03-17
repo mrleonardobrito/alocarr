@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, StyleSheet, Image, FlatList, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 
@@ -7,12 +7,12 @@ import Header from '../../../components/Header';
 import { CarroContainer, Bolinha } from './style';
 import { ButtonVer, ButtonText } from '../Gerente/style';
 
-import duster from './img/carro_duster.png'
-
 import dados from './carros';
 import { ItemBolinha } from '../Financeiro/style';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
+import veiculos from '../AdicionarCarro/carros';
 
 
 export default function({ navigation }){
@@ -21,6 +21,7 @@ export default function({ navigation }){
 
     const id = 2;
     
+    const [list, setList] = useState(veiculos);
 
     function conferirBolinha(situacao){
         if(situacao == 1){
@@ -57,19 +58,19 @@ export default function({ navigation }){
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('AdicionarCarro')}
                 style={{width: '100%', height: '90%', backgroundColor: '#295084', borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}>
-                    <Text style={{color: '#fff', fontSize: 18, fontWeight: 'bold'}}>Adicionar carro</Text>
+                    <Text style={{color: '#fff', fontSize: 18, fontWeight: 'bold'}}>Adicionar veículo</Text>
                 </TouchableOpacity>
             </View>
             <View style={{paddingHorizontal: 10, paddingBottom: 40}}>    
                 <FlatList 
-                data={dados}
+                data={veiculos}
                 keyExtractor={(_, index) => index}
                 renderItem={({item})=> 
                 <CarroContainer>
                     <View style={styles.carroView}>
                         <View style={{width: '30%'}}><Image source={item.imagem} style={styles.carroImage}/></View>
                         <View style={{width: '55%', paddingLeft: 20}}>
-                            <Text style={styles.nomeCarro}>{item.nomeCarro}</Text>
+                            <Text style={styles.nomeCarro}>{item.nome}</Text>
                             <View style={{marginTop: 0}}>
                                 <Text style={styles.descCarro}>Placa: <Text style={{fontWeight: 'normal'}}>{item.placa}</Text></Text>
                                 <Text style={styles.descCarro}>Proxima revisão: <Text style={{fontWeight: 'normal'}}>{item.proxRevisao}</Text></Text>

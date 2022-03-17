@@ -1,10 +1,10 @@
-import React, {useState, useReducer} from "react";
+import React, {useState, useReducer, useEffect} from "react";
 import * as Print from 'expo-print';
 import {shareAsync} from "expo-sharing";
 
 import Header from '../../../components/Header'
 
-import { TextInput, TouchableOpacity, View, Text, ScrollView, StyleSheet } from "react-native";
+import { TextInput, TouchableOpacity, View, Text, ScrollView, StyleSheet, FlatList } from "react-native";
 import Icon  from "react-native-vector-icons/FontAwesome";
 import IconAnt from "react-native-vector-icons/AntDesign";
 import IconMaterial from "react-native-vector-icons/MaterialCommunityIcons";
@@ -13,20 +13,60 @@ import { StatusBar } from "expo-status-bar";
 import { AnimatePresence, MotiView } from "moti";
 import { TextInputMask } from 'react-native-masked-text';
 
+import colaboradoresArray from "./AdicionarColaborador/colaboradoresArray";
 
 export default function({navigation}){
+
+    // constantes
 
     const [selectedPrinter, setSelectedPrinter] = React.useState();
 
     const dataAdmissao = new Date();
+    
+    const [visibleAbaPDF, toggleAbaPDF] = useReducer((s)=> !s, false);
+    const [visibleAbaAddColaborador, toggleAbaAddColaborador] = useReducer((s)=> !s, false);
 
-    const dataAtual = String(dataAdmissao.getDate()).padStart(2, '0') + '/' + String(dataAdmissao.getMonth() + 1).padStart(2, '0') + '/' + dataAdmissao.getFullYear();
-    const arrayPessoas = [
-        {nome: "Emanuel Vilela de Souza", cargo: "Programador", departamento: "Tecnológico", cargaHoraria: "20 horas", dataAdmissao: dataAtual},
-        {nome: "Joel Neto da Silva", cargo: "Designer", departamento: "Marketing", cargaHoraria: "20 horas", dataAdmissao: "19/09/22"},
-        {nome: "Leonardo Ferreira de Brito", cargo: "Programador", departamento: "Tecnológico", cargaHoraria: "20 horas", dataAdmissao: "19/09/22"},
-        {nome: "Linaldo Ferreira de Brito Santos", cargo: "CEO", departamento: "Administrativo", cargaHoraria: "100 horas", dataAdmissao: "19/09/22"},
-    ];
+    // funções
+
+    
+
+    // arrays
+
+    const [textoPesquisa, setTextoPesquisa] = useState();
+    const [list, setList] = useState(colaboradoresArray);
+
+    useEffect(()=> {
+        if(textoPesquisa === ""){
+            setList(colaboradoresArray);
+        }else{
+            setList(colaboradoresArray.filter(item => {
+                if(item.nome.indexOf(textoPesquisa) > -1){
+                    return true;
+                } else{
+                    return false;
+                }
+            }));
+        }
+    }, [textoPesquisa]);
+
+    /*
+    useEffect(()=> {
+        if(textoPesquisa === ""){
+            setList(colaboradoresArray);
+        }else{
+            setList(colaboradoresArray.filter(item => {
+                if(item.nome.toLowerCase().indexOf(textoPesquisa.toLowerCase()) > -1){
+                    return true;
+                } else{
+                    return false;
+                }
+            }));
+        }
+    }, [textoPesquisa]);
+    */
+    //
+
+    
 
     const print = async () => {
         await Print.printAsync({
@@ -41,16 +81,12 @@ export default function({navigation}){
         });
         console.log('File has been saved to:', uri);
         await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
-      }
-    const [visibleAbaPDF, toggleAbaPDF] = useReducer((s)=> !s, false);
-    const [visibleAbaAddColaborador, toggleAbaAddColaborador] = useReducer((s)=> !s, false);
-
-    const [bancoHoras, setBancoHoras] = useState();
+    }
 
     const criarTabelaDinamica = () => {
         var tabela = '';
-        for(let i in arrayPessoas){
-            const item = arrayPessoas[i];
+        for(let i in colaboradoresArray){
+            const item = colaboradoresArray[i];
             tabela = tabela + `
             <div class="tabelas">
                 <div class="p" id="nome">${item.nome}</div>
@@ -215,7 +251,7 @@ export default function({navigation}){
                 }}
                 style={{flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'transparent', borderRadius: 5}}
                 >
-                   <TouchableOpacity style={[styles.botaoColaborador, {width: '40%'}]}>
+                   <TouchableOpacity style={[styles.botaoColaborador, {width: '40%'}]} onPress={() => salvarColaborador()}>
                        <Text style={[styles.fontePadrao, {fontSize: 13, margin: 0, color: 'lightgreen'}]}>Adicionar</Text>
                     </TouchableOpacity>
                    <TouchableOpacity style={[styles.botaoColaborador, {width: '29%'}]}>
@@ -246,13 +282,16 @@ export default function({navigation}){
         }
 
     return(
-        <View style={{backgroundColor: '#011631'}}>
+        <View style={{backgroundColor: '#011631', flex: 1}}>
             <StatusBar hidden/>
             <Header pageName="Colaboradores"/>
             <ScrollView style={{paddingHorizontal: 10, marginTop: 10}}>
                 <View style={{height: 35, backgroundColor: '#285084', borderRadius: 5, flexDirection: 'row'}}>
-                    <TouchableOpacity style={{width: '15%', height: '100%', backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'center', borderBottomLeftRadius: 5, borderTopLeftRadius: 5}}><Icon name="search" style={{color: 'white', fontSize: 19}}/></TouchableOpacity>
-                    <TextInput 
+                    <TouchableOpacity
+                    onPress={() => pesquisarColaborador()}
+                     style={{width: '15%', height: '100%', backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'center', borderBottomLeftRadius: 5, borderTopLeftRadius: 5}}><Icon name="search" style={{color: 'white', fontSize: 19}}/></TouchableOpacity>
+                    <TextInput
+                    onChangeText={(texto) => setTextoPesquisa(texto)}
                     placeholderTextColor="#fff"
                     placeholder="Pesquise pelo nome..." style={{paddingLeft: 10, width: '85%', color: 'white'}}/>
                 </View>
@@ -264,7 +303,7 @@ export default function({navigation}){
                         <Text style={{color: 'white', fontSize: 10}}>Lista de colaboradores</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                    onPress={() => openAbaColaborador()}
+                    onPress={() => navigation.navigate('AdicionarColaborador')}
                     style={{backgroundColor: '#285084', height: '100%', width: '29%', flexDirection: 'row', borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}>
                         <Icon name="plus" style={{color: 'white', fontSize: 13, marginRight: 5}}/>
                         <Text style={{color: 'white', fontSize: 10}}>Colaborador</Text>
@@ -283,7 +322,7 @@ export default function({navigation}){
                 </AnimatePresence>
                 <View style={{}}>
                     {
-                        arrayPessoas.map((item) => { return <View style={{backgroundColor: '#285084', borderRadius: 5, padding: 10, flexDirection: 'row', marginTop: 7}}>
+                        list.map((item) => { return <View style={{backgroundColor: '#285084', borderRadius: 5, padding: 10, flexDirection: 'row', marginTop: 7}}>
                         <View style={{width: '90%'}}>
                             <View style={{width: '100%', borderBottomWidth: 1, backgroundColor: 'transparent', borderColor: 'gray'}}><Text style={{color: 'white', fontSize: 19, fontWeight: 'bold', marginBottom: 3}}>{item.nome}</Text></View>
                             <View style={{marginTop: 5, flexDirection: 'row'}}>
@@ -293,7 +332,7 @@ export default function({navigation}){
                                 </View>
                                 <View style={{width: '50%'}}>
                                     <Text style={{color: 'white', fontSize: 12, fontWeight: 'bold'}}>Departamento: {item.departamento}</Text>
-                                    <Text style={{color: 'white', fontSize: 12, fontWeight: 'bold'}}>Banco de horas: {item.cargaHoraria}</Text>
+                                    <Text style={{color: 'white', fontSize: 12, fontWeight: 'bold'}}>Banco de horas: {item.bancoDeHoras}</Text>
                                 </View>
                             </View>
                         </View>
@@ -302,7 +341,8 @@ export default function({navigation}){
                         })
                     }
 
-                    <View style={{height: 140}}>
+                
+                    <View style={{height: 100}}>
 
                     </View>
                 </View>

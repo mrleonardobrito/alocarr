@@ -18,6 +18,8 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 import HeaderOb from '../../../components/Header';
 
+import carros from '../AdicionarCarro/carros';
+
 const HEIGHT = '100%' + '150%';
 
 export default function({ navigation }){
@@ -46,7 +48,7 @@ export default function({ navigation }){
         );
     }
 
-    const quantidadeCarros = 5;
+    const quantidadeCarros = carros.length;
     const valoresFinanceiro = [500.5323, 343.7765];
     
     return(

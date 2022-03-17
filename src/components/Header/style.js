@@ -41,7 +41,7 @@ export const H1Section = styled.View`
 export const H1 = styled.Text`
     color: white;
     font-weight: ${props => props.theme.negrito};
-    font-size: 23px;
+    font-size: 20px;
 `;
 
 export const Main = styled.ScrollView`

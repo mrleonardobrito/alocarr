@@ -66,9 +66,6 @@ export default function({route}){
 
 
     const valorEntradas = [400, 300.9];
-    const situacao = 1;
-
-    const array = [1,2,3,4,5];
 
     //Flatlist 
 
@@ -77,7 +74,6 @@ export default function({route}){
             setList(dados);
         }else{
             setList(dados.filter(item => {
-                
                 if(item.sacador.toLowerCase().indexOf(searchText.toLowerCase()) > -1){
                     return true;
                 } else{

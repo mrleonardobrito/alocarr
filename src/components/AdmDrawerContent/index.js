@@ -41,6 +41,8 @@ export default function AdmDrawerContent({navigation}){
         const textoDigitado = searchText[0].toUpperCase() + searchText.slice(1).toLowerCase();
         
         navigation.navigate(textoDigitado);
+
+        
     }
 
     function confLogout(){
