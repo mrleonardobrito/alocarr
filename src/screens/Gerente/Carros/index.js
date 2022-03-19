@@ -49,7 +49,10 @@ export default function({ navigation }){
                  style={{backgroundColor: '#3766A4', width: '15%', height: '100%', alignItems: 'center', justifyContent: 'center', borderBottomLeftRadius: 7, borderTopLeftRadius: 7}}>
                     <Icon name='search' style={{fontSize: 19, color: '#fff'}}/>
                 </TouchableOpacity>
-                <TextInput style={{backgroundColor: '#3766A4', width: '85%', height: '100%', borderBottomRightRadius: 7, borderTopRightRadius: 7, padding: 10, color: '#fff'}}/>
+                <TextInput 
+                placeholder='Pesquise aqui...'
+                placeholderTextColor='white'
+                style={{backgroundColor: '#3766A4', width: '85%', height: '100%', borderBottomRightRadius: 7, borderTopRightRadius: 7, padding: 10, color: '#fff'}}/>
             </View>
             <View style={{width: '100%', marginTop: '2.5%', alignItems: 'center', marginBottom: '3%'}}>
                 <View style={{paddingHorizontal: 10, width: '90%', height: 2, borderRadius: 50, backgroundColor: '#3766A4'}}></View>

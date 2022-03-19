@@ -322,7 +322,7 @@ export default function({navigation}){
                 </AnimatePresence>
                 <View style={{}}>
                     {
-                        list.map((item) => { return <View style={{backgroundColor: '#285084', borderRadius: 5, padding: 10, flexDirection: 'row', marginTop: 7}}>
+                        colaboradoresArray.map((item) => { return <View style={{backgroundColor: '#285084', borderRadius: 5, padding: 10, flexDirection: 'row', marginTop: 7}}>
                         <View style={{width: '90%'}}>
                             <View style={{width: '100%', borderBottomWidth: 1, backgroundColor: 'transparent', borderColor: 'gray'}}><Text style={{color: 'white', fontSize: 19, fontWeight: 'bold', marginBottom: 3}}>{item.nome}</Text></View>
                             <View style={{marginTop: 5, flexDirection: 'row'}}>
