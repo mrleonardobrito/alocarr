@@ -46,14 +46,14 @@ const useFadeInRight = () => {
     })
 }
 
-const CarList = () => {
+const CarList = ({ navigation }) => {
     const [maxQuant, setMaxQuant] = useState(15)
 
     return (
         <ListCars>
             {carros.map((carro, index) => {
                 if(index < maxQuant){
-                    return <CarItem carro={carro} key={index} id={index}/>
+                    return <CarItem carro={carro} key={index} id={index} navigation={navigation}/>
                 }
             })}
             {
@@ -67,7 +67,7 @@ const CarList = () => {
     );
 }
 
-const CarItem = ({ carro, id }) => {
+const CarItem = ({ carro, id, navigation }) => {
     const fadeInUp = useFadeInUp()
     const fadeInLeft = useFadeInLeft()
     const fadeInRight = useFadeInRight()
@@ -142,7 +142,6 @@ const CarItem = ({ carro, id }) => {
             </AboutCar>
             <DetailsCar>
                 {getDetails(carro).map((detail, index) => {
-                    console.log(detail[1].toString().length)
                     return (
                         <DetailContainer key={index}>
                             <DetailIcon>{detail[0]}</DetailIcon>
@@ -151,7 +150,7 @@ const CarItem = ({ carro, id }) => {
                     )
                 })}
             </DetailsCar>
-            <ReservaButton>
+            <ReservaButton onPress={() => navigation.navigate('Carros', { id: id })}>
                 <ReservaButtonLabel>Começar uma Reserva</ReservaButtonLabel>
                 <Icons.AntDesign name='right' size={22} color={"#3E6699"}/>
             </ReservaButton>

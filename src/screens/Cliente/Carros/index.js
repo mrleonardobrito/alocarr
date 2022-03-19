@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import carros from '../../../utils/carros';
 import { StatusBar } from 'expo-status-bar';
 import { Dimensions, StyleSheet, Image, ScrollView, View } from 'react-native';
-import Animated from 'react-native-reanimated'
+import Animated, { EasingNode, Extrapolate } from 'react-native-reanimated'
 
 import InformacoesCarro from './InformacoesCarro';
 import OpcoesPreco from './OpcoesPreco';
@@ -20,13 +20,26 @@ const CARIMAGE_HEIGHT = width > 915 ? 283 : height * 0.23;
 const CARIMAGE_WIDTH = width > 915 ? 483 : width * 0.80;
 const CARIMAGE_SPACING = (width - CARIMAGE_WIDTH)/2;
 
-const CarrosCliente = ({ navigation }) => {
+const CarrosCliente = ({ route, navigation }) => {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   const backgroundImage = require('../../../assets/screen-carros-header.png')
-  const [carro, setCarro] = useState(carros[0])
+  const index = route.params.id ? route.params.id : 0; 
+  const [carro, setCarro] = useState(carros[index])
+
+  const scrollRef = useRef(null)
+
+  useEffect(() => {
+    // scrollX.setValue(index * CARIMAGE_WIDTH) 
+    scrollRef.current?.scrollTo({
+      x: index * CARIMAGE_WIDTH,
+      animated: true,
+    })
+
+    setCarro(carros[route.params.id])
+  }, [route.params.id])
 
   const onScrollEndHandler = (event) => {
-    const value = event.nativeEvent.contentOffset.x
+    const value = event.nativeEvent.contentOffset.x || 0
     const index = Math.round(value/CARIMAGE_WIDTH)
     setCarro(carros[index])
   }
@@ -37,8 +50,10 @@ const CarrosCliente = ({ navigation }) => {
       <Header>
         <BackgroundImage source={backgroundImage} />
         <ListView top={CARIMAGE_HEIGHT * 0.7} height={CARIMAGE_HEIGHT}>
-          <CarouselCarros  
+          <CarouselCarros
+            ref={scrollRef}  
             data={carros}
+            scrollTo={{ x: index * CARIMAGE_WIDTH}}
             decelerationRate='fast' 
             snapToInterval={CARIMAGE_WIDTH}
             contentContainerStyle={{
@@ -54,17 +69,18 @@ const CarrosCliente = ({ navigation }) => {
             scrollEnabled
             horizontal
           >
-            {carros.map((carro, index) => {
-              const inputRange = [
-                (index - 1) * CARIMAGE_WIDTH,
-                index * CARIMAGE_WIDTH,
-                (index + 1) * CARIMAGE_WIDTH
-              ]
-              const opacity = scrollX.interpolate({
-                inputRange,
-                outputRange: [.4, 1, .4]
-              })
-              return <Animated.Image source={carro.imagem} style={[styles.image, { opacity }]} key={index}/>
+            {carros.map((value, index) => {
+                const inputRange = [
+                  (index - 1) * CARIMAGE_WIDTH,
+                  index * CARIMAGE_WIDTH,
+                  (index + 1) * CARIMAGE_WIDTH
+                ]
+                
+                const opacity = scrollX.interpolate({
+                  inputRange,
+                  outputRange: [.4, 1, .4]
+                })
+              return <Animated.Image source={value.imagem} style={[styles.image, { opacity }]} key={index}/>
             })}
           </CarouselCarros>
         </ListView>

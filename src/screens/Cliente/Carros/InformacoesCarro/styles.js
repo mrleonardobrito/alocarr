@@ -18,6 +18,7 @@ export const DevolutionContainer = styled.View`
 `
 export const CarInformation = styled.View`
     height: 30%;
+    top: 10px;
     width: 100%;
     align-items: center;
     z-index: 0;

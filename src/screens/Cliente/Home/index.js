@@ -85,7 +85,7 @@ const Home = ({ navigation }) => {
       >
         <SubtituloReserva>Propaganda</SubtituloReserva>
       </Propaganda> */}
-      <CarList/>
+      <CarList navigation={navigation}/>
       <OperationBox 
         type='primary'
         delay= {800}

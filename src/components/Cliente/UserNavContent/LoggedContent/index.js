@@ -50,7 +50,7 @@ const LoggedInContent = ({ navigation, route }) => {
                     <NavName>Perfil</NavName>
                 </ItemContainer>
                 <ItemContainer
-                    onPress={() => navigation.navigate("Carros")}
+                    onPress={() => navigation.navigate("Carros", { id: 0 })}
                 >
                     <Icon name="car" size={30} style={{color: cores.cliente.text1}}/>
                     <NavName>Carros</NavName>
