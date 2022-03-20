@@ -53,10 +53,9 @@ export const Main = styled.View`
 
 export const MainItem = styled.View`
     width: 100%;
-    height: 175px;
+    height: 30%;
     background-color: #254A7B;
     border-radius: 5px;
-    margin-top: 15px;
     display: flex;
     justify-content: center;
 `;

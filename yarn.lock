@@ -4801,6 +4801,11 @@ expo-modules-core@0.6.5, expo-modules-core@~0.6.4:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
 
+expo-print@~11.1.0:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/expo-print/-/expo-print-11.1.1.tgz#04e98fcf51d14281b1781187b1eca8a567be1534"
+  integrity sha512-JRJNzk67nCqAgRBauikLQ7rPz/M+4m0XYkxPDQF2PkrqAyhBbDPcAmySYJKczpD++XBwPkQkbmBHShefFsNcOQ==
+
 expo-pwa@0.0.111:
   version "0.0.111"
   resolved "https://registry.yarnpkg.com/expo-pwa/-/expo-pwa-0.0.111.tgz#9c2b7e98f033f539304c64a0b06687806337f837"
@@ -4813,6 +4818,12 @@ expo-pwa@0.0.111:
     update-check "1.5.3"
 
 expo-splash-screen@^0.14.2, expo-splash-screen@~0.14.0:
+expo-sharing@~10.1.0:
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/expo-sharing/-/expo-sharing-10.1.1.tgz#80348768a2b0ab23860604c8902696d0c39ffea4"
+  integrity sha512-Wyre/y6Ce+S7PYwu1QGH2QNtO8ftHViiivSGAIif4shCO64QbO2JHYvgBzeMvAGfvUXzbJ04I+oCZKypA59tnA==
+
+expo-splash-screen@~0.14.0:
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.14.2.tgz#2598d6980e71ecd8b7467ca821fb9dbfb80f355b"
   integrity sha512-X25D/0E2AWEFGgDWIVXZ5Bl7FhYk7TgVhEWvplBqrDY7G7vg5l1aoH6PelOQINWPsa1dcRyA7REdN2ltO+0LAw==

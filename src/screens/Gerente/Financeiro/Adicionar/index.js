@@ -43,12 +43,8 @@ export default function({route}){
 
     const pageName = 'Adicionar';
 
-    const [valores, setValores] = useState([]);
-
-
-
     function prosseguir(){
-        navigation.navigate('Financeiro', {valores});
+        navigation.navigate('Financeiro');
         salvar();
     }
 
@@ -59,19 +55,17 @@ export default function({route}){
         adicionar(novosValores);
 
         console.log(dados);
-        console.log(valores)
     }
 
     function adicionar(novosValores){
         dados.push(novosValores);
-        valores.push(novosValores);
     }
 
     function lerDados(){
         let novosValores = {};
 
 
-        novosValores.id = valores.length;
+        novosValores.id = dados.length;
         novosValores.situacao = situacao;
         novosValores.sacador = sacador;
         novosValores.dataVenc = dataVenc;
@@ -84,13 +78,6 @@ export default function({route}){
 
 
         return novosValores;
-    }
-
-    function validaCampos(novosDados){
-        let msg = '';
-        if(novosDados.sacador == ''){
-            msg += 'insira o nome'
-        }
     }
 
     return(

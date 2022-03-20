@@ -3,6 +3,8 @@
 import { StatusBar } from 'expo-status-bar';
 
 import React, {useReducer, useState, useEffect, useContext} from 'react';
+import { useDrawerStatus } from '@react-navigation/drawer';
+
 
 /* VectorIcons */
 
@@ -35,7 +37,15 @@ export default function AdmDrawerContent({navigation}){
         return <Image source={logoALocarr} style={{height: 40, width: 40}}/>
     }
 
-    const localizacao = 'Arapiraca Garden Shopping';
+    const [searchText, setSearchText] = useState();
+
+    function pesquisar(){
+        const textoDigitado = searchText[0].toUpperCase() + searchText.slice(1).toLowerCase();
+        
+        navigation.navigate(textoDigitado);
+
+        
+    }
 
     function confLogout(){
         console.log(APP_NAME)
@@ -54,29 +64,43 @@ export default function AdmDrawerContent({navigation}){
 
     }
 
-    function verificarOpen(){
-        if(visibleCadastroEspeci){
-            console.log('Cadastro')
-            toggleFinanceiro(false);
-            toggleLocacoes(false);
-        }
-        if(visibleFinanceiro){
-            console.log('Fina')
-            toggleCadastroEspeci(true);
-            toggleLocacoes(true);
-        }
-        if(visibleLocacoes){
-            console.log('Loca')
-            toggleCadastroEspeci(true);
-            toggleFinanceiro(true);
-        }
-    }
-
     const [visibleCadastroEspeci, toggleCadastroEspeci] = useReducer((s)=> !s, false);
     const [visibleFinanceiro, toggleFinanceiro] = useReducer((s)=> !s, false);
     const [visibleLocacoes, toggleLocacoes] = useReducer((s)=> !s, false);
 
+    function verificarCadastro(){
+        toggleCadastroEspeci();
 
+        if(visibleFinanceiro){
+            return toggleFinanceiro();
+        }
+        if(visibleLocacoes){
+            return toggleLocacoes();
+        }
+    }
+
+    function verificarFinanceiro(){
+        toggleFinanceiro();
+
+        if(visibleCadastroEspeci){
+            return toggleCadastroEspeci();
+        }
+        if(visibleLocacoes){
+            return toggleLocacoes();
+        }
+    }
+
+    function verificarLocacoes(){
+        toggleLocacoes();
+
+        if(visibleCadastroEspeci){
+            return toggleCadastroEspeci();
+        }
+        if(visibleFinanceiro){
+            return toggleFinanceiro();
+        }
+    }
+    
     
     function CadastrosGerais(){
         return(
@@ -253,8 +277,6 @@ export default function AdmDrawerContent({navigation}){
         }
     }
 
-    const [decidir, setDecidir] = useState(false);
-
     function openAnimation(value){
         if(value == 1){
             return(<CadastrosGerais />);
@@ -272,20 +294,20 @@ export default function AdmDrawerContent({navigation}){
             
             <DrawerHeader style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 <TouchableOpacity onPress={() => navigation.navigate('Gerente')} style={{marginTop: 5}}><DrawerHeaderTitle>{logo()}<Text style={{fontSize: 23, color: '#fff', fontWeight: 'bold'}}>{pageName}</Text></DrawerHeaderTitle></TouchableOpacity>
-                <CloseIcon onPress={()=> navigation.closeDrawer()} st><Icon name="times" style={styles.fonte}/></CloseIcon>
+                <CloseIcon onPress={()=> navigation.closeDrawer()}><Icon name="times" style={styles.fonte}/></CloseIcon>
             </DrawerHeader>
             <DrawerMain style={{backgroundColor: '#295084', justifyContent: 'space-between'}}>
                 <View>
                     <SearchContainer>
-                        <SearchButton><Icon name="search" style={styles.fonteSearch}/></SearchButton>
-                        <SearchInput placeholderTextColor="#fff" placeholder="Pesquisar..." style={{color: '#fff'}}/>
+                        <SearchButton onPress={() => pesquisar()}><Icon name="search" style={styles.fonteSearch}/></SearchButton>
+                        <SearchInput placeholderTextColor="#fff" placeholder="Pesquisar..." style={{color: '#fff'}} onChangeText={(text) => setSearchText(text)}/>
                     </SearchContainer>
                     <ItemsContainer>
                         <ItemMain onPress={() => navigation.navigate('Graficos')}>
                             <ItemIcon><Icon name="chart-bar" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Estatísticas</ItemText>
                         </ItemMain>
-                        <ItemMain onPress={toggleCadastroEspeci}>
+                        <ItemMain onPress={() => verificarCadastro()}>
                             <ItemIcon><Icon name="cash-register" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Cadastro gerais</ItemText>
                             <AnimatePresence>
@@ -295,7 +317,7 @@ export default function AdmDrawerContent({navigation}){
                         <AnimatePresence>
                         {visibleCadastroEspeci && openAnimation(1)}
                         </AnimatePresence>
-                        <ItemMain onPress={toggleFinanceiro}>
+                        <ItemMain onPress={() => verificarFinanceiro()}>
                             <ItemIcon><Icon name="money-bill-wave" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Financeiro</ItemText>
                             <AnimatePresence>
@@ -305,7 +327,7 @@ export default function AdmDrawerContent({navigation}){
                         <AnimatePresence>
                         {visibleFinanceiro && openAnimation(2)}
                         </AnimatePresence>
-                        <ItemMain onPress={toggleLocacoes}>
+                        <ItemMain onPress={() => verificarLocacoes()}>
                             <ItemIcon><Icon name="car" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Locações</ItemText>
                             <AnimatePresence>
@@ -315,7 +337,7 @@ export default function AdmDrawerContent({navigation}){
                         <AnimatePresence>
                         {visibleLocacoes && openAnimation(3)}
                         </AnimatePresence>
-                        <ItemMain onPress={() => navigation.navigate('Carros')}>
+                        <ItemMain onPress={() => verificarCadastro()}>
                             <ItemIcon><IconConfig name="gear" style={styles.itemFonte}/></ItemIcon>
                             <ItemText>Configurações</ItemText>
                         </ItemMain>

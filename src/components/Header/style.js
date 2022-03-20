@@ -41,7 +41,7 @@ export const H1Section = styled.View`
 export const H1 = styled.Text`
     color: white;
     font-weight: ${props => props.theme.negrito};
-    font-size: 23px;
+    font-size: 20px;
 `;
 
 export const Main = styled.ScrollView`
@@ -113,7 +113,7 @@ export const ButtonVer = styled.TouchableOpacity`
     background-color: #e0e0e0;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    padding-left: 10px
+    padding-left: 10px;
 `;
 
 export const ButtonText = styled.Text`

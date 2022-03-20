@@ -20,70 +20,119 @@ import { MotiView, AnimatePresence } from "moti";
 import Svg, { Circle } from 'react-native-svg'
 
 import { PieChart } from 'react-native-svg-charts'
+import { StatusBar } from "expo-status-bar";
 
 const corGraficoLinha = '#03295B';
 
 const graficLinhaValues = [
     {
         cor: '#03295B',
-        valor: 230 
+        valor: 1500
     },
     {
         cor: '#04408F',
-        valor: 200
+        valor: 2500
     },
     {
         cor: '#044AA6',
-        valor: 160
+        valor: 3500
     },
     {
         cor: '#055BCB',
-        valor: 178
+        valor: 4500
     },
     {
         cor: '#055BCB',
-        valor: 230
+        valor: 1600
     },
 ]
 
+function decidirHeight(valor){
+    if(valor == 1000){
+        const height = 230 * 0.2;
+        return height;
+    }
+    if(valor == 2000){
+        const height = 230 * 0.4;
+        return height;
+    }
+    if(valor == 3000){
+        const height = 230 * 0.6;
+        return height;
+    }
+    if(valor == 4000){
+        const height = 230 * 0.8;
+        return height;
+    }
+    if(valor == 5000){
+        const height = 230 * 1;
+        return height;
+    }
+    if(valor > 5000){
+        const height = 230 * 1;
+        return height;
+    }
+    if(valor < 1000){
+        const height = valor / 48 * 2.06;
+        return height;
+    }
+    if(valor > 1000 || valor < 2000){
+        const height = valor / 92 * 4.3;
+        return height;
+    }
+}
+
 const graficLinhaDoisValue = [
     {
-        cor: corGraficoLinha,
+        cor: '#41B8D5',
         valor: 170,
         valorPassado: 180,
     },
     {
-        cor: corGraficoLinha,
-        valor: 100,
+        cor: '#2D8BBA',
+        valor: 46,
         valorPassado: 100 / 2,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#6CE5E8',
         valor: 130,
         valorPassado: 130 / 2,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#41B8D5',
         valor: 200,
         valorPassado: 200 / 2,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#2D8BBA',
         valor: 110,
         valorPassado: 110 / 2,
     },
     {
-        cor: corGraficoLinha,
+        cor: '#6CE5E8',
         valor: 40,
         valorPassado: 40 / 2,
     },
-    {
-        cor: corGraficoLinha,
-        valor: 85,
-        valorPassado: 85 / 2,
-    }
 ]
 
+function decidirHeightDois(valor){
+    if(valor == 3000){
+        const height = 230;
+        return height;
+    }
+    if(valor == 2250){
+        const height = 230;
+        return height;
+    }
+    if(valor == 1500){
+        const height = 230;
+        return height;
+    }
+    if(valor == 750){
+        const height = 230;
+        return height;
+    }
+}
 
 export default function({route}){
 
@@ -93,7 +142,7 @@ export default function({route}){
 
     const coresGrafico = ['#31356E', '#2F5F98', '#2D8BBA','#41B8D5'];
 
-    const [visible, setVisible] = useReducer((s)=> !s, false)
+    const [visible, setVisible] = useReducer((s)=> !s, false);
 
     function verIcon(){
          if(visible){
@@ -128,6 +177,8 @@ export default function({route}){
             svg: { fill: '#31356E' }
         },
     ];
+
+    
     const dataCirculoDois = [
         {
             key: 1,
@@ -151,6 +202,8 @@ export default function({route}){
         },
     ];
 
+    
+
     const Labels = ({ slices }) => {
             return slices.map((slice, index)=> {
                 const {pieCentroid, data} = slice;
@@ -171,8 +224,10 @@ export default function({route}){
     return(
         <ScrollView>
             <HeaderOb pageName={pageName}/>
+            <StatusBar hidden />
             <Main style={{backgroundColor: '#021732'}}>
                 <GraficoContainer>
+                    {/*
                     <Grafico style={{flexDirection: 'column'}}>
                         <Text style={styles.graficoLinhaTitulo}>Status locação - ultimos 30 dias</Text>
                         <View style={{width: '100%', alignItems: 'flex-start', height: '100%'}}>
@@ -240,7 +295,7 @@ export default function({route}){
                             </View>
                         </View>
                     </Grafico>
-
+            */}
 
 
                     <Grafico style={{flexDirection: 'column'}}>
@@ -275,7 +330,7 @@ export default function({route}){
                                             <View style={{
                                                         width: '100%',
                                                         backgroundColor: value.cor, 
-                                                        height: value.valor,
+                                                        height: decidirHeight(value.valor),
                                                         alignItems: 'center',
                                                         justifyContent: 'center',
                                                         borderTopLeftRadius: 3,
@@ -302,6 +357,10 @@ export default function({route}){
                                     <View style={[styles.quadrado, {backgroundColor: graficLinhaValues[2].cor}]}></View>
                                     <Text style={styles.quadradoText}>Hylux</Text>
                                 </View>
+                                <View style={{flexDirection: 'row', marginBottom: 5, alignItems: 'center'}}>
+                                    <View style={[styles.quadrado, {backgroundColor: graficLinhaValues[2].cor}]}></View>
+                                    <Text style={styles.quadradoText}>Fusca</Text>
+                                </View>
                             </View>
                         </View>
                     </Grafico>
@@ -312,10 +371,10 @@ export default function({route}){
 
                         <View style={{backgroundColor: 'transparent', width: '100%', height: '90%', flexDirection: 'row'}}>
                             <View name="valor-grafico" style={{width: '10%', height: '100%', backgroundColor: 'transparent', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-end', paddingRight: 6, marginTop: 5}}>
-                                <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>10</Text></View>
-                                <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>7,5</Text></View>
-                                <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>5</Text></View>
-                                <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>2,5</Text></View>
+                                <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>3000</Text></View>
+                                <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>2250</Text></View>
+                                <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>1500</Text></View>
+                                <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>750</Text></View>
                                 <View><Text style={{fontSize: 10, color: '#2D8BBA', fontWeight: 'bold',}}>0</Text></View>
                             </View>
 
@@ -329,41 +388,48 @@ export default function({route}){
 
                             <View name="linha-grafico" style={{width: '65%', height: '100%', flexDirection: 'row', zIndex: 5, backgroundColor: 'transparent'}}>
                                    {
-                                        graficLinhaDoisValue.map((value, index) => 
-                                        <View key={index} style={{height: '100%', width: 100 / graficLinhaDoisValue.length + '%', paddingHorizontal: 2, flexDirection: 'row', alignItems: 'flex-end'}}>
-                                            <View style={{width: '100%', alignItems: 'center'}}>
-                                            <Text style={{fontSize: 14, fontWeight: 'bold', color: '#03295B'}}>{value.valor}</Text>
-                                            <View style={{
-                                                        width: '100%',
-                                                        backgroundColor: value.cor, 
-                                                        height: value.valor,
-                                                        alignItems: 'flex-end',
-                                                        justifyContent: 'flex-end',
-                                                        borderTopLeftRadius: 3,
-                                                        borderTopRightRadius: 3}}>
-                                                            <AnimatePresence>
-                                                            {visible && <MotiView
-                                                                        from={{
-                                                                            backgroundColor: '#5379AB', height: 0, width: '100%', opacity: 0.5,
-                                                                        }}
-                                                                        animate={{
-                                                                            backgroundColor: '#5379AB', height: value.valorPassado, width: '100%', opacity: 0.5,
-                                                                        }}
-                                                                        exit={{
-                                                                            backgroundColor: '#5379AB', height: 0, width: '100%', opacity: 0.5,
-
-                                                                        }}
-                                                                        transition={{
-                                                                            type: 'timing',
-                                                                            duration: 1300,
-                                                                        }}
-                                                                        style={{
-                                                                            borderTopLeftRadius: 3,
-                                                                            borderTopRightRadius: 3
-                                                                        }}
-                                                                    >
-                                                                    </MotiView>}
-                                                            </AnimatePresence>
+                                    graficLinhaDoisValue.map((value, index) => 
+                                    <View key={index} style={{height: '100%', width: 100 / graficLinhaDoisValue.length + '%', paddingHorizontal: 2, flexDirection: 'row', alignItems: 'flex-end'}}>
+                                        <View style={{width: '100%', alignItems: 'center'}}>
+                                        <Text style={{fontSize: 14, fontWeight: 'bold', color: '#03295B'}}>{value.valor}</Text>
+                                        <View style={{
+                                            width: '100%',
+                                                backgroundColor: value.cor, 
+                                                height: value.valor,
+                                                alignItems: 'flex-end',
+                                                justifyContent: 'flex-end',
+                                                borderTopLeftRadius: 3,
+                                                borderTopRightRadius: 3}}>
+                                            <AnimatePresence>
+                                                {visible && <MotiView
+                                                            from={{
+                                                            backgroundColor: '#5379AB', 
+                                                            height: 0, 
+                                                            width: '100%', 
+                                                            opacity: 0.5,
+                                                            }}
+                                                            animate={{
+                                                            backgroundColor: '#5379AB', 
+                                                            height: value.valorPassado, 
+                                                            width: '100%', opacity: 0.5,
+                                                            }}
+                                                            exit={{
+                                                            backgroundColor: '#5379AB', 
+                                                            height: 0, 
+                                                            width: '100%', 
+                                                            opacity: 0.5,
+                                                            }}
+                                                            transition={{
+                                                            type: 'timing',
+                                                            duration: 1300,
+                                                            }}
+                                                            style={{
+                                                            borderTopLeftRadius: 3,
+                                                            borderTopRightRadius: 3
+                                                            }}
+                                                            >
+                                                            </MotiView>}
+                                                        </AnimatePresence>
                                             </View>
                                             </View>
                                         </View>)
