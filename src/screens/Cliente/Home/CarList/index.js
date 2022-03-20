@@ -2,7 +2,7 @@ import { colorKeys, useAnimationState } from 'moti';
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import * as Icons from '@expo/vector-icons';
-import { AboutCar, CarBox, CarGas, CarImage, CarInformations, CarName, CarPrice, CarPriceLabel, DetailContainer, DetailIcon, DetailLabel, DetailsCar, ListCars, ReservaButton, ReservaButtonLabel } from './styles';
+import { AboutCar, CarBox, CarGas, CarImage, CarInformations, CarName, CarPrice, CarPriceLabel, DetailContainer, DetailIcon, DetailLabel, DetailsCar, ListCars, MostrarButton, MostrarButtonLabel, ReservaButton, ReservaButtonLabel } from './styles';
 import carros from '../../../../utils/carros';
 
 // import { Container } from './styles';
@@ -58,9 +58,9 @@ const CarList = ({ navigation }) => {
             })}
             {
                maxQuant < carros.length ? (
-                    <TouchableOpacity onPress={() => setMaxQuant(maxQuant + 5)}><Text>+</Text></TouchableOpacity>
+                    <MostrarButton onPress={() => setMaxQuant(maxQuant + 5)}><MostrarButtonLabel>Mostrar Mais</MostrarButtonLabel></MostrarButton>
                ) : (
-                    <TouchableOpacity onPress={() => setMaxQuant(15)}><Text>-</Text></TouchableOpacity>
+                    <MostrarButton onPress={() => setMaxQuant(15)}><MostrarButtonLabel>Mostrar Menos</MostrarButtonLabel></MostrarButton>
                )
             }
         </ListCars>
@@ -152,7 +152,7 @@ const CarItem = ({ carro, id, navigation }) => {
             </DetailsCar>
             <ReservaButton onPress={() => navigation.navigate('Carros', { id: id })}>
                 <ReservaButtonLabel>Começar uma Reserva</ReservaButtonLabel>
-                <Icons.AntDesign name='right' size={22} color={"#3E6699"}/>
+                <Icons.AntDesign name='right' size={22} color={"#EBECF0"}/>
             </ReservaButton>
         </CarBox>
     )

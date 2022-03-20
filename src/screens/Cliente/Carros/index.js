@@ -11,6 +11,7 @@ import {
   BackgroundImage,
   CarouselCarros,
   Container, 
+  Hamburguer, 
   Header, 
   ListView,
 } from './styles';
@@ -48,7 +49,8 @@ const CarrosCliente = ({ route, navigation }) => {
     <Container>
       <StatusBar style="auto" translucent/>
       <Header>
-        <BackgroundImage source={backgroundImage} />
+        <BackgroundImage source={backgroundImage}>
+        <Hamburguer navigation={navigation} size={30} color={"#fff"} top={25} right={-165} zIndex={1}/>
         <ListView top={CARIMAGE_HEIGHT * 0.7} height={CARIMAGE_HEIGHT}>
           <CarouselCarros
             ref={scrollRef}  
@@ -84,6 +86,7 @@ const CarrosCliente = ({ route, navigation }) => {
             })}
           </CarouselCarros>
         </ListView>
+        </BackgroundImage>
       </Header>
       <InformacoesCarro carro={carro}/>
       <OpcoesPreco />

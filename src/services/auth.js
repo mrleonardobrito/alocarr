@@ -42,7 +42,7 @@ export function updateUser(userId, user){
 
 const gerentes = [
     {   
-        avatar: require('../assets/default-user-avatar-300x300.png'),
+        avatar: { uri: "https://i.imgur.com/OB3eIyz.jpg" },
         nome: "Linaldo Florencio",
         email: "gerente@gmail.com",
         senha: "260808",
@@ -52,7 +52,7 @@ const gerentes = [
 const clientes = [
     {
         id: 0,
-        avatar: require('../assets/default-user-avatar-300x300.png'),
+        avatar: { uri: "https://i.imgur.com/756nnnh.jpg" },
         nome: 'Leonardo Brito', 
         genero: 'Masculino', 
         telefone: '+55 (82) 99999-9999', 
@@ -62,7 +62,7 @@ const clientes = [
     },
     { 
         id: 1, 
-        avatar: require('../assets/default-user-avatar-300x300.png'),
+        avatar: { uri: "https://i.imgur.com/4fdhnhu.jpg" },
         nome: 'Emanuel Vilela', 
         genero: 'Masculino', 
         telefone: '+55 (82) 99999-9999', 
@@ -72,7 +72,7 @@ const clientes = [
     },
     { 
         id: 2,
-        avatar: require('../assets/default-user-avatar-300x300.png'),
+        avatar: { uri: "https://i.imgur.com/C3fDjmr.png" },
         nome: 'Joel Neto', 
         genero: 'Masculino', 
         telefone: '+55 (82) 99999-9999', 
@@ -82,7 +82,7 @@ const clientes = [
     },
     { 
         id: 3,
-        avatar: require('../assets/default-user-avatar-300x300.png'),
+        avatar: { uri: "https://i.imgur.com/gnfkRQF.jpg" },
         nome: 'Linaldo Florencio', 
         genero: 'Masculino', 
         telefone: '+55 (82) 99999-9999', 

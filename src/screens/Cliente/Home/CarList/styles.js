@@ -92,3 +92,15 @@ export const ReservaButtonLabel = styled.Text`
     font-family: "OpenSans-HebrewBold";
     color: #EBECF0;
 `
+export const MostrarButton = styled.TouchableOpacity`
+    height: 40px;
+    border-radius: 5px;
+    margin: 5px 0 10px 0;
+    align-items: center;
+    justify-content: center;
+    background-color: ${props => props.theme.cliente.primary};
+`
+export const MostrarButtonLabel = styled.Text`
+    font-size: 12px;
+    color: ${props => props.theme.cliente.text1};
+`

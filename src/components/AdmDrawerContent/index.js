@@ -332,7 +332,7 @@ export default function AdmDrawerContent({navigation}){
                 <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 5, paddingRight: 10, height: 100}}>
                     <View style={{alignItems: 'flex-start', flexDirection: 'row', alignItems: 'center'}}>
                         <Luffy
-                        source={user.avatar}
+                        source={{ uri: user.avatar.uri }}
                         style={{borderWidth: 2, borderColor: 'white'}}
                         />
                         <FooterUserName>{user.nome}</FooterUserName>

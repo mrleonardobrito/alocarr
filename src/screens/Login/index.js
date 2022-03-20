@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Alert } from 'react-native';
+import { Alert, Text } from 'react-native';
 import AuthContext from '../../contexts/auth';
 import { 
     LoginView, 
@@ -25,6 +25,7 @@ import {
     Input,
     StyledHermesLogo,
     StyledAlocarrLogo,
+    ErrorMessage,
 } from './styles';
 
 const Login = ({ navigation, route }) => {
@@ -34,9 +35,14 @@ const Login = ({ navigation, route }) => {
     const [hidepass, setHidepass] = useState(true)
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
+    const [errorMessage, showErrorMessage] = useState(false)
 
     async function handleSignIn() {
-        await signIn(email, senha)
+        const response = await signIn(email, senha)
+        console.log(response)
+        if(!response){
+            showErrorMessage(true)
+        }
     }
 
     return (
@@ -70,6 +76,9 @@ const Login = ({ navigation, route }) => {
                             <Icon name={hidepass ? 'eye-slash': 'eye'} size={20} />
                         </TouchableOpacity>
                     </InputContainer>
+                    { errorMessage && (
+                        <ErrorMessage>Email ou senha podem estar errados</ErrorMessage>
+                    ) }
                     <EntrarButton onPress={handleSignIn}>
                         <EntrarLabel>Entrar</EntrarLabel>
                     </EntrarButton>

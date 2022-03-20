@@ -1,6 +1,8 @@
 import styled from 'styled-components/native'
 import AlocarrLogo from '../../components/AlocarrLogo'
 
+import { Dimensions } from 'react-native'
+
 //Global
 export const Underlined = styled.Text`
     text-decoration: underline ${props => props.theme.cliente.logoColor};
@@ -51,7 +53,7 @@ export const SloganContainer = styled.View`
 //Main
 export const Main = styled.View`
     background-color: ${props => props.theme.cliente.background};
-    height: 53%;
+    height: ${ Dimensions.get('screen').height * 0.50 }px;
 `
 
 export const LoginContainer = styled.View`
@@ -121,4 +123,10 @@ export const FooterInformations = styled.View`
 export const FooterDetail = styled(Detail)`
     font-size: 12px;
     color: ${props => props.theme.cliente.marked1};
+`
+export const ErrorMessage = styled.Text`
+    font-size: 12px;
+    font-family: "OpenSans-SemiBold";
+    color: #ff0000;
+    align-self: center;
 `

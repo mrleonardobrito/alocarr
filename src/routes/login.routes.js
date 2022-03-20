@@ -20,7 +20,7 @@ const UserDrawer = createDrawerNavigator()
 const LoginRouter = () => {
     return (
       <UserDrawer.Navigator 
-        initialRouteName="Home" 
+        initialRouteName="Home"
         screenOptions={{headerShown: false}}
         drawerContent={(props) => <LoginContent {...props} />}  
       >

@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import Animated from 'react-native-reanimated';
+import HamburguerMenu from '../../../components/Cliente/UserNavHeader/HamburguerMenu';
 
 export const Container = styled.View`
     flex: 1;
@@ -11,7 +12,7 @@ export const Header = styled.View`
     z-index: 1;
     background-color: ${props => props.theme.cliente.primary};
 `
-export const BackgroundImage = styled.Image`
+export const BackgroundImage = styled.ImageBackground`
     height: 100%;
     width: 100%;
     z-index: 0;
@@ -21,7 +22,10 @@ export const ListView = styled.View`
     top: ${props => -props.top}px;
 `
 export const CarouselCarros = styled(Animated.ScrollView)`
+    top: 50%;
+    /* background-color: red; */
 `
+
 export const SelectPayment = styled.View`
     width: ${props =>  props.width}px;
     align-items: center;
@@ -39,3 +43,4 @@ export const StartLabel = styled.Text`
     font-size: 12px;
     color: ${props => props.theme.cliente.text1};
 `
+export const Hamburguer = styled(HamburguerMenu)``

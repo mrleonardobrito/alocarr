@@ -1,16 +1,20 @@
 import 'react-native-gesture-handler';
-import React from 'react';
-import { useFonts } from 'expo-font';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
-// import Router from './src/routes'
 import Routes from './src/routes';
-import AppLoading from 'expo-app-loading'
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
 import { cores } from './src/utils/cores'
 import { AuthProvider } from './src/contexts/auth';
+import AnimatedSplash from "react-native-animated-splash-screen";
+import AppLoading from 'expo-app-loading';
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
+
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  const [fontsLoaded] = Font.useFonts({
     'AlfaSlabOne': require('./src/assets/fonts/AlfaSlabOne-Regular.ttf'),
     'Saira-Stencil-One': require('./src/assets/fonts/SairaStencilOne-Regular.ttf'),
     'OpenSans-ExtraBold': require('./src/assets/fonts/OpenSans-ExtraBold.ttf'),
@@ -20,14 +24,28 @@ export default function App() {
   })
 
   if(!fontsLoaded){
-    return <AppLoading/>
+    return <AppLoading />
+  }
+
+  const onLayoutRootView = async () => {
+    await SplashScreen.hideAsync();
+    setIsLoaded(true)  
   }
 
   return (
-      <NavigationContainer>
+      <NavigationContainer onReady={onLayoutRootView}>
         <AuthProvider>
           <ThemeProvider theme={cores}>  
-            <Routes/>
+            <AnimatedSplash
+              translucent={true}
+              isLoaded={isLoaded}
+              logoImage={require("./src/assets/Aloccar.png")}
+              backgroundColor={"#fff"}
+              logoHeight={80}
+              logoWidth={300}
+            >
+              <Routes />
+            </AnimatedSplash>
           </ThemeProvider>
         </AuthProvider>
       </NavigationContainer>

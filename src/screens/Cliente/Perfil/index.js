@@ -30,7 +30,9 @@ import AuthContext from '../../../contexts/auth'
 const Perfil = ({ navigation, route }) => {
     const { user } = useContext(AuthContext)
 
-    const scrollY = useSharedValue(0);
+    console.log(user)
+
+    const scrollY = useSharedValue(0); 
 
     const scrollImageAnimation = useAnimatedStyle(() => {
         return {
@@ -64,7 +66,7 @@ const Perfil = ({ navigation, route }) => {
                 <Wrapper>
                     <PerfilTop>
                         <ImagemPerfilCircle style={scrollImageAnimation}>
-                            <ImagemPerfil source={{ uri: user.avatar.uri ? user.avatar.uri : 'https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image.png' }}/>
+                            <ImagemPerfil source={{ uri: user.avatar.uri }}/>
                         </ImagemPerfilCircle>
                         <EditarPerfilButton onPress={() => navigation.navigate('PerfilRouter', {screen: 'EditarPerfil'})}>
                             <EditarPerfilLabel>Editar Perfil</EditarPerfilLabel>
