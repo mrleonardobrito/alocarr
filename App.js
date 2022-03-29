@@ -9,6 +9,7 @@ import { cores } from './src/utils/cores'
 import { AuthProvider } from './src/contexts/auth';
 import AnimatedSplash from "react-native-animated-splash-screen";
 import AppLoading from 'expo-app-loading';
+import AdmRouter from './src/routes/manager.routes';
 
 export default function App() {
 

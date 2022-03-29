@@ -17,3 +17,4 @@ export const Bolinha = styled.View`
     background-color: #0e0e0e;
     border-radius: 160px;
 `;
+

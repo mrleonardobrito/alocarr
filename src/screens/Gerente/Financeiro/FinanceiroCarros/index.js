@@ -6,10 +6,10 @@ import Header from '../../../../components/Header';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { ButtonVer, ButtonText } from '../../Gerente/style';
-import { CarroContainer } from '../../Carros/style';
+import { CarroContainer } from '../../Carros/styles';
 
 import dados from '../../Carros/carros';
-import carros from '../../AdicionarCarro/carros';
+import carros from '../../AdicionarCarro/AdicionarCarro/carros';
 
 
 export default function({navigation}){

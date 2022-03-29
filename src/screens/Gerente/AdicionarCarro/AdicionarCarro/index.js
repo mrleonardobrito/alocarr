@@ -1,28 +1,28 @@
-import React, {useReducer, useState} from 'react';
-import { View, Text, StyleSheet, Image, FlatList, ScrollView, TouchableOpacity, TextInput, Linking } from 'react-native';
 
+// React Components 
+
+import React, {useReducer, useState} from 'react';
+// React-Native Components
+
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Linking } from 'react-native';
+
+// Expo Components
 import { StatusBar } from 'expo-status-bar';
-import Header from '../../../components/Header';
+
+// App Components
+import Header from '../../../../components/Header';
+
+// Libs Components
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { TextInputMask } from 'react-native-masked-text';
-
 import { Picker } from '@react-native-picker/picker';
 
+// Data
 import veiculos from './carros';
 
+// Function Screen
 
 export default function({ navigation }){
-
-    function corPicker(){
-        if(pickerDecide){
-            return <TouchableOpacity style={{height: 25, width: 25, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center'}}></TouchableOpacity>
-        }else{
-            return <TouchableOpacity style={{height: 25, width: 25, backgroundColor: '#fff'}}></TouchableOpacity>
-
-        }
-    }
-
-    const [pickerValues, setPickerValues] = useState();
 
     const [pickerArCond, pickerArCondToggle] = useReducer((s)=> !s, false);
     const [pickerVidro, pickerVidroToggle] = useReducer((s)=> !s, false);
@@ -95,8 +95,6 @@ export default function({ navigation }){
 
         return novoVeiculo;
     }
-
-    const [cell, setCell] = useState();
 
     return(
         <ScrollView style={{backgroundColor: '#001732'}}>

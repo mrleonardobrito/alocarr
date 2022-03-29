@@ -1,19 +1,25 @@
+// React Components
 import React, {useState} from 'react';
-import { StatusBar } from 'expo-status-bar';
+// React-Native Components
 import { View, Text, StyleSheet, Image, FlatList, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 
+// App Components
 import Header from '../../../components/Header';
 
-import { CarroContainer, Bolinha } from './style';
+
+// Style Components
+import { CarroContainer, Bolinha } from './styles';
 import { ButtonVer, ButtonText } from '../Gerente/style';
 
-import dados from './carros';
-import { ItemBolinha } from '../Financeiro/style';
-
+// Libs Components
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import veiculos from '../AdicionarCarro/carros';
+// Data
+import veiculos from '../AdicionarCarro/AdicionarCarro/carros';
 
+// Style
+
+// App Function 
 
 export default function({ navigation }){
 
@@ -21,11 +27,9 @@ export default function({ navigation }){
 
     const id = 2;
     
-    const [list, setList] = useState(veiculos);
-
     function conferirBolinha(situacao){
         if(situacao == 1){
-            return <View style={{}}>
+            return <View>
                 <Bolinha style={{backgroundColor: '#C3453F'}}></Bolinha> 
             </View>
         }
@@ -87,7 +91,6 @@ export default function({ navigation }){
                     </View>
                     <ButtonVer onPress={()=> navigation.navigate('Detalhes', id)}><ButtonText>Detalhes</ButtonText></ButtonVer>
                 </CarroContainer>
-        
                 }
                 
                 />
@@ -95,7 +98,6 @@ export default function({ navigation }){
         </ScrollView>
     );
 }
-
 const styles = StyleSheet.create({
     carrosContainer: {
         backgroundColor: '#011734',

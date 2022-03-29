@@ -1,6 +1,6 @@
-import duster from '../Carros/img/carro_duster.png';
-import siena from '../Carros/img/carro_siena.png';
-import hb20 from '../Carros/img/carro_hb20.png';
+import duster from '../../Carros/img/carro_duster.png';
+import siena from '../../Carros/img/carro_siena.png';
+import hb20 from '../../Carros/img/carro_hb20.png';
 
 export default [
     {

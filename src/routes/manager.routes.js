@@ -12,7 +12,7 @@ import Adicionar from '../screens/Gerente/Financeiro/Adicionar'
 import Excluir from '../screens/Gerente/Financeiro/FinanceiroComponents/Excluir'
 import Quitar from '../screens/Gerente/Financeiro/FinanceiroComponents/Quitar'
 import Carros from '../screens/Gerente/Carros'
-import AdicionarCarro from '../screens/Gerente/AdicionarCarro';
+import AdicionarCarro from '../screens/Gerente/AdicionarCarro/AdicionarCarro';
 import Detalhes from '../screens/Gerente/Carros/Detalhes'
 import EditarDetalhes from '../screens/Gerente/Carros/Detalhes/EditarDetalhes';
 import DetalhesFinanceiroCarro from '../screens/Gerente/Financeiro/FinanceiroCarros/DetalhesFinanceiroCarro';

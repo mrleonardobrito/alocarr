@@ -354,10 +354,11 @@ export default function AdmDrawerContent({navigation}){
                 <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 5, paddingRight: 10, height: 100}}>
                     <View style={{alignItems: 'flex-start', flexDirection: 'row', alignItems: 'center'}}>
                         <Luffy
-                        source={{ uri: user.avatar.uri }}
+                        // source={{ uri: user.avatar.uri }}
+                        
                         style={{borderWidth: 2, borderColor: 'white'}}
                         />
-                        <FooterUserName>{user.nome}</FooterUserName>
+                        <FooterUserName>{/* user.nome */ }Emo</FooterUserName>
                     </View>
                     <TouchableOpacity onPress={()=> confLogout()} style={{justifyContent: 'space-evenly'}}><FooterIcon><Icon name="sign-out-alt" style={styles.footerIcon}/></FooterIcon></TouchableOpacity>
                 </View>

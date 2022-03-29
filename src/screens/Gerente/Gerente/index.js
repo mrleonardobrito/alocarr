@@ -18,7 +18,7 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 import HeaderOb from '../../../components/Header';
 
-import carros from '../AdicionarCarro/carros';
+import carros from '../AdicionarCarro/AdicionarCarro/carros';
 
 const HEIGHT = '100%' + '150%';
 
