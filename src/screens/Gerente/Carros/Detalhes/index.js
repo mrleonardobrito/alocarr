@@ -21,7 +21,7 @@ import dusterDrift from '../../../../../car_photos/renault_duster/duster_drift.j
 import { MotiView, MotiImage, AnimatePresence } from 'moti';
 
 
-import dataCarros from '../carros'
+import automovel from '../../../../utils/carros';
 
 const {width} = Dimensions.get("window");
 
@@ -30,8 +30,6 @@ const starColor = '#' + '91B4E3'
 
 export default function({route}){
     const pageName = 'Detalhes';
-
-    const images = [dusterFront, dusterBack, dusterDrift]
     const [decidir, setDecidir] = useState(1);
     const navigation = useNavigation();
 
@@ -40,6 +38,34 @@ export default function({route}){
     const starValue = 7;
 
     const calculaStarValue = starValues[0] + starValues[1] + starValues[2] + starValues[3] + starValues[4];
+    
+    const [colorTrueEspeci, setColorTrueEspeci] = useState(true);
+    const [colorTrueDeta, setColorTrueDeta] = useState(false);
+    const [colorTrueAva, setColorTrueAva] = useState(false);
+
+    const idCarro = route.params.id;
+
+    const crr = automovel[idCarro];
+
+    const marchasSituacaoC = ', com ' + crr.especificacoes.numMarchas + ' marchas'
+
+
+    function marchasSituacao(){
+        if(crr.especificacoes.manual){
+            return marchasSituacaoC;
+        }else{
+            return '';
+        }
+    }
+    function decidirCambio(){
+        if(crr.especificacoes.manual){
+            return 'Manual';
+        }
+        if(crr.especificacoes.manual == false){
+            return 'Automático';
+        }
+        return console.log(crr.especificacoes.manual)
+    }
 
     function mediaStars(){
         const starPercent = (starValues[0] * 100) / calculaStarValue;
@@ -58,11 +84,6 @@ export default function({route}){
         const starPercent = (starValues[4] * 100) / calculaStarValue;
         return starPercent.toFixed(2);
     }
-
-
-    const [colorTrueEspeci, setColorTrueEspeci] = useState(true);
-    const [colorTrueDeta, setColorTrueDeta] = useState(false);
-    const [colorTrueAva, setColorTrueAva] = useState(false);
 
     function colorConferirEspeci(){
         if(colorTrueEspeci == false){
@@ -166,15 +187,15 @@ export default function({route}){
                     <View style={{backgroundColor: 'transparent', flexDirection: 'row', justifyContent: 'space-between', width: '100%', paddingHorizontal: 15, paddingTop: 20}}>
                         <View style={{width: 100/3 + '%', alignItems: 'center'}}>
                             <Icon name='users' style={{fontSize: 22, color: 'white'}}/>
-                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>4 Passageiros</Text>
+                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>{crr.especificacoes.numPassageiros} Passageiros</Text>
                         </View>
                         <View style={{width: 100, alignItems: 'center'}}>
                             <Icon name='cog' style={{fontSize: 22, color: 'white'}}/>
-                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>Manual</Text>
+                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>{decidirCambio()}</Text>
                         </View>
                         <View style={{width: 100/3 + '%', alignItems: 'center'}}>
                             <Icon name='briefcase' style={{fontSize: 22, color: 'white'}}/>
-                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>3 Malas</Text>
+                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>{crr.especificacoes.numMalas} Malas</Text>
                         </View>
                     </View>
                     <View style={{backgroundColor: 'transparent', flexDirection: 'row', justifyContent: 'space-between', width: '100%', paddingHorizontal: 15, paddingTop: 20}}>
@@ -184,19 +205,19 @@ export default function({route}){
                         </View>
                         <View style={{width: 100/3 + '%', alignItems: 'center'}}>
                             <Icon name='door-open' style={{fontSize: 22, color: 'white'}}/>
-                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>4 Portas</Text>
+                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>{crr.especificacoes.numPortas} Portas</Text>
                         </View>
                         <View style={{width: 100/3 + '%', alignItems: 'center'}}>
                             <Icon name='cogs' style={{fontSize: 22, color: 'white'}}/>
-                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>Motor 1.6</Text>
+                            <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>Motor {crr.motor}</Text>
                         </View>
                     </View>
                 </View>
                 <View style={{flex: 1, backgroundColor: 'transparent', padding: 10}}>
                     <ScrollView horizontal pagingEnabled style={{flex: 1, flexDirection: 'row'}}> 
-                        <Image source={dusterFront} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/> 
-                        <Image source={dusterBack} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/>                
-                        <Image source={dusterDrift} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/>                
+                        <Image source={crr.imagem} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/> 
+                        <Image source={crr.imagem} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/>                
+                        <Image source={crr.imagem} style={{height: '100%', width: width / 2.1, resizeMode: 'contain'}}/>                
                     </ScrollView>
                 </View>
                 
@@ -208,37 +229,37 @@ export default function({route}){
                     <View style={{padding: 10}}>
                         <View style={{flexDirection: 'row', backgroundColor: 'transparent', alignItems: 'space-between'}}>
                             <View style={{width: '50%', alignItems: 'flex-start'}}>
-                                <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white'}}>Cor: branco</Text>
+                                <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white'}}>Cor: {crr.detalhes.cor}</Text>
                             </View>
                             <View style={{width: '50%', alignItems: 'flex-end'}}>
-                                <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white'}}>Modelo: Duster</Text>
+                                <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white'}}>Modelo: {crr.modelo}</Text>
                             </View>
                         </View>
                         <View style={{flexDirection: 'row', backgroundColor: 'transparent', alignItems: 'space-between', marginTop: 5, marginBottom: 5}}>
                             <View style={{width: '40%', alignItems: 'flex-start'}}>
-                                <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white'}}>Ano: 2018</Text>
+                                <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white'}}>Ano: {crr.detalhes.ano}</Text>
                             </View>
                             <View style={{width: '60%', alignItems: 'flex-end'}}>
-                                <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white'}}>Combustível: Gasolina/Etanol</Text>
+                                <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white'}}>Combustível: {crr.combustivel}</Text>
                             </View>
                         </View>
                     </View>
                     <View style={{height: 2, width: '100%', backgroundColor: 'lightgray'}}></View>
                     <View style={{padding: 10}}>
-                        <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 0}}>Manual, com 5 machas</Text>
+                        <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 0}}>{decidirCambio()}{marchasSituacao()}</Text>
                         <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 10}}>Ar-condicionado</Text>
                         <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 10}}>Trava elétrica</Text>
                     </View>
                     <View style={{height: 2, width: '100%', backgroundColor: 'lightgray'}}></View>
                     <View style={{flexDirection: 'row', padding: 10, justifyContent: 'space-between'}}>
                         <View style={{justifyContent: 'center'}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 0}}>Chassi: 445002SKD32H32G4</Text>
-                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 7}}>Última revisão: 20/01/2022</Text>
-                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 7}}>Prox. revisão: 20/02/2022</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 0}}>Chassi: {crr.detalhes.chassi}</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 7}}>Última revisão: {crr.detalhes.ultimaRevisao}</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 7}}>Prox. revisão: {crr.detalhes.proximaRevisao}</Text>
                         </View>
                         <View style={{justifyContent: 'center'}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 0}}>Troca de óleo: em 85km</Text>
-                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 7}}>Cod. GPS: 40028922</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 0}}>Troca de óleo: em {crr.detalhes.trocaDeOleo}km</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 11, color: 'white', marginTop: 7}}>Cod. GPS: {crr.codGPS}</Text>
                         </View>
                     </View>
                 </View>
@@ -359,7 +380,7 @@ export default function({route}){
                         transition={{ type: 'timing',duration: 900}}>
                 
                         <AnimatePresence>
-                            <CarroView style={{marginTop: '49%'}}><MotiImage source={duster} 
+                            <CarroView style={{marginTop: '49%'}}><MotiImage source={crr.imagem} 
                             style={{ width: '95%', height: '55%'}}
                             from={{scale: 1}} 
                             animate={{scale: 1.5}} 
@@ -375,7 +396,7 @@ export default function({route}){
                         animate={{translateX: 0, translateY: 0}} 
                         transition={{ type: 'timing', duration: 500}}>
                 
-                            <CarroView style={{marginTop: '49%'}}><MotiImage source={duster} 
+                            <CarroView style={{marginTop: '49%'}}><MotiImage source={crr.imagem} 
                                 style={{ width: '95%', height: '55%'}}
                                 from={{scale: 1.5}} 
                                 animate={{scale: 1}} 
@@ -392,10 +413,10 @@ export default function({route}){
                    <View style={{height: '32%', padding: 10, marginBottom: 15}}>
                         <BotaoEditar style={{alignSelf: 'flex-end'}} onPress={toggle}><Text style={{fontWeight: 'bold', color: 'white'}}>Editar veículo</Text></BotaoEditar>
                         <View style={{paddingLeft: 5}}>
-                            <Text style={{fontSize: 23, fontWeight: 'bold'}}>Renault Duster</Text>
-                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5, alignItems: 'flex-end'}}><View style={styles.textView}><Icon name='car' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Placa: JML 9605</Text></View>
-                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='tachometer-alt' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Quilometragem: 7.465km</Text></View>
-                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='calendar' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Proxima revisão: 10/09/2022</Text></View>
+                            <Text style={{fontSize: 23, fontWeight: 'bold'}}>{crr.nome}</Text>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5, alignItems: 'flex-end'}}><View style={styles.textView}><Icon name='car' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Placa: {crr.placa}</Text></View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='tachometer-alt' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Quilometragem: {crr.quilometragem}km</Text></View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 2}}><View style={styles.textView}><Icon name='calendar' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Proxima revisão: {crr.detalhes.proximaRevisao}</Text></View>
                         </View>
                     </View>
                     <View style={{flex: 1}}>
@@ -477,9 +498,9 @@ export default function({route}){
             <Header pageName={pageName}/>
             <View style={styles.profileHeader}>
                 <View style={{width: 100, height: 100}}>
-                <AnimatePresence>
+                    <AnimatePresence>
                         {animarPerfil()}
-                </AnimatePresence>
+                    </AnimatePresence>
                 </View>
             </View>
             {decidirDetalhes()}

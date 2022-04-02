@@ -16,6 +16,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 // Data
 import veiculos from '../AdicionarCarro/AdicionarCarro/carros';
+import automovel from '../../../utils/carros';
 
 // Style
 
@@ -70,7 +71,7 @@ export default function({ navigation }){
             </View>
             <View style={{paddingHorizontal: 10, paddingBottom: 40}}>    
                 <FlatList 
-                data={veiculos}
+                data={automovel}
                 keyExtractor={(_, index) => index}
                 renderItem={({item})=> 
                 <CarroContainer>
@@ -80,16 +81,16 @@ export default function({ navigation }){
                             <Text style={styles.nomeCarro}>{item.nome}</Text>
                             <View style={{marginTop: 0}}>
                                 <Text style={styles.descCarro}>Placa: <Text style={{fontWeight: 'normal'}}>{item.placa}</Text></Text>
-                                <Text style={styles.descCarro}>Proxima revisão: <Text style={{fontWeight: 'normal'}}>{item.proxRevisao}</Text></Text>
-                                <Text style={styles.descCarro}>Troca de óleo: <Text style={{fontWeight: 'normal'}}>{item.trocaOleo}</Text></Text>
+                                <Text style={styles.descCarro}>Proxima revisão: <Text style={{fontWeight: 'normal'}}>{item.detalhes.proximaRevisao}</Text></Text>
+                                <Text style={styles.descCarro}>Troca de óleo: <Text style={{fontWeight: 'normal'}}> em {item.detalhes.trocaDeOleo}km</Text></Text>
                             </View>
                         </View>
                         <View style={{width: '15%', alignItems: 'center', backgroundColor: 'transparent'}}> 
-                            {conferirBolinha(item.situacao)}
+                            {conferirBolinha(item.detalhes.situacao)}
                             <Text style={{color: '#fff', fontSize: 15}}>0{item.id}</Text>
                         </View>
                     </View>
-                    <ButtonVer onPress={()=> navigation.navigate('Detalhes', id)}><ButtonText>Detalhes</ButtonText></ButtonVer>
+                    <ButtonVer onPress={()=> navigation.navigate('Detalhes', {id: item.id})}><ButtonText>Detalhes</ButtonText></ButtonVer>
                 </CarroContainer>
                 }
                 
