@@ -18,6 +18,9 @@ import { useNavigation } from "@react-navigation/core";
 import dusterFront from '../../../../../car_photos/renault_duster/duster_front.jpg'
 import dusterBack from '../../../../../car_photos/renault_duster/duster_back.jpg'
 import dusterDrift from '../../../../../car_photos/renault_duster/duster_drift.jpg'
+
+import { TextInputMask } from 'react-native-masked-text';
+
 import { MotiView, MotiImage, AnimatePresence } from 'moti';
 
 
@@ -411,7 +414,7 @@ export default function({route}){
             return (
                <View style={{flex: 1}}>
                    <View style={{height: '32%', padding: 10, marginBottom: 15}}>
-                        <BotaoEditar style={{alignSelf: 'flex-end'}} onPress={toggle}><Text style={{fontWeight: 'bold', color: 'white'}}>Editar veículo</Text></BotaoEditar>
+                        <BotaoEditar style={{alignSelf: 'flex-end'}} onPress={toggle}><Text style={{fontWeight: 'bold', color: 'white', fontSize: 13}}>Editar dados</Text></BotaoEditar>
                         <View style={{paddingLeft: 5}}>
                             <Text style={{fontSize: 23, fontWeight: 'bold'}}>{crr.nome}</Text>
                             <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5, alignItems: 'flex-end'}}><View style={styles.textView}><Icon name='car' style={styles.icon}></Icon></View><Text style={{color: 'gray', marginTop: 5}}>Placa: {crr.placa}</Text></View>
@@ -440,6 +443,7 @@ export default function({route}){
                </View> 
             )
         }
+        // Tela de Editar o Carro
         else{
             return <ScrollView style={{padding: 10, marginBottom: 15}}>
                     <TouchableOpacity onPress={toggle} style={{height: 35, width: '29%', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FF8B8B', borderRadius: 100, alignSelf: 'flex-end'}}>
@@ -449,43 +453,43 @@ export default function({route}){
                     </TouchableOpacity>
                     <View style={{backgroundColor: 'transparent', marginTop: 20, paddingHorizontal: 10}}>
                         <View style={{marginBottom: 10}}>
-                            <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Descrição do carro* </Text>
-                            <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                            <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Descrição do carro* </Text>
+                            <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                         </View>
                         <View style={{width: '100%', paddingHorizontal: 15, marginTop: 10}}>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Última revisão*</Text>
-                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                    <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Última revisão*</Text>
+                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Proxima revisão*</Text>
-                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                    <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Proxima revisão*</Text>
+                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Quilometragem*</Text>
-                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                    <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Quilometragem*</Text>
+                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Código GPS*</Text>
-                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '100%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                    <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Código GPS*</Text>
+                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                             </View>
                         </View>
                         <View>
                             <View>
-                                <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Combustível*</Text>
-                                <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '75%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Combustível*</Text>
+                                <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '75%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                             </View>
                             <View style={{marginTop: 10}}>
-                                <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Próxima troca de óleo*</Text>
-                                <TextInput placeholder='Digite aqui...' style={{borderRadius: 10, height: 35, width: '75%', borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}/>
+                                <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Próxima troca de óleo*</Text>
+                                <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '75%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                             </View>
                         </View>
                         <View style={{marginTop: 10}}>
-                            <Text style={{color: 'gray', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Imagens</Text>
+                            <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Imagens</Text>
                         
                         </View>
                     </View>

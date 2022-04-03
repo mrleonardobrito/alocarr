@@ -18,7 +18,7 @@ import { TextInputMask } from 'react-native-masked-text';
 import { Picker } from '@react-native-picker/picker';
 
 // Data
-import veiculos from './carros';
+import veiculos from './carros'
 
 // Function Screen
 

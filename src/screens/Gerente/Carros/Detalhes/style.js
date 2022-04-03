@@ -24,7 +24,7 @@ export const Detalhes = styled.View`
 
 
 export const BotaoEditar = styled.TouchableOpacity`
-    height: 35px;
+    height: 38px;
     border: 1px solid #002B64;
     align-items: center;
     justify-content: center;

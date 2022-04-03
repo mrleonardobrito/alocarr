@@ -19,38 +19,16 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import HeaderOb from '../../../components/Header';
 
 import carros from '../AdicionarCarro/AdicionarCarro/carros';
+import veiculos from '../../../utils/carros'
 
 const HEIGHT = '100%' + '150%';
 
 export default function({ navigation }){
 
-    const pageName = 'Aloccar';
-
-    function rightActions(){
-        return(
-            <SwipeableButton>
-                <SwipeableDiv>
-                    <SwipText>Concluido</SwipText>
-                    <SwipIcon><Icon name="check" style={styles.iconeSwip}></Icon></SwipIcon>
-                </SwipeableDiv>
-            </SwipeableButton>
-        );
-    }
-
-    function leftActions(){
-        return(
-            <SwipeableButton>
-                <SwipeableLeftDiv>
-                    <SwipText>Excluir</SwipText>
-                    <SwipIcon><Icon name="times" style={styles.iconeSwip}></Icon></SwipIcon>
-                </SwipeableLeftDiv>
-            </SwipeableButton>
-        );
-    }
-
-    const quantidadeCarros = carros.length;
+    const quantidadeCarros = veiculos.length;
     const valoresFinanceiro = [500.5323, 343.7765];
     
+    const pageName = "Gerente"
     return(
         <View style={styles.container}>
             <StatusBar hidden/>

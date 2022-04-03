@@ -299,7 +299,7 @@ export default function({route}){
 
 
                     <Grafico style={{flexDirection: 'column'}}>
-                        <Text style={styles.graficoLinhaTitulo}>Lucro do mês por carro (R$) </Text>
+                        <Text style={styles.graficoLinhaTitulo}>Lucro do carro no mês atual (R$) </Text>
 
                         <View style={{backgroundColor: 'transparent', width: '100%', height: '90%', flexDirection: 'row', justifyContent: 'space-between'}}>
                             <View name="valor-grafico" style={{width: '10%', height: '100%', backgroundColor: 'transparent', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-end', paddingRight: 6, marginTop: 5}}>
