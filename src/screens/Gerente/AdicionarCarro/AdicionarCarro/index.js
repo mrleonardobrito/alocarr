@@ -53,6 +53,7 @@ export default function({ navigation }){
     const [obs, setObs] = useState();
     const [obsCarac, setObsCarac] = useState();
 
+    // Funções para salvar o carro e seus novos dados
     function prosseguir(){
         salvarVeiculo();
 
@@ -151,6 +152,7 @@ export default function({ navigation }){
                                             <Picker.Item label='Wolkswagem' value='Wolkswagem' style={{color: 'gray'}} />
                                             <Picker.Item label='Fiat' value='Fiat' style={{color: 'gray'}} />
                                         </Picker>
+                                    
                                 </View>
                                 <TouchableOpacity style={styles.inputGrandeBotao}><Icon name="plus" style={[styles.fontePadrao, {marginLeft: 0}]}/></TouchableOpacity>
                             </View>
