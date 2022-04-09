@@ -1,12 +1,11 @@
 import styled from 'styled-components/native';
 
 export const Content = styled.View`
-    background-color: ${props => props.theme.mainColor};
+    background-color: ${props => props.theme.corTitulo};
 `;
 
 export const Main = styled.View`
     padding: 20px 10px 15px 10px;
-    height: 100%;
     width: 100%;
     background-color: ${props => props.theme.corTitulo};
 `;
@@ -14,7 +13,7 @@ export const Main = styled.View`
 export const DadosContainer = styled.View`
     background-color: #fff;
     width: 100%;
-    height: 90.5%;
+    height: 100%;
     border-radius: 6px;
 `;
 export const InputsContainer = styled.View`
@@ -60,7 +59,7 @@ export const InputEntradaText = styled.TextInput`
 `;
 
 export const ButtonContainer = styled.View`
-    height: 30%;
+    height: 30px;
     width: 100%;
     display: flex;
     flex-direction: row;

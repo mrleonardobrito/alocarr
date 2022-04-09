@@ -1,19 +1,17 @@
-/* Expo, React */
-
-import { StatusBar } from "expo-status-bar";
+// React Components
 import React, {useState} from "react";
+
+// React-Native / Expo Components 
+import { StatusBar } from "expo-status-bar";
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 
-/* ReactNavigation */
+// App Components
+import Header from '../../../../components/Header';
 
+// Libs Components
 import { TextInputMask } from 'react-native-masked-text';
 
-
-/* VectorIcons, StyledComponents */
-
-import Icon from 'react-native-vector-icons/FontAwesome5';
-
-import Header from '../../../../components/Header';
+// App Function 
 
 import colaboradoresArrayJS from "./colaboradoresArray";
 

@@ -1,18 +1,23 @@
+// React Components
 import React, {useState, useReducer, useEffect} from "react";
+
+// React-Native Components
+import { TextInput, TouchableOpacity, View, Text, ScrollView, StyleSheet, FlatList } from "react-native";
+
+// Expo Components
 import * as Print from 'expo-print';
 import {shareAsync} from "expo-sharing";
+import { StatusBar } from "expo-status-bar";
 
-import Header from '../../../components/Header'
-
-import { TextInput, TouchableOpacity, View, Text, ScrollView, StyleSheet, FlatList } from "react-native";
+// App Components
+import Header from '../../../components/Header';
+// Libs Components
 import Icon  from "react-native-vector-icons/FontAwesome";
 import IconAnt from "react-native-vector-icons/AntDesign";
 import IconMaterial from "react-native-vector-icons/MaterialCommunityIcons";
-
-import { StatusBar } from "expo-status-bar";
 import { AnimatePresence, MotiView } from "moti";
-import { TextInputMask } from 'react-native-masked-text';
 
+// Data
 import colaboradoresArray from "./AdicionarColaborador/colaboradoresArray";
 
 export default function({navigation}){
@@ -26,13 +31,12 @@ export default function({navigation}){
     const [visibleAbaPDF, toggleAbaPDF] = useReducer((s)=> !s, false);
     const [visibleAbaAddColaborador, toggleAbaAddColaborador] = useReducer((s)=> !s, false);
 
-    // funções
-
+    const [textoPesquisa, setTextoPesquisa] = useState();
     
 
     // arrays
 
-    const [textoPesquisa, setTextoPesquisa] = useState();
+
     const [list, setList] = useState(colaboradoresArray);
 
     useEffect(()=> {
@@ -66,7 +70,8 @@ export default function({navigation}){
     */
     //
 
-    
+    // funções
+
 
     const print = async () => {
         await Print.printAsync({
@@ -322,7 +327,7 @@ export default function({navigation}){
                 </AnimatePresence>
                 <View style={{}}>
                     {
-                        colaboradoresArray.map((item) => { return <View style={{backgroundColor: '#285084', borderRadius: 5, padding: 10, flexDirection: 'row', marginTop: 7}}>
+                        colaboradoresArray.map((item, index) => { return <View style={{backgroundColor: '#285084', borderRadius: 5, padding: 10, flexDirection: 'row', marginTop: 7}}>
                         <View style={{width: '90%'}}>
                             <View style={{width: '100%', borderBottomWidth: 1, backgroundColor: 'transparent', borderColor: 'gray'}}><Text style={{color: 'white', fontSize: 19, fontWeight: 'bold', marginBottom: 3}}>{item.nome}</Text></View>
                             <View style={{marginTop: 5, flexDirection: 'row'}}>

@@ -24,7 +24,7 @@ const AdmDrawer = createDrawerNavigator()
 const AdmRouter = () => {
     return (
       <AdmDrawer.Navigator 
-        initialRouteName="Gerente" 
+        initialRouteName="Adicionar" 
         screenOptions={{ headerShown: false }}
         drawerContent={(props) => <AdmDrawerContent {...props}/>}
       >

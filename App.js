@@ -45,7 +45,7 @@ export default function App() {
               logoHeight={80}
               logoWidth={300}
             >
-              <Routes />
+              <AdmRouter />
             </AnimatedSplash>
           </ThemeProvider>
         </AuthProvider>

@@ -44,7 +44,7 @@ export default function({ navigation }){
                     </View>
                     <TouchableOpacity 
                     onPress={() => navigation.navigate('Carros')}
-                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10}}>
+                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10, justifyContent: 'center'}}>
                         <ButtonText>Ver</ButtonText>
                     </TouchableOpacity>
                 </MainItem>
@@ -58,7 +58,7 @@ export default function({ navigation }){
                     </View>
                     <TouchableOpacity 
                     onPress={() => navigation.navigate('Financeiro')}
-                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10}}>
+                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10, justifyContent: 'center'}}>
                         <ButtonText>Ver</ButtonText>
                     </TouchableOpacity>
                 </MainItem>
@@ -72,7 +72,7 @@ export default function({ navigation }){
                     </View>
                     <TouchableOpacity
                     onPress={() => navigation.navigate('Financeiro')}
-                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10}}>
+                    style={{height: '23%', width: '100%', backgroundColor: '#4576B6', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 10, justifyContent: 'center'}}>
                         <ButtonText>Ver</ButtonText>
                     </TouchableOpacity>
                 </MainItem>

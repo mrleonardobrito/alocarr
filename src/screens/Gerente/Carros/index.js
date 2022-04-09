@@ -1,5 +1,5 @@
 // React Components
-import React, {useState} from 'react';
+import React from 'react';
 // React-Native Components
 import { View, Text, StyleSheet, Image, FlatList, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 
@@ -7,7 +7,6 @@ import { View, Text, StyleSheet, Image, FlatList, ScrollView, TouchableOpacity, 
 import Header from '../../../components/Header';
 
 
-// Style Components
 import { CarroContainer, Bolinha } from './styles';
 import { ButtonVer, ButtonText } from '../Gerente/style';
 
@@ -25,8 +24,6 @@ import automovel from '../../../utils/carros';
 export default function({ navigation }){
 
     const pageName = 'Carros';
-
-    const id = 2;
     
     function conferirBolinha(situacao){
         if(situacao == 1){
