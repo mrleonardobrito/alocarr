@@ -23,8 +23,10 @@ import { TextInputMask } from 'react-native-masked-text';
 
 import { MotiView, MotiImage, AnimatePresence } from 'moti';
 
+import { Picker } from '@react-native-picker/picker';
 
 import automovel from '../../../../utils/carros';
+import { StatusBar } from 'expo-status-bar';
 
 const {width} = Dimensions.get("window");
 
@@ -32,6 +34,43 @@ const {width} = Dimensions.get("window");
 const starColor = '#' + '91B4E3'
 
 export default function({route}){
+
+
+    const [pickerArCond, pickerArCondToggle] = useReducer((s)=> !s, false);
+    const [pickerVidro, pickerVidroToggle] = useReducer((s)=> !s, false);
+    const [pickerTravaElet, pickerTravaToggle] = useReducer((s)=> !s, false);
+    const [pickerAlarme, pickerAlarmeToggle] = useReducer((s)=> !s, false);
+    const [pickerBancoCouro, pickerBancoCouroToggle] = useReducer((s)=> !s, false);
+    const [pickerRetrovisorElet, pickerRetrovisorEletToggle] = useReducer((s)=> !s, false);
+
+    const [nome, setNome] = useState();
+    const [marca, setMarca] = useState(['Ford', 'Ferrari']);
+    const [ano, setAno] = useState();
+    const [grupo, setGrupo] = useState();
+    const [modelo, setModelo] = useState();
+    const [placa, setPlaca] = useState();
+    const [chassi, setChassi] = useState();
+    const [combustivel, setCombustivel] = useState();
+    const [cor, setCor] = useState();
+    const [valorPagoCarro, setValorPagoCarro] = useState();
+    const [valorReposicao, setValorReposicao] = useState();
+    const [valorLocacao, setValorLocacao] = useState();
+    const [cilindrada, setCilindrada] = useState();
+    const [codGPS, setCodGPS] = useState();
+    const [cambio, setCambio] = useState();
+    const [numeroSerie, setNumeroSerie] = useState();
+    const [fornecedor, setFornecedor] = useState();
+    const [local, setLocal] = useState();
+    const [obs, setObs] = useState();
+    const [obsCarac, setObsCarac] = useState();
+
+    const [ultimaRevisao, setUltimaRevisao] = useState();
+    const [proximaRevisao, setProximaRevisao] = useState();
+    const [trocaDeOleo, setTrocaDeOleo] = useState();
+
+
+
+
     const pageName = 'Detalhes';
     const [decidir, setDecidir] = useState(1);
     const navigation = useNavigation();
@@ -453,43 +492,72 @@ export default function({route}){
                     </TouchableOpacity>
                     <View style={{backgroundColor: 'transparent', marginTop: 20, paddingHorizontal: 10}}>
                         <View style={{marginBottom: 10}}>
-                            <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Descrição do carro* </Text>
+                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Descrição do carro* </Text>
                             <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                         </View>
                         <View style={{width: '100%', paddingHorizontal: 15, marginTop: 10}}>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Última revisão*</Text>
-                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Última revisão*</Text>
+                                    <TextInputMask
+                                    type={'datetime'}
+                                    options={{
+                                      format: 'DD/MM/YYYY'
+                                    }}
+                                    value={ultimaRevisao}
+                                    onChangeText={(text) => setUltimaRevisao(text)}
+                                    placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Proxima revisão*</Text>
-                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Proxima revisão*</Text>
+                                    <TextInputMask
+                                    type={'datetime'}
+                                    options={{
+                                      format: 'DD/MM/YYYY'
+                                    }}
+                                    value={proximaRevisao}
+                                    onChangeText={(text) => setProximaRevisao(text)}
+                                    placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Quilometragem*</Text>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Quilometragem*</Text>
                                     <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Código GPS*</Text>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Código GPS*</Text>
                                     <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                             </View>
                         </View>
                         <View>
-                            <View>
-                                <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Combustível*</Text>
-                                <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '75%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                            <View style={{borderBottomColor: 'black', borderTopColor: 'white', borderLeftColor: 'white', borderRightColor: 'white', borderWidth: 1, paddingBottom: 5}}>
+                                <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 0, marginLeft: 5}}>Combustível*</Text>
+                                <Picker 
+                                pickerStyleType={true}
+                                selectedValue={combustivel}
+                                onValueChange={(text) => setCombustivel(text)}
+                                style={{height: 20, marginBottom: 20}}>
+                                    <Picker.Item label='Etanol' value='Etanol' style={{color: 'gray'}} />
+                                    <Picker.Item label='Diesel' value='Diesel' style={{color: 'gray'}} />
+                                    <Picker.Item label='Gasolina' value='Gasolina' style={{color: 'gray'}} />
+                                </Picker>
                             </View>
                             <View style={{marginTop: 10}}>
-                                <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Próxima troca de óleo*</Text>
-                                <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '75%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                                <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Próxima troca de óleo*</Text>
+                                <TextInputMask
+                                type={'datetime'}
+                                options={{
+                                  format: 'DD/MM/YYYY'
+                                }}
+                                value={trocaDeOleo}
+                                onChangeText={(text) => setTrocaDeOleo(text)}
+                                placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '75%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
                             </View>
                         </View>
                         <View style={{marginTop: 10}}>
-                            <Text style={{color: 'black', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Imagens</Text>
+                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Imagens</Text>
                         
                         </View>
                     </View>
@@ -499,6 +567,7 @@ export default function({route}){
 
     return(
         <View style={{backgroundColor: 'white', height: '100%'}}>
+            <StatusBar hidden/>
             <Header pageName={pageName}/>
             <View style={styles.profileHeader}>
                 <View style={{width: 100, height: 100}}>

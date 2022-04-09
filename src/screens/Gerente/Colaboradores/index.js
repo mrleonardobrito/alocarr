@@ -11,6 +11,7 @@ import { StatusBar } from "expo-status-bar";
 
 // App Components
 import Header from '../../../components/Header';
+
 // Libs Components
 import Icon  from "react-native-vector-icons/FontAwesome";
 import IconAnt from "react-native-vector-icons/AntDesign";

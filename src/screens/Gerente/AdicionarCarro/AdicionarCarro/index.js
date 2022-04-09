@@ -142,16 +142,15 @@ export default function({ navigation }){
                                     justifyContent: 'center'
                                     }}>
                                         <Picker 
-                                    pickerStyleType={true}
-                                    selectedValue={marca}
-                                    onValueChange={(text) => setMarca(text)}
-                                    style={styles.picker}>
-                                        <Picker.Item label='Ford' value='Ford' style={{color: 'gray'}} />
-                                        <Picker.Item label='Ferrari' value='Ferrari' style={{color: 'gray'}} />
-                                        <Picker.Item label='Wolkswagem' value='Wolkswagem' style={{color: 'gray'}} />
-                                        <Picker.Item label='Fiat' value='Fiat' style={{color: 'gray'}} />
-
-                                    </Picker>
+                                        pickerStyleType={true}
+                                        selectedValue={marca}
+                                        onValueChange={(text) => setMarca(text)}
+                                        style={styles.picker}>
+                                            <Picker.Item label='Ford' value='Ford' style={{color: 'gray'}} />
+                                            <Picker.Item label='Ferrari' value='Ferrari' style={{color: 'gray'}} />
+                                            <Picker.Item label='Wolkswagem' value='Wolkswagem' style={{color: 'gray'}} />
+                                            <Picker.Item label='Fiat' value='Fiat' style={{color: 'gray'}} />
+                                        </Picker>
                                 </View>
                                 <TouchableOpacity style={styles.inputGrandeBotao}><Icon name="plus" style={[styles.fontePadrao, {marginLeft: 0}]}/></TouchableOpacity>
                             </View>

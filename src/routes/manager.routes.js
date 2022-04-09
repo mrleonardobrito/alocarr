@@ -5,7 +5,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import AdmDrawerContent from '../components/AdmDrawerContent'
 import Gerente from '../screens/Gerente/Gerente'
 import Graficos from '../screens/Gerente/Graficos'
-import Dados from '../screens/Gerente/Dados'
 import Financeiro from '../screens/Gerente/Financeiro'
 import FinanceiroCarros from '../screens/Gerente/Financeiro/FinanceiroCarros'
 import Adicionar from '../screens/Gerente/Financeiro/Adicionar'
@@ -24,13 +23,12 @@ const AdmDrawer = createDrawerNavigator()
 const AdmRouter = () => {
     return (
       <AdmDrawer.Navigator 
-        initialRouteName="Adicionar" 
+        initialRouteName="Carros" 
         screenOptions={{ headerShown: false }}
         drawerContent={(props) => <AdmDrawerContent {...props}/>}
       >
         <AdmDrawer.Screen name="Gerente" component={Gerente}/>
         <AdmDrawer.Screen name="Graficos" component={Graficos}/>
-        <AdmDrawer.Screen name="Dados" component={Dados} />
         <AdmDrawer.Screen name="Financeiro" component={Financeiro} />
         <AdmDrawer.Screen name="FinanceiroCarros" component={FinanceiroCarros} />
         <AdmDrawer.Screen name="DetalhesFinanceiroCarro" component={DetalhesFinanceiroCarro} />
