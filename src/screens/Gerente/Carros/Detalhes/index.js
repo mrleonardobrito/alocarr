@@ -27,6 +27,7 @@ import { Picker } from '@react-native-picker/picker';
 
 import automovel from '../../../../utils/carros';
 import { StatusBar } from 'expo-status-bar';
+import { Alert } from 'react-native-web';
 
 const {width} = Dimensions.get("window");
 
@@ -69,6 +70,9 @@ export default function({route}){
     const [trocaDeOleo, setTrocaDeOleo] = useState('');
     const [motor, setMotor] = useState('');
     const [numPassageiros, setNumPassageiros] = useState('');
+    const [numMalas, setNumMalas] = useState('');
+    const [numPortas, setNumPortas] = useState('');
+    const [numMarchas, setNumMarchas] = useState('');
     const [descCarro, setDescCarro] = useState('');
     const [quilometragem, setQuilometragem] = useState('');
 
@@ -76,6 +80,7 @@ export default function({route}){
     const corDefaultBad = 'red';
     
     const [corNome, setCorNome] = useState(corDefault);
+    const [corCor, setCorCor] = useState(corDefault);
     const [corDesc, setCorDesc] = useState(corDefault);
     const [corUltRevisao, setCorUltRevisao] = useState(corDefault);
     const [corProxRevisao, setCorProxRevisao] = useState(corDefault);
@@ -86,21 +91,29 @@ export default function({route}){
     const [corTrocaDeOleo, setCorTrocaDeOleo] = useState(corDefault);
     const [corMotor, setCorMotor] = useState(corDefault);
     const [corChassi, setCorChassi] = useState(corDefault);
-    const [corPassageiro, setCorPassageiro] = useState(corDefault);
+    const [corNumPassageiro, setCorNumPassageiros] = useState(corDefault);
+    const [corNumMalas, setCorNumMalas] = useState(corDefault);
+    const [corNumPortas, setCorNumPortas] = useState(corDefault);
+    const [corNumMarchas, setCorNumMarchas] = useState(corDefault);
 
     const borderChange = () => {
+        
         validaNome();
         validaDesc();
         validaUltRevisao();
         validaProxRevisao();
         validaMotor();
         validaChassi();
-        validaPassa();
+        validaNumPassageiros();
         validaPlaca();
         validaQuilometragem();
         validaCodGPS();
         validaCombustivel();
         validaTrocaDeOleo();
+        validaNumPortas();
+        validaNumMalas();
+        validaNumMarchas();
+        validaCor();
     }
 
     //caso algum campo seja enviado vazio, ele o poe vermelho
@@ -154,14 +167,34 @@ export default function({route}){
         return console.log('Motor');
         }
     }
-    const validaPassa = () => {if(numPassageiros == ''){
-        setCorPassageiro(corDefaultBad);
+    const validaNumPassageiros = () => {if(numPassageiros == ''){
+        setCorNumPassageiros(corDefaultBad);
         return console.log('Passageiros');
         }
     }
     const validaChassi = () => {if(chassi == ''){
         setCorChassi(corDefaultBad);
         return console.log('Chassi');
+        }
+    }
+    const validaCor = () => {if(cor == ''){
+        setCorCor(corDefaultBad);
+        return console.log('Cor');
+        }
+    }
+    const validaNumPortas = () => {if(numPortas == ''){
+        setCorNumPortas(corDefaultBad);
+        return console.log('Número de Portas');
+        }
+    }
+    const validaNumMalas = () => {if(numMalas == ''){
+        setCorNumMalas(corDefaultBad);
+        return console.log('Numero de Malas');
+        }
+    }
+    const validaNumMarchas = () => {if(numMarchas == ''){
+        setCorNumMarchas(corDefaultBad);
+        return console.log('Número de Marchas');
         }
     }
 
@@ -208,11 +241,28 @@ export default function({route}){
         else{return 'green'}
     }
     const corValorPassa = () => {
-        if(numPassageiros == ' ' || numPassageiros == 0){return corPassageiro}
+        if(numPassageiros == ' ' || numPassageiros == 0){return corNumPassageiro}
         else{return 'green'}
     }
     const corValorChassi = () => {
         if(chassi == ' ' || chassi == 0){return corChassi}
+        else{return 'green'}
+    }
+
+    const corValorCor = () => {
+        if(cor == ' ' || cor == 0){return corCor}
+        else{return 'green'}
+    }
+    const corValorNumMalas = () => {
+        if(numMalas == ' ' || numMalas == 0){return corNumMalas}
+        else{return 'green'}
+    }
+    const corValorNumPortas = () => {
+        if(numPortas == ' ' || numPortas == 0){return corNumPortas}
+        else{return 'green'}
+    }
+    const corValorNumMarchas = () => {
+        if(numMarchas == ' ' || numMarchas == 0){return corNumMarchas}
         else{return 'green'}
     }
 
@@ -638,16 +688,18 @@ export default function({route}){
                     </TouchableOpacity>
                     <ScrollView style={{backgroundColor: 'transparent', marginTop: 20, paddingHorizontal: 10}}>
                         <View style={{marginBottom: 10}}>
-                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Nome do carro* </Text>
+                            <Text style={[styles.textoTitulo, {marginBottom: 5, marginLeft: 10}]}>Nome do carro* </Text>
                             <TextInput
                             onChangeText={(text) => setNome(text)}
-                            placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorNome(), borderWidth: 1, paddingLeft: 10}}/>
+                            placeholder='Digite aqui...' 
+                            style={[styles.input, {borderColor: corValorNome()}]}/>
                         </View>
                         <View style={{marginBottom: 10}}>
-                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Descrição do carro* </Text>
+                            <Text style={[styles.textoTitulo, {marginBottom: 5, marginLeft: 10}]}>Descrição do carro </Text>
                             <TextInput
                             onChangeText={(text) => setDescCarro(text)}
-                            placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorDesc(), borderWidth: 1, paddingLeft: 10}}/>
+                            placeholder='Digite aqui...' 
+                            style={[styles.input, {borderColor: corValorDesc()}]}/>
                         </View>
                         <View style={{width: '100%', paddingHorizontal: 15, marginTop: 10}}>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -660,10 +712,11 @@ export default function({route}){
                                     }}
                                     value={ultimaRevisao}
                                     onChangeText={(text) => setUltimaRevisao(text)}
-                                    placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor:  corValorUltRevisao(), borderWidth: 1, paddingLeft: 10}}/>
+                                    placeholder='XX/XX/XXXX'
+                                    style={[styles.input, {borderColor:  corValorUltRevisao()}]}/>
                                 </View>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Proxima revisão*</Text>
+                                    <Text style={styles.textoTitulo}>Proxima revisão*</Text>
                                     <TextInputMask
                                     type={'datetime'}
                                     options={{
@@ -671,21 +724,24 @@ export default function({route}){
                                     }}
                                     value={proximaRevisao}
                                     onChangeText={(text) => setProximaRevisao(text)}
-                                    placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor:  corValorProxRevisao(), borderWidth: 1, paddingLeft: 10}}/>
+                                    placeholder='XX/XX/XXXX' 
+                                    style={[styles.input, {borderColor:  corValorProxRevisao()}]}/>
                                 </View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Quilometragem*</Text>
+                                    <Text style={styles.textoTitulo}>Quilometragem*</Text>
                                     <TextInput 
                                     onChangeText={(text) => setQuilometragem(text)}
-                                    placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorQuilometragem(), borderWidth: 1, paddingLeft: 10}}/>
+                                    placeholder='Digite aqui...' 
+                                    style={[styles.input, {borderColor: corValorQuilometragem()}]}/>
                                 </View>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Código GPS*</Text>
+                                    <Text style={styles.textoTitulo}>Código GPS*</Text>
                                     <TextInput 
                                     onChangeText={(text) => setCodGPS(text)}
-                                    placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorCodGPS(), borderWidth: 1, paddingLeft: 10}}/>
+                                    placeholder='Digite aqui...' 
+                                    style={[styles.input, {borderColor: corValorCodGPS()}]}/>
                                 </View>
                             </View>
                         </View>
@@ -711,47 +767,88 @@ export default function({route}){
                                 }}
                                 value={trocaDeOleo}
                                 onChangeText={(text) => setTrocaDeOleo(text)}
-                                placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '75%', borderColor:  corValorTrocaDeOleo(), borderWidth: 1, paddingLeft: 10}}/>
+                                placeholder='XX/XX/XXXX' 
+                                style={[styles.input, {borderColor:  corValorTrocaDeOleo()}]}/>
                             </View>
                         </View>
                         <View style={{marginTop: 10}}>
                             <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Imagens</Text>
-                        
                         </View>
                         <View style={{marginTop: 10}}>
-                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Detalhes</Text>
+                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Especificações</Text>
                             <View style={{width: '100%', paddingHorizontal: 15, marginTop: 10}}>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Placa*</Text>
+                                    <Text style={styles.textoTitulo}>Placa*</Text>
                                     <TextInput
                                     value={placa}
                                     onChangeText={(text) => setPlaca(text)}
-                                    placeholder='XXXXXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorPlaca(placa), borderWidth: 1, paddingLeft: 10}}/>
+                                    placeholder='XXXXXXX'
+                                    style={[styles.input, {borderColor: corValorPlaca(placa)}]}/>
                                 </View>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Motor*</Text>
+                                    <Text style={styles.textoTitulo}>Motor*</Text>
                                     <TextInput
                                     value={motor}
                                     onChangeText={(text) => setMotor(text)}
-                                    placeholder='XXXXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorMotor(motor), borderWidth: 1, paddingLeft: 10}}/>
+                                    placeholder='XXXXXX'
+                                    style={[styles.input, {borderColor: corValorMotor(motor)}]}/>
                                 </View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
                                 <View style={{width: '40%'}}>
-                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Passageiros*</Text>
+                                    <Text style={styles.textoTitulo}>Cor*</Text>
+                                    <TextInput 
+                                    onChangeText={(text) => setCor(text)}
+                                    placeholder='Digite aqui...'
+                                    style={[styles.input, {borderColor: corValorCor(cor)}]}/>
+                                </View>
+                                <View style={{width: '40%'}}>
+                                    <Text style={styles.textoTitulo}>Chassi*</Text>
+                                    <TextInput 
+                                    onChangeText={(text) => setChassi(text)}
+                                    placeholder='Digite aqui...' 
+                                    style={[styles.input, {borderColor: corValorChassi(chassi)}]}/>
+                                </View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
+                                <View style={{width: '30%'}}>
+                                    <Text style={styles.textoTitulo}>Malas*</Text>
+                                    <TextInputMask
+                                    type='only-numbers'
+                                    placeholder='00' 
+                                    value={numMalas}
+                                    onChangeText={(text) => setNumMalas(text)}
+                                    style={[styles.input, {borderColor: corValorNumMalas(numMalas)}]}/>
+                                </View>
+                                <View style={{width: '30%'}}>
+                                    <Text style={styles.textoTitulo}>Portas*</Text>
+                                    <TextInputMask
+                                    type='only-numbers'
+                                    placeholder='00' 
+                                    value={numPortas}
+                                    onChangeText={(text) => setNumPortas(text)}
+                                    style={[styles.input, {borderColor: corValorNumPortas(numPortas)}]}/>
+                                </View>
+                                <View style={{width: '30%'}}>
+                                    <Text style={styles.textoTitulo}>Marchas*</Text>
+                                    <TextInputMask
+                                    type='only-numbers'
+                                    placeholder='00' 
+                                    value={numMarchas}
+                                    onChangeText={(text) => setNumMarchas(text)}
+                                    style={[styles.input, {borderColor: corValorNumMarchas(numMarchas)}]}/>
+                                </View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
+                                <View style={{width: '30%'}}>
+                                    <Text style={styles.textoTitulo}>Passageiros*</Text>
                                     <TextInputMask
                                     type='only-numbers'
                                     placeholder='00' 
                                     value={numPassageiros}
                                     onChangeText={(text) => setNumPassageiros(text)}
-                                    style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorPassa(numPassageiros), borderWidth: 1, paddingLeft: 10}}/>
-                                </View>
-                                <View style={{width: '40%'}}>
-                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Chassi*</Text>
-                                    <TextInput 
-                                    onChangeText={(text) => setChassi(text)}
-                                    placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorChassi(chassi), borderWidth: 1, paddingLeft: 10}}/>
+                                    style={[styles.input, {borderColor: corValorPassa(numPassageiros)}]}/>
                                 </View>
                             </View>
                         </View>
@@ -799,4 +896,18 @@ const styles = StyleSheet.create({
         width: 40,
         alignItems: 'center'
     },
+    textoTitulo: {
+        color: '#285084',
+        fontWeight: 'bold', 
+        marginBottom: 2,
+        marginLeft: 5
+    },
+    input: {
+        borderRadius: 5, 
+        height: 35, 
+        width: '100%', 
+        borderWidth: 1, 
+        paddingLeft: 10
+    },
+    
 });
