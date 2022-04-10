@@ -43,33 +43,178 @@ export default function({route}){
     const [pickerBancoCouro, pickerBancoCouroToggle] = useReducer((s)=> !s, false);
     const [pickerRetrovisorElet, pickerRetrovisorEletToggle] = useReducer((s)=> !s, false);
 
-    const [nome, setNome] = useState();
+    const [nome, setNome] = useState('');
     const [marca, setMarca] = useState(['Ford', 'Ferrari']);
-    const [ano, setAno] = useState();
-    const [grupo, setGrupo] = useState();
-    const [modelo, setModelo] = useState();
-    const [placa, setPlaca] = useState();
-    const [chassi, setChassi] = useState();
-    const [combustivel, setCombustivel] = useState();
-    const [cor, setCor] = useState();
-    const [valorPagoCarro, setValorPagoCarro] = useState();
-    const [valorReposicao, setValorReposicao] = useState();
-    const [valorLocacao, setValorLocacao] = useState();
-    const [cilindrada, setCilindrada] = useState();
-    const [codGPS, setCodGPS] = useState();
-    const [cambio, setCambio] = useState();
-    const [numeroSerie, setNumeroSerie] = useState();
-    const [fornecedor, setFornecedor] = useState();
-    const [local, setLocal] = useState();
-    const [obs, setObs] = useState();
-    const [obsCarac, setObsCarac] = useState();
+    const [ano, setAno] = useState('');
+    const [grupo, setGrupo] = useState('');
+    const [modelo, setModelo] = useState('');
+    const [placa, setPlaca] = useState('');
+    const [chassi, setChassi] = useState('');
+    const [combustivel, setCombustivel] = useState('');
+    const [cor, setCor] = useState('');
+    const [valorPagoCarro, setValorPagoCarro] = useState('');
+    const [valorReposicao, setValorReposicao] = useState('');
+    const [valorLocacao, setValorLocacao] = useState('');
+    const [cilindrada, setCilindrada] = useState('');
+    const [codGPS, setCodGPS] = useState('');
+    const [cambio, setCambio] = useState('');
+    const [numeroSerie, setNumeroSerie] = useState('');
+    const [fornecedor, setFornecedor] = useState('');
+    const [local, setLocal] = useState('');
+    const [obs, setObs] = useState('');
+    const [obsCarac, setObsCarac] = useState('');
 
-    const [ultimaRevisao, setUltimaRevisao] = useState();
-    const [proximaRevisao, setProximaRevisao] = useState();
-    const [trocaDeOleo, setTrocaDeOleo] = useState();
+    const [ultimaRevisao, setUltimaRevisao] = useState('');
+    const [proximaRevisao, setProximaRevisao] = useState('');
+    const [trocaDeOleo, setTrocaDeOleo] = useState('');
+    const [motor, setMotor] = useState('');
+    const [numPassageiros, setNumPassageiros] = useState('');
+    const [descCarro, setDescCarro] = useState('');
+    const [quilometragem, setQuilometragem] = useState('');
 
+    const [corDefault, setCorDefault] = useState('#0e0e0e');
+    const corDefaultBad = 'red';
+    
+    const [corNome, setCorNome] = useState(corDefault);
+    const [corDesc, setCorDesc] = useState(corDefault);
+    const [corUltRevisao, setCorUltRevisao] = useState(corDefault);
+    const [corProxRevisao, setCorProxRevisao] = useState(corDefault);
+    const [corQuilometragem, setCorQuilometragem] = useState(corDefault);
+    const [corCodGPS, setCorCodGPS] = useState(corDefault);
+    const [corPlaca, setCorPlaca] = useState(corDefault);
+    const [corCombustivel, setCorCombustivel] = useState(corDefault);
+    const [corTrocaDeOleo, setCorTrocaDeOleo] = useState(corDefault);
+    const [corMotor, setCorMotor] = useState(corDefault);
+    const [corChassi, setCorChassi] = useState(corDefault);
+    const [corPassageiro, setCorPassageiro] = useState(corDefault);
 
+    const borderChange = () => {
+        validaNome();
+        validaDesc();
+        validaUltRevisao();
+        validaProxRevisao();
+        validaMotor();
+        validaChassi();
+        validaPassa();
+        validaPlaca();
+        validaQuilometragem();
+        validaCodGPS();
+        validaCombustivel();
+        validaTrocaDeOleo();
+    }
 
+    //caso algum campo seja enviado vazio, ele o poe vermelho
+    const validaNome = () => {if(nome == ''){
+        setCorNome(corDefaultBad);
+        return console.log('Nome');
+        }
+    }
+    const validaDesc = () => {if(descCarro == ''){
+        setCorDesc(corDefaultBad);
+        return console.log('Descrição');
+        }
+    }
+    const validaUltRevisao = () => {if(ultimaRevisao == ''){
+        setCorProxRevisao(corDefaultBad);
+        return console.log('Ultima Revisão');
+        }
+    }
+    const validaProxRevisao = () => {if(proximaRevisao == ''){
+        setCorUltRevisao(corDefaultBad);
+        return console.log('Próxima Revisão');
+        }
+    }
+    const validaQuilometragem = () => {if(quilometragem == ''){
+        setCorQuilometragem(corDefaultBad);
+        return console.log('Quilometragem');
+        }
+    }
+    const validaCodGPS = () => {if(codGPS == ''){
+        setCorCodGPS(corDefaultBad);
+        return console.log('Código GPS');
+        }
+    }
+    const validaCombustivel= () => {if(combustivel == ''){
+        setCorCombustivel(corDefaultBad);
+        return console.log('Combustível');
+        }
+    }
+    const validaTrocaDeOleo= () => {if(trocaDeOleo == ''){
+        setCorTrocaDeOleo(corDefaultBad);
+        return console.log('Troca De Oleo');
+        }
+    }
+    const validaPlaca = () => {if(placa == ''){
+        setCorPlaca(corDefaultBad);
+        return console.log('Placa');
+        }
+    }
+    const validaMotor = () => {if(motor == ''){
+        setCorMotor(corDefaultBad);
+        return console.log('Motor');
+        }
+    }
+    const validaPassa = () => {if(numPassageiros == ''){
+        setCorPassageiro(corDefaultBad);
+        return console.log('Passageiros');
+        }
+    }
+    const validaChassi = () => {if(chassi == ''){
+        setCorChassi(corDefaultBad);
+        return console.log('Chassi');
+        }
+    }
+
+    // caso o campo esteja vazio de início, ele fica neutro. caso ele seja preenchido, fica verde
+
+    const corValorNome = () => {
+        if(nome == ' ' || nome == 0){return corNome}
+        else{return 'green'}
+    }
+    const corValorDesc = () => {
+        if(descCarro == ' ' || descCarro == 0){return corDesc}
+        else{return 'green'}
+    }
+    const corValorUltRevisao = () => {
+        if(ultimaRevisao == ' ' || ultimaRevisao == 0){return corUltRevisao}
+        else{return 'green'}
+    }
+    const corValorProxRevisao = () => {
+        if(proximaRevisao == ' ' || proximaRevisao == 0){return corProxRevisao}
+        else{return 'green'}
+    }
+    const corValorQuilometragem = () => {
+        if(quilometragem == ' ' || quilometragem == 0){return corQuilometragem}
+        else{return 'green'}
+    }
+    const corValorCodGPS = () => {
+        if(codGPS == ' ' || codGPS == 0){return corCodGPS}
+        else{return 'green'}
+    }
+    const corValorCombustivel = () => {
+        if(combustivel == ' ' || combustivel == 0){return corCombustivel}
+        else{return 'green'}
+    }
+    const corValorTrocaDeOleo = () => {
+        if(trocaDeOleo == ' ' || trocaDeOleo == 0){return corTrocaDeOleo}
+        else{return 'green'}
+    }
+    const corValorPlaca = () => {
+        if(placa == ' ' || placa == 0){return corPlaca}
+        else{return 'green'}
+    }
+    const corValorMotor = () => {
+        if(motor == ' ' || motor == 0){return corMotor}
+        else{return 'green'}
+    }
+    const corValorPassa = () => {
+        if(numPassageiros == ' ' || numPassageiros == 0){return corPassageiro}
+        else{return 'green'}
+    }
+    const corValorChassi = () => {
+        if(chassi == ' ' || chassi == 0){return corChassi}
+        else{return 'green'}
+    }
 
     const pageName = 'Detalhes';
     const [decidir, setDecidir] = useState(1);
@@ -91,6 +236,7 @@ export default function({route}){
 
     const marchasSituacaoC = ', com ' + crr.especificacoes.numMarchas + ' marchas'
 
+    
 
     function marchasSituacao(){
         if(crr.especificacoes.manual){
@@ -416,7 +562,7 @@ export default function({route}){
 
     function animarPerfil(){
         if(contasVisible){
-            return <MotiView style={{height: '100%', width: '100%'}} 
+            return <MotiView style={{height: '100%', width: '100%', zIndex: 3}} 
                         from={{translateX: 0, translateY: 0}} 
                         animate={{translateX: width/3.2}} 
                         transition={{ type: 'timing',duration: 900}}>
@@ -484,16 +630,24 @@ export default function({route}){
         }
         // Tela de Editar o Carro
         else{
-            return <ScrollView style={{padding: 10, marginBottom: 15}}>
+            return <View style={{padding: 10, marginBottom: 15, flex: 1}}>
                     <TouchableOpacity onPress={toggle} style={{height: 35, width: '29%', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FF8B8B', borderRadius: 100, alignSelf: 'flex-end'}}>
                         <MotiView>
                             <Text style={{color: 'white', fontWeight: 'bold'}}>Cancelar</Text>
                         </MotiView>
                     </TouchableOpacity>
-                    <View style={{backgroundColor: 'transparent', marginTop: 20, paddingHorizontal: 10}}>
+                    <ScrollView style={{backgroundColor: 'transparent', marginTop: 20, paddingHorizontal: 10}}>
+                        <View style={{marginBottom: 10}}>
+                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Nome do carro* </Text>
+                            <TextInput
+                            onChangeText={(text) => setNome(text)}
+                            placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorNome(), borderWidth: 1, paddingLeft: 10}}/>
+                        </View>
                         <View style={{marginBottom: 10}}>
                             <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 5, marginLeft: 10}}>Descrição do carro* </Text>
-                            <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                            <TextInput
+                            onChangeText={(text) => setDescCarro(text)}
+                            placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorDesc(), borderWidth: 1, paddingLeft: 10}}/>
                         </View>
                         <View style={{width: '100%', paddingHorizontal: 15, marginTop: 10}}>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -506,7 +660,7 @@ export default function({route}){
                                     }}
                                     value={ultimaRevisao}
                                     onChangeText={(text) => setUltimaRevisao(text)}
-                                    placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                                    placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor:  corValorUltRevisao(), borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                                 <View style={{width: '40%'}}>
                                     <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Proxima revisão*</Text>
@@ -517,22 +671,26 @@ export default function({route}){
                                     }}
                                     value={proximaRevisao}
                                     onChangeText={(text) => setProximaRevisao(text)}
-                                    placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                                    placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor:  corValorProxRevisao(), borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
                                 <View style={{width: '40%'}}>
                                     <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Quilometragem*</Text>
-                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                                    <TextInput 
+                                    onChangeText={(text) => setQuilometragem(text)}
+                                    placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorQuilometragem(), borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                                 <View style={{width: '40%'}}>
                                     <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Código GPS*</Text>
-                                    <TextInput placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                                    <TextInput 
+                                    onChangeText={(text) => setCodGPS(text)}
+                                    placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorCodGPS(), borderWidth: 1, paddingLeft: 10}}/>
                                 </View>
                             </View>
                         </View>
                         <View>
-                            <View style={{borderBottomColor: 'black', borderTopColor: 'white', borderLeftColor: 'white', borderRightColor: 'white', borderWidth: 1, paddingBottom: 5}}>
+                            <View style={{borderBottomColor:  corValorCombustivel(), borderTopColor: 'white', borderLeftColor: 'white', borderRightColor: 'white', borderWidth: 1, paddingBottom: 5}}>
                                 <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 0, marginLeft: 5}}>Combustível*</Text>
                                 <Picker 
                                 pickerStyleType={true}
@@ -553,15 +711,58 @@ export default function({route}){
                                 }}
                                 value={trocaDeOleo}
                                 onChangeText={(text) => setTrocaDeOleo(text)}
-                                placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '75%', borderColor: 'black', borderWidth: 1, paddingLeft: 10}}/>
+                                placeholder='XX/XX/XXXX' style={{borderRadius: 5, height: 35, width: '75%', borderColor:  corValorTrocaDeOleo(), borderWidth: 1, paddingLeft: 10}}/>
                             </View>
                         </View>
                         <View style={{marginTop: 10}}>
                             <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Imagens</Text>
                         
                         </View>
-                    </View>
-            </ScrollView>
+                        <View style={{marginTop: 10}}>
+                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Detalhes</Text>
+                            <View style={{width: '100%', paddingHorizontal: 15, marginTop: 10}}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                                <View style={{width: '40%'}}>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Placa*</Text>
+                                    <TextInput
+                                    value={placa}
+                                    onChangeText={(text) => setPlaca(text)}
+                                    placeholder='XXXXXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorPlaca(placa), borderWidth: 1, paddingLeft: 10}}/>
+                                </View>
+                                <View style={{width: '40%'}}>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Motor*</Text>
+                                    <TextInput
+                                    value={motor}
+                                    onChangeText={(text) => setMotor(text)}
+                                    placeholder='XXXXXX' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorMotor(motor), borderWidth: 1, paddingLeft: 10}}/>
+                                </View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
+                                <View style={{width: '40%'}}>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Passageiros*</Text>
+                                    <TextInputMask
+                                    type='only-numbers'
+                                    placeholder='00' 
+                                    value={numPassageiros}
+                                    onChangeText={(text) => setNumPassageiros(text)}
+                                    style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorPassa(numPassageiros), borderWidth: 1, paddingLeft: 10}}/>
+                                </View>
+                                <View style={{width: '40%'}}>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Chassi*</Text>
+                                    <TextInput 
+                                    onChangeText={(text) => setChassi(text)}
+                                    placeholder='Digite aqui...' style={{borderRadius: 5, height: 35, width: '100%', borderColor: corValorChassi(chassi), borderWidth: 1, paddingLeft: 10}}/>
+                                </View>
+                            </View>
+                        </View>
+                        </View>
+                    </ScrollView>
+                    <TouchableOpacity
+                    onPress={() => borderChange()}
+                    style={{height: 40, width: '100%', backgroundColor: '#295084', marginTop: 5, borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}>
+                        <Text style={{color: 'white', fontWeight: 'bold'}}>Salvar modificações</Text>
+                    </TouchableOpacity>
+            </View>
         }
     }
 

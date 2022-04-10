@@ -16,6 +16,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 // Data
 import veiculos from '../AdicionarCarro/AdicionarCarro/carros';
 import automovel from '../../../utils/carros';
+import { StatusBar } from 'expo-status-bar';
 
 // Style
 
@@ -45,6 +46,7 @@ export default function({ navigation }){
 
     return(
         <ScrollView style={styles.carrosContainer}>
+            <StatusBar hidden />
             <Header pageName={pageName}/>
             <View style={{paddingHorizontal: 10, width: '100%', height: 40, marginTop: '3%', flexDirection: 'row'}}>    
                 <TouchableOpacity
