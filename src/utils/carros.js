@@ -10,7 +10,7 @@ const carros = [
         quilometragem: 7.465,
         trava: 'Elétrica',
         codGPS: '12345678',
-        
+        avaliacao: [25,150,75,100,700],
 
         especificacoes: {
             numPassageiros: 4,
@@ -44,6 +44,7 @@ const carros = [
         quilometragem: 7.465,
         trava: 'Elétrica',
         codGPS: '40028922',
+        avaliacao: [30,20,70,500,1000],
 
         especificacoes: {
             numPassageiros: 4,
@@ -76,6 +77,7 @@ const carros = [
         quilometragem: 7.465,
         trava: 'Elétrica',
         codGPS: '22982004',
+        avaliacao: [10,47,600,203,280],
 
         especificacoes: {
             numPassageiros: 4,

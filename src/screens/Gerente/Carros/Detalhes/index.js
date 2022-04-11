@@ -248,7 +248,6 @@ export default function({route}){
         if(chassi == ' ' || chassi == 0){return corChassi}
         else{return 'green'}
     }
-
     const corValorCor = () => {
         if(cor == ' ' || cor == 0){return corCor}
         else{return 'green'}
@@ -266,27 +265,48 @@ export default function({route}){
         else{return 'green'}
     }
 
+
     const pageName = 'Detalhes';
     const [decidir, setDecidir] = useState(1);
     const navigation = useNavigation();
 
-
-    const starValues = [450, 10, 20, 10, 5];
-    const starValue = 7;
-
-    const calculaStarValue = starValues[0] + starValues[1] + starValues[2] + starValues[3] + starValues[4];
+  
     
     const [colorTrueEspeci, setColorTrueEspeci] = useState(true);
     const [colorTrueDeta, setColorTrueDeta] = useState(false);
     const [colorTrueAva, setColorTrueAva] = useState(false);
 
+
     const idCarro = route.params.id;
 
     const crr = automovel[idCarro];
 
-    const marchasSituacaoC = ', com ' + crr.especificacoes.numMarchas + ' marchas'
+    const avaluation = () => {
+        return console.log(umaEstrela(),duasEstrela());
+    }
+    
+    function umaEstrela(){
+        return crr.avaliacao[0];
+    }
+    function duasEstrela(){
+        return crr.avaliacao[1];
+    }
+    function tresEstrela(){
+        return crr.avaliacao[2];
+    }
+    function quatroEstrela(){
+        return crr.avaliacao[3];
+    }
+    function cincoEstrela(){
+        return crr.avaliacao[4];
+    }
 
     
+    const starValue = 7;
+
+    const calculaStarValue = umaEstrela() + duasEstrela() + tresEstrela() + quatroEstrela() + cincoEstrela();
+
+    const marchasSituacaoC = ', com ' + crr.especificacoes.numMarchas + ' marchas'
 
     function marchasSituacao(){
         if(crr.especificacoes.manual){
@@ -306,20 +326,20 @@ export default function({route}){
     }
 
     function mediaStars(){
-        const starPercent = (starValues[0] * 100) / calculaStarValue;
+        const starPercent = (cincoEstrela() * 100) / calculaStarValue;
         return starPercent.toFixed(2);
     }
     function mediaStars2(){
-        const starPercent = (starValues[1] * 100) / calculaStarValue;
+        const starPercent = (quatroEstrela() * 100) / calculaStarValue;
         return starPercent.toFixed(2);
     }function mediaStars3(){
-        const starPercent = (starValues[2] * 100) / calculaStarValue;
+        const starPercent = (tresEstrela() * 100) / calculaStarValue;
         return starPercent.toFixed(2);
     }function mediaStars4(){
-        const starPercent = (starValues[3] * 100) / calculaStarValue;
+        const starPercent = (duasEstrela() * 100) / calculaStarValue;
         return starPercent.toFixed(2);
     }function mediaStars5(){
-        const starPercent = (starValues[4] * 100) / calculaStarValue;
+        const starPercent = (umaEstrela() * 100) / calculaStarValue;
         return starPercent.toFixed(2);
     }
 
@@ -448,6 +468,7 @@ export default function({route}){
                         <View style={{width: 100/3 + '%', alignItems: 'center'}}>
                             <Icon name='cogs' style={{fontSize: 22, color: 'white'}}/>
                             <Text style={{fontSize: 11, color: 'white', fontWeight: 'bold'}}>Motor {crr.motor}</Text>
+                            <Text>{avaluation()}</Text>
                         </View>
                     </View>
                 </View>
