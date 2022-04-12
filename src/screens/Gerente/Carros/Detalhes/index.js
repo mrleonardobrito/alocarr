@@ -14,7 +14,6 @@ import IconF from 'react-native-vector-icons/FontAwesome';
 import IconFF from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/core";
 
-
 import dusterFront from '../../../../../car_photos/renault_duster/duster_front.jpg'
 import dusterBack from '../../../../../car_photos/renault_duster/duster_back.jpg'
 import dusterDrift from '../../../../../car_photos/renault_duster/duster_drift.jpg'
@@ -45,7 +44,7 @@ export default function({route}){
     const [pickerRetrovisorElet, pickerRetrovisorEletToggle] = useReducer((s)=> !s, false);
 
     const [nome, setNome] = useState('');
-    const [marca, setMarca] = useState(['Ford', 'Ferrari']);
+    const [marca, setMarca] = useState(['']);
     const [ano, setAno] = useState('');
     const [grupo, setGrupo] = useState('');
     const [modelo, setModelo] = useState('');
@@ -95,6 +94,8 @@ export default function({route}){
     const [corNumMalas, setCorNumMalas] = useState(corDefault);
     const [corNumPortas, setCorNumPortas] = useState(corDefault);
     const [corNumMarchas, setCorNumMarchas] = useState(corDefault);
+    const [corAno, setCorAno] = useState(corDefault);
+
 
     const borderChange = () => {
         
@@ -114,6 +115,7 @@ export default function({route}){
         validaNumMalas();
         validaNumMarchas();
         validaCor();
+        validaAno();
     }
 
     //caso algum campo seja enviado vazio, ele o poe vermelho
@@ -197,6 +199,11 @@ export default function({route}){
         return console.log('Número de Marchas');
         }
     }
+    const validaAno = () => {if(numMarchas == ''){
+        setCorAno(corDefaultBad);
+        return console.log('Ano');
+        }
+    }
 
     // caso o campo esteja vazio de início, ele fica neutro. caso ele seja preenchido, fica verde
 
@@ -262,6 +269,10 @@ export default function({route}){
     }
     const corValorNumMarchas = () => {
         if(numMarchas == ' ' || numMarchas == 0){return corNumMarchas}
+        else{return 'green'}
+    }
+    const corValorAno = () => {
+        if(ano == ' ' || ano == 0){return corNumMarchas}
         else{return 'green'}
     }
 
@@ -796,9 +807,50 @@ export default function({route}){
                             <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Imagens</Text>
                         </View>
                         <View style={{marginTop: 10}}>
-                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Especificações</Text>
+                            <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 10, fontSize: 20}}>Dados</Text>
                             <View style={{width: '100%', paddingHorizontal: 15, marginTop: 10}}>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                                <View style={{flexDirection: 'column', justifyContent: 'space-between', marginTop: 5, marginBottom: 5}}>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Marca*</Text>
+                                    <View style={[styles.optPicker, {}]}>
+                                        <Picker 
+                                        pickerStyleType={true}
+                                        selectedValue={combustivel}
+                                        onValueChange={(text) => setCombustivel(text)}
+                                        style={{height: '100%', marginBottom: 10}}>
+                                            <Picker.Item label='Wolkswagem' value='Wolkswagem' style={{color: 'gray'}} />
+                                            <Picker.Item label='Fiat' value='Fiat' style={{color: 'gray'}} />
+                                            <Picker.Item label='Jeep' value='Jeep' style={{color: 'gray'}} />
+                                        </Picker>
+                                    </View>
+                                </View>
+                                <View style={{flexDirection: 'column', justifyContent: 'space-between', marginTop: 5, marginBottom: 5}}>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Modelo*</Text>
+                                    <View style={[styles.optPicker, {}]}>
+                                        <Picker 
+                                        pickerStyleType={true}
+                                        selectedValue={combustivel}
+                                        onValueChange={(text) => setCombustivel(text)}
+                                        style={{height: '100%', marginBottom: 5}}>
+                                            <Picker.Item label='Gol' value='Gol' style={{color: 'gray'}} />
+                                            <Picker.Item label='Uno' value='Uno' style={{color: 'gray'}} />
+                                            <Picker.Item label='Jeep' value='Jeep' style={{color: 'gray'}} />
+                                        </Picker>
+                                    </View>
+                                </View>
+                            <View style={{flexDirection: 'column', justifyContent: 'space-between', marginTop: 5, marginBottom: 5}}>
+                                <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Grupo*</Text>
+                                <View style={[styles.optPicker, {}]}>
+                                    <Picker 
+                                    pickerStyleType={true}
+                                    selectedValue={combustivel}
+                                    onValueChange={(text) => setCombustivel(text)}
+                                    style={{height: '100%', marginBottom: 5}}>
+                                        <Picker.Item label='Carro' value='Carro' style={{color: 'gray'}} />
+                                        <Picker.Item label='Moto' value='Moto' style={{color: 'gray'}} />
+                                    </Picker>
+                                </View>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 15}}>
                                 <View style={{width: '40%'}}>
                                     <Text style={styles.textoTitulo}>Placa*</Text>
                                     <TextInput
@@ -832,7 +884,7 @@ export default function({route}){
                                     style={[styles.input, {borderColor: corValorChassi(chassi)}]}/>
                                 </View>
                             </View>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 5, marginBottom: 15}}>
                                 <View style={{width: '30%'}}>
                                     <Text style={styles.textoTitulo}>Malas*</Text>
                                     <TextInputMask
@@ -861,9 +913,9 @@ export default function({route}){
                                     style={[styles.input, {borderColor: corValorNumMarchas(numMarchas)}]}/>
                                 </View>
                             </View>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginBottom: 15}}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 5, marginBottom: 15}}>
                                 <View style={{width: '30%'}}>
-                                    <Text style={styles.textoTitulo}>Passageiros*</Text>
+                                    <Text style={styles.textoTitulo}>Pessoas*</Text>
                                     <TextInputMask
                                     type='only-numbers'
                                     placeholder='00' 
@@ -871,7 +923,98 @@ export default function({route}){
                                     onChangeText={(text) => setNumPassageiros(text)}
                                     style={[styles.input, {borderColor: corValorPassa(numPassageiros)}]}/>
                                 </View>
+                                <View style={{width: '30%'}}>
+                                    <Text style={styles.textoTitulo}>Código GPS*</Text>
+                                    <TextInput
+                                    placeholder='0X0X0X0X0' 
+                                    value={numPassageiros}
+                                    onChangeText={(text) => setNumPassageiros(text)}
+                                    style={[styles.input, {borderColor: corValorPassa(numPassageiros)}]}/>
+                                </View>
+                                <View style={{width: '30%'}}>
+                                    <Text style={styles.textoTitulo}>Núm série*</Text>
+                                    <TextInput
+                                    placeholder='00' 
+                                    value={numPassageiros}
+                                    onChangeText={(text) => setNumPassageiros(text)}
+                                    style={[styles.input, {borderColor: corValorPassa(numPassageiros)}]}/>
+                                </View>
                             </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 5, marginBottom: 15}}>
+                                <View style={{marginTop: 0, width: '40%'}}>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Ano*</Text>
+                                    <TextInputMask
+                                    type={'datetime'}
+                                    options={{
+                                    format: 'YYYY'
+                                    }}
+                                    value={ano}
+                                    onChangeText={(text) => setAno(text)}
+                                    placeholder='XXXX' 
+                                    style={[styles.input, {borderColor:  corValorAno(), paddingLeft: 5}]}/>
+                                </View>
+                                <View style={{marginTop: 0, width: '40%'}}>
+                                    <Text style={{color: '#285084', fontWeight: 'bold', marginBottom: 2, marginLeft: 5}}>Cilindradas*</Text>
+                                    <TextInputMask
+                                    type={'only-numbers'}
+                                    value={trocaDeOleo}
+                                    onChangeText={(text) => setTrocaDeOleo(text)}
+                                    placeholder='XXXX' 
+                                    style={[styles.input, {borderColor:  corValorTrocaDeOleo(), paddingLeft: 5}]}/>
+                                </View>
+                            </View>
+                            <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 10}}>
+                                <View style={{width: '32%', alignItems: 'center', marginTop: 5}}>
+                                    <Text style={[styles.fontePadrao, {fontSize: 10}]}>Ar-condicionado</Text>
+                                    <TouchableOpacity
+                                        style={styles.inputPicker}
+                                        onPress={pickerArCondToggle}>
+                                        {pickerArCond && <View style={{height: 10, width: 10, backgroundColor: 'green', borderRadius: 100}}></View>}
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={{width: '32%', alignItems: 'center'}}>
+                                    <Text style={styles.fontePadrao}>Vidro elétrico</Text>
+                                    <TouchableOpacity
+                                        style={styles.inputPicker}
+                                        onPress={pickerVidroToggle}>
+                                        {pickerVidro && <View style={{height: 10, width: 10, backgroundColor: 'green', borderRadius: 100}}></View>}
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={{width: '32%', alignItems: 'center'}}>
+                                    <Text style={styles.fontePadrao}>Trava elétrica</Text>
+                                    <TouchableOpacity
+                                        style={styles.inputPicker}
+                                        onPress={pickerTravaToggle}>
+                                        {pickerTravaElet && <View style={{height: 10, width: 10, backgroundColor: 'green', borderRadius: 100}}></View>}
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 5, marginBottom: 10}}>
+                            <View style={{width: '32%', alignItems: 'center'}}>
+                                <Text style={styles.fontePadrao}>Alarme</Text>
+                                <TouchableOpacity
+                                    style={styles.inputPicker}
+                                    onPress={pickerAlarmeToggle}>
+                                    {pickerAlarme && <View style={{height: 10, width: 10, backgroundColor: 'green', borderRadius: 100}}></View>}
+                                </TouchableOpacity>
+                            </View>
+                            <View style={{width: '32%', alignItems: 'center'}}>
+                                <Text style={styles.fontePadrao}>Banco de couro</Text>
+                                <TouchableOpacity
+                                    style={styles.inputPicker}
+                                    onPress={pickerBancoCouroToggle}>
+                                    {pickerBancoCouro && <View style={{height: 10, width: 10, backgroundColor: 'green', borderRadius: 100}}></View>}
+                                </TouchableOpacity>
+                            </View>
+                            <View style={{width: '32%', alignItems: 'center'}}>
+                                <Text style={[styles.fontePadrao, {fontSize: 11}]}>Retrovisor elétrico</Text>
+                                <TouchableOpacity
+                                    style={styles.inputPicker}
+                                    onPress={pickerRetrovisorEletToggle}>
+                                    {pickerRetrovisorElet && <View style={{height: 10, width: 10, backgroundColor: 'green', borderRadius: 100}}></View>}
+                                </TouchableOpacity>
+                            </View>
+                        </View>  
                         </View>
                         </View>
                     </ScrollView>
@@ -930,5 +1073,30 @@ const styles = StyleSheet.create({
         borderWidth: 1, 
         paddingLeft: 10
     },
-    
+    fontePadrao: {
+        fontWeight: 'bold',
+        fontSize: 10,
+        color: '#285084',
+        marginLeft: 5
+    },
+    inputPicker: {
+        height: 20, 
+        width: 20, 
+        backgroundColor: 'transparent', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        borderRadius: 100,
+        marginLeft: 10,
+        marginTop: 5,
+        borderWidth: 1,
+        borderColor: '#295084',
+    },
+    optPicker: {
+        borderWidth: 1,
+        borderBottomColor: 'green', 
+        borderTopColor: 'white', 
+        borderLeftColor: 'white', 
+        borderRightColor: 'white', 
+        height: 50, 
+    }
 });
