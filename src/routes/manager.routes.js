@@ -18,6 +18,8 @@ import DetalhesFinanceiroCarro from '../screens/Gerente/Financeiro/FinanceiroCar
 import Colaboradores from '../screens/Gerente/Colaboradores';
 import LoginRouter from './login.routes';
 
+import TesteScreen from '../screens/Gerente/Carros/Detalhes/TesteScreen';
+
 const AdmDrawer = createDrawerNavigator()
 
 const AdmRouter = () => {
@@ -40,6 +42,9 @@ const AdmRouter = () => {
         <AdmDrawer.Screen name="Colaboradores" component={Colaboradores}/>
         <AdmDrawer.Screen name="EditarDetalhes" component={EditarDetalhes}/>
         <AdmDrawer.Screen name="AdicionarCarro" component={AdicionarCarro}/>
+
+        <AdmDrawer.Screen name="TesteScreen" component={TesteScreen}/>
+
   
       </AdmDrawer.Navigator>
     )

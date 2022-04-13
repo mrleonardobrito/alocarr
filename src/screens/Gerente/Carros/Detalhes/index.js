@@ -116,6 +116,20 @@ export default function({route}){
         validaNumMarchas();
         validaCor();
         validaAno();
+
+        validaModelo();
+        validaMarca();
+        validaLocal();
+        validaGrupo();
+        validaValorPagoCarro();
+        validaValorReposicao();
+        validaValorLocacao();
+        validaCilindradas();
+        validaNumeroSerie();
+        validaFornecedor();
+        validaObs();
+        validaObsCarac();
+
     }
 
     //caso algum campo seja enviado vazio, ele o poe vermelho
@@ -199,6 +213,75 @@ export default function({route}){
         return console.log('Número de Marchas');
         }
     }
+
+
+
+
+
+    const validaModelo = () => {if(modelo == ''){
+        setCorModelo(modelo);
+        return console.log('Modelo');
+        }
+    }
+    const validaMarca = () => {if(marca == ''){
+        setCorMarca(marca);
+        return console.log('Marca');
+        }
+    }
+    const validaLocal = () => {if(local == ''){
+        setCorLocal(local);
+        return console.log('Local');
+        }
+    }
+    const validaGrupo = () => {if(grupo == ''){
+        setCorGrupo(grupo);
+        return console.log('Grupo');
+        }
+    }
+    const validaValorPagoCarro = () => {if(valorPagoCarro == ''){
+        setCorValorPagoCarro(valorPagoCarro);
+        return console.log('Valor do carro pago');
+        }
+    }
+    const validaValorReposicao = () => {if(valorReposicao == ''){
+        setCorValorReposicao(valorReposicao);
+        return console.log('Valor da reposição');
+        }
+    }
+    const validaValorLocacao = () => {if(valorLocacao == ''){
+        setCorValorLocacao(valorLocacao);
+        return console.log('Valor da locação');
+        }
+    }
+    const validaCilindradas = () => {if(cilindrada == ''){
+        setCorCilindradas(cilindrada);
+        return console.log('Cilindradas');
+        }
+    }
+    const validaNumeroSerie = () => {if(numeroSerie == ''){
+        setCorNumeroSerie(numeroSerie);
+        return console.log('Número de série');
+        }
+    }
+    const validaFornecedor = () => {if(fornecedor == ''){
+        setCorFornecedor(fornecedor);
+        return console.log('Fornecedor');
+        }
+    }
+    const validaObs = () => {if(obs == ''){
+        setCorObs(obs);
+        return console.log('Observação');
+        }
+    }
+    const validaObsCarac = () => {if(obsCarac == ''){
+        setCorObsCarac(obsCarac);
+        return console.log('Observação específica');
+        }
+    }
+
+
+
+
     const validaAno = () => {if(numMarchas == ''){
         setCorAno(corDefaultBad);
         return console.log('Ano');
